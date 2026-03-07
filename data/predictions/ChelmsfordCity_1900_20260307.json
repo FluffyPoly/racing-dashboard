@@ -1,0 +1,166 @@
+{
+  "race_id": "ChelmsfordCity_1900_20260307",
+  "meta": {
+    "track": "Chelmsford City",
+    "time": "19:00",
+    "date": "2026-03-07",
+    "race_name": "Fairwood Brasserie Handicap",
+    "class": "5",
+    "going": "Standard (Polytrack)"
+  },
+  "analysis": {
+    "ruby": {
+      "race_id": "ChelmsfordCity_1900_20260307",
+      "race_volatility": "medium",
+      "rankings": [
+        {
+          "name": "Spendmore Lane",
+          "win_probability": 40,
+          "place_probability": 70,
+          "fair_odds": 2.5,
+          "key_positive_factors": [
+            "Strong recent form",
+            "Strong early odds"
+          ],
+          "key_risks": [
+            "Low OR rating"
+          ]
+        },
+        {
+          "name": "Tyger Bay",
+          "win_probability": 20,
+          "place_probability": 50,
+          "fair_odds": 5,
+          "key_positive_factors": [
+            "CD Winner"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Thurso",
+          "win_probability": 15,
+          "place_probability": 40,
+          "fair_odds": 6.67,
+          "key_positive_factors": [],
+          "key_risks": [
+            "N/A form"
+          ]
+        },
+        {
+          "name": "Ararat (IRE)",
+          "win_probability": 13,
+          "place_probability": 35,
+          "fair_odds": 7.69,
+          "key_positive_factors": [
+            "CD Winner"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Whenthedealinsdone",
+          "win_probability": 12,
+          "place_probability": 30,
+          "fair_odds": 8.33,
+          "key_positive_factors": [],
+          "key_risks": [
+            "N/A form",
+            "Disputed Jockey"
+          ]
+        }
+      ],
+      "feature_weight_summary": {
+        "performance": 0.5,
+        "tactics": 0.2,
+        "trainer_jockey": 0.15,
+        "conditions": 0.1,
+        "market": 0.05
+      }
+    },
+    "keenan": {
+      "race_id": "ChelmsfordCity_1900_20260307",
+      "certainty_level": "medium",
+      "most_probable_winner": {
+        "horse": "Spendmore Lane",
+        "probability": 0.4
+      },
+      "forecast_top_3": [
+        {
+          "combination": "Spendmore Lane > Tyger Bay",
+          "probability": 0.08
+        },
+        {
+          "combination": "Tyger Bay > Spendmore Lane",
+          "probability": 0.08
+        },
+        {
+          "combination": "Spendmore Lane > Thurso",
+          "probability": 0.06
+        }
+      ],
+      "tricast_top_3": [
+        {
+          "combination": "Spendmore Lane > Tyger Bay > Thurso",
+          "probability": 0.012
+        },
+        {
+          "combination": "Spendmore Lane > Tyger Bay > Ararat (IRE)",
+          "probability": 0.0104
+        },
+        {
+          "combination": "Tyger Bay > Spendmore Lane > Thurso",
+          "probability": 0.012
+        }
+      ],
+      "distribution_notes": [
+        "Forecast and Tricast probabilities are estimates based on conditional proportional allocation.",
+        "Medium level of certainty due to mixed recent performance indicators."
+      ]
+    },
+    "mordin": {
+      "race_id": "ChelmsfordCity_1900_20260307",
+      "market_comparison": [
+        {
+          "horse": "Spendmore Lane",
+          "model_probability": 0.4,
+          "market_implied_probability": 0.43,
+          "divergence": -0.03,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Tyger Bay",
+          "model_probability": 0.2,
+          "market_implied_probability": 0.13,
+          "divergence": 0.07,
+          "divergence_class": "Mild Divergence"
+        },
+        {
+          "horse": "Thurso",
+          "model_probability": 0.15,
+          "market_implied_probability": 0.22,
+          "divergence": -0.07,
+          "divergence_class": "Mild Divergence"
+        },
+        {
+          "horse": "Ararat (IRE)",
+          "model_probability": 0.13,
+          "market_implied_probability": 0.07,
+          "divergence": 0.06,
+          "divergence_class": "Mild Divergence"
+        },
+        {
+          "horse": "Whenthedealinsdone",
+          "model_probability": 0.12,
+          "market_implied_probability": 0.13,
+          "divergence": -0.01,
+          "divergence_class": "Neutral"
+        }
+      ],
+      "model_confidence_flag": "None",
+      "calibration_notes": [
+        "Tyger Bay and Ararat show a potential signal, based off of notable CD winner.",
+        "Thurso also is separated from the mode.",
+        "Close agreement between model and market for Spendmore Lane."
+      ]
+    }
+  }
+}
