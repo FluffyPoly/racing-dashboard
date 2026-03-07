@@ -1,7 +1,7 @@
 import React from 'react';
 import fs from 'fs';
 import path from 'path';
-import { BrainCircuit, Target, ArrowDownUp, ShieldCheck } from 'lucide-react';
+import { BrainCircuit, Target, ArrowDownUp, ShieldCheck, Zap } from 'lucide-react';
 
 async function getLearnings() {
   const dataDir = path.join(process.cwd(), 'data/learnings');
