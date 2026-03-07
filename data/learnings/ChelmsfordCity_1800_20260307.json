@@ -1,0 +1,16 @@
+{
+  "race_id": "ChelmsfordCity_1800_20260307",
+  "results": {
+    "winner": "Beagle Bay (FR)",
+    "order": [
+      "Beagle Bay (FR)",
+      "Wield",
+      "Serragasso"
+    ]
+  },
+  "insights": {
+    "ruby": "I will update `.learnings/LEARNINGS.md` with insights from the race result.\nNow for the Discord summary:\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "Beagle Bay (FR) won, followed by Wield and Serragasso. Despite the previously identified strong negative divergence for \"Wield,\" which suggested market overestimation, it secured second, suggesting model underestimation of \"Wield\" win factor . Market/Model separation may need calibration consideration here. The favorite held."
+  }
+}
