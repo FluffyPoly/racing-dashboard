@@ -1,0 +1,192 @@
+{
+  "race_id": "Ayr_16:30_20260307",
+  "meta": {
+    "track": "Ayr",
+    "time": "16:30",
+    "date": "2026-03-07",
+    "race_name": "Cheltenham Lunch At Western House Hotel Novices' Handicap Hurdle",
+    "class": "5",
+    "going": "Soft"
+  },
+  "analysis": {
+    "ruby": {
+      "race_id": "Ayr_16:30_20260307",
+      "race_volatility": "medium",
+      "rankings": [
+        {
+          "name": "Briery Butterfly",
+          "win_probability": 30,
+          "place_probability": 60,
+          "fair_odds": 3.33,
+          "key_positive_factors": [
+            "Consistent form",
+            "Top weight, suggesting class",
+            "Experienced jockey"
+          ],
+          "key_risks": [
+            "May be vulnerable to a well-handicapped rival"
+          ]
+        },
+        {
+          "name": "Kalo Athena",
+          "win_probability": 25,
+          "place_probability": 55,
+          "fair_odds": 4,
+          "key_positive_factors": [
+            "Recent win",
+            "Good jockey booking"
+          ],
+          "key_risks": [
+            "Inconsistent form"
+          ]
+        },
+        {
+          "name": "Coylton King",
+          "win_probability": 18,
+          "place_probability": 45,
+          "fair_odds": 5.56,
+          "key_positive_factors": [
+            "Handicap likely lenient"
+          ],
+          "key_risks": [
+            "Unreliable form"
+          ]
+        },
+        {
+          "name": "L'arme De Bonheur",
+          "win_probability": 12,
+          "place_probability": 35,
+          "fair_odds": 8.33,
+          "key_positive_factors": [
+            "Capable on his day"
+          ],
+          "key_risks": [
+            "Inconsistent"
+          ]
+        },
+        {
+          "name": "Blue Indigo",
+          "win_probability": 10,
+          "place_probability": 30,
+          "fair_odds": 10,
+          "key_positive_factors": [
+            "Lightly weighted"
+          ],
+          "key_risks": [
+            "Inconsistent"
+          ]
+        },
+        {
+          "name": "Ck O'mara",
+          "win_probability": 5,
+          "place_probability": 20,
+          "fair_odds": 20,
+          "key_positive_factors": [],
+          "key_risks": [
+            "Poor form"
+          ]
+        }
+      ],
+      "feature_weight_summary": {
+        "performance": 0.5,
+        "tactics": 0.2,
+        "trainer_jockey": 0.15,
+        "conditions": 0.1,
+        "market": 0.05
+      }
+    },
+    "keenan": {
+      "race_id": "Ayr_16:30_20260307",
+      "certainty_level": "medium",
+      "most_probable_winner": {
+        "horse": "Briery Butterfly",
+        "probability": 0.3
+      },
+      "forecast_top_3": [
+        {
+          "combination": "Briery Butterfly > Kalo Athena",
+          "probability": 0.075
+        },
+        {
+          "combination": "Kalo Athena > Briery Butterfly",
+          "probability": 0.0625
+        },
+        {
+          "combination": "Briery Butterfly > Coylton King",
+          "probability": 0.054
+        }
+      ],
+      "tricast_top_3": [
+        {
+          "combination": "Briery Butterfly > Kalo Athena > Coylton King",
+          "probability": 0.0135
+        },
+        {
+          "combination": "Briery Butterfly > Kalo Athena > L'arme De Bonheur",
+          "probability": 0.009
+        },
+        {
+          "combination": "Kalo Athena > Briery Butterfly > Coylton King",
+          "probability": 0.01125
+        }
+      ],
+      "distribution_notes": [
+        "Forecast and Tricast probabilities are estimates based on conditional proportional allocation.",
+        "The race has a medium certainty level due to consistent form of favorite."
+      ]
+    },
+    "mordin": {
+      "race_id": "Ayr_16:30_20260307",
+      "market_comparison": [
+        {
+          "horse": "Briery Butterfly",
+          "model_probability": 0.3,
+          "market_implied_probability": 0.31,
+          "divergence": -0.01,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Kalo Athena",
+          "model_probability": 0.25,
+          "market_implied_probability": 0.27,
+          "divergence": -0.02,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Coylton King",
+          "model_probability": 0.18,
+          "market_implied_probability": 0.2,
+          "divergence": -0.02,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Blue Indigo",
+          "model_probability": 0.1,
+          "market_implied_probability": 0.13,
+          "divergence": -0.03,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "L'arme De Bonheur",
+          "model_probability": 0.12,
+          "market_implied_probability": 0.1,
+          "divergence": 0.02,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Ck O'mara",
+          "model_probability": 0.05,
+          "market_implied_probability": 0.03,
+          "divergence": 0.02,
+          "divergence_class": "Neutral"
+        }
+      ],
+      "model_confidence_flag": "None",
+      "calibration_notes": [
+        "The model and market are in close agreement for this race.",
+        "Overall, divergence is very low, suggesting both model and market have similar views on the runners' probabilities.",
+        "No significant value opportunities are identified based on divergence alone."
+      ]
+    }
+  }
+}
