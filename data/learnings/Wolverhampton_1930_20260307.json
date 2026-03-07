@@ -1,0 +1,16 @@
+{
+  "race_id": "Wolverhampton_1930_20260307",
+  "results": {
+    "winner": "Mio Amico",
+    "order": [
+      "Mio Amico",
+      "Queensland Boy",
+      "Upepo"
+    ]
+  },
+  "insights": {
+    "ruby": "Okay, I will update `.learnings/LEARNINGS.md` with the insights for this race.\nNow for the Discord summary:\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "Mio Amico won, followed by Queensland Boy and Upepo. Low confidence by the Model has value in an unknown signal which requires review in placement. Market did indicate Queensland Boy was high probable, but the form was not well inferred through pre processing."
+  }
+}
