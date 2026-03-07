@@ -1,0 +1,16 @@
+{
+  "race_id": "Wolverhampton_1800_20260307",
+  "results": {
+    "winner": "Beagle Bay (FR)",
+    "order": [
+      "Beagle Bay (FR)",
+      "Different Opinions",
+      "Wield"
+    ]
+  },
+  "insights": {
+    "ruby": "I will update `.learnings/LEARNINGS.md` with insights from the race result.\nNow for the Discord summary:\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "Beagle Bay (FR) won, followed by Different Opinions and Wield. The actual result aligns with the neutral probabilities assessed, suggesting a well-calibrated prediction for this race."
+  }
+}
