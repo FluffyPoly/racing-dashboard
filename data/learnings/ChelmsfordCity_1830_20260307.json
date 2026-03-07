@@ -1,0 +1,16 @@
+{
+  "race_id": "ChelmsfordCity_1830_20260307",
+  "results": {
+    "winner": "Elements Of Fire",
+    "order": [
+      "Elements Of Fire",
+      "Epictetus (IRE)",
+      "Captain Parma (IRE)"
+    ]
+  },
+  "insights": {
+    "ruby": "I will update `.learnings/LEARNINGS.md` with insights from the race result.\nNow for the Discord summary:\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "Elements of Fire won, followed by Epictetus and Captain Parma. Pre-race, Elements of Fire had strong Model divergence given surface weight importance, ultimately proving correct here given the result. Captain Parma also was highlighted for separation here given the surface factor importance on the rating as well. Inspired form was not present."
+  }
+}
