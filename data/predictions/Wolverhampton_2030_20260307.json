@@ -1,0 +1,189 @@
+{
+  "race_id": "Wolverhampton_2030_20260307",
+  "meta": {
+    "track": "Wolverhampton",
+    "time": "20:30",
+    "date": "2026-03-07",
+    "race_name": "Chelmsford Mile Series Qualifier Handicap",
+    "class": "Class 5",
+    "going": "Standard"
+  },
+  "analysis": {
+    "ruby": {
+      "race_id": "Wolverhampton_2030_20260307",
+      "race_volatility": "medium",
+      "rankings": [
+        {
+          "name": "Antiquity",
+          "win_probability": 30,
+          "place_probability": 65,
+          "fair_odds": 3.33,
+          "key_positive_factors": [
+            "Recent Win",
+            "Solid Place finish"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Royal Jet",
+          "win_probability": 20,
+          "place_probability": 50,
+          "fair_odds": 5,
+          "key_positive_factors": [
+            "String Recent Win"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Renesmee",
+          "win_probability": 15,
+          "place_probability": 40,
+          "fair_odds": 6.67,
+          "key_positive_factors": [
+            "Course Distance Win and Place"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "H Key Lails",
+          "win_probability": 13,
+          "place_probability": 35,
+          "fair_odds": 7.69,
+          "key_positive_factors": [
+            "Course Distance Winner and Consistent Placement"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Nordic Norm",
+          "win_probability": 8,
+          "place_probability": 30,
+          "fair_odds": 12.5,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Dalmally",
+          "win_probability": 7,
+          "place_probability": 25,
+          "fair_odds": 14.29,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Pivotal Days",
+          "win_probability": 7,
+          "place_probability": 20,
+          "fair_odds": 14.29,
+          "key_positive_factors": [],
+          "key_risks": []
+        }
+      ],
+      "feature_weight_summary": {
+        "performance": 0.5,
+        "tactics": 0.2,
+        "trainer_jockey": 0.15,
+        "conditions": 0.1,
+        "market": 0.05
+      }
+    },
+    "keenan": {
+      "race_id": "Wolverhampton_2030_20260307",
+      "certainty_level": "medium",
+      "most_probable_winner": {
+        "horse": "Antiquity",
+        "probability": 0.3
+      },
+      "forecast_top_3": [
+        {
+          "combination": "Antiquity > Royal Jet",
+          "probability": 0.06
+        },
+        {
+          "combination": "Royal Jet > Antiquity",
+          "probability": 0.06
+        },
+        {
+          "combination": "Antiquity > Renesmee",
+          "probability": 0.045
+        }
+      ],
+      "tricast_top_3": [
+        {
+          "combination": "Antiquity > Royal Jet > Renesmee",
+          "probability": 0.009
+        },
+        {
+          "combination": "Antiquity > Royal Jet > H Key Lails",
+          "probability": 0.0078
+        },
+        {
+          "combination": "Royal Jet > Antiquity > Renesmee",
+          "probability": 0.009
+        }
+      ],
+      "distribution_notes": [
+        "Forecast and Tricast probabilities are estimates based on conditional proportional allocation.",
+        "Recent win should allow better forecast."
+      ]
+    },
+    "mordin": {
+      "race_id": "Wolverhampton_2030_20260307",
+      "market_comparison": [
+        {
+          "horse": "Antiquity",
+          "model_probability": 0.3,
+          "market_implied_probability": 0.36,
+          "divergence": -0.06,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Royal Jet",
+          "model_probability": 0.2,
+          "market_implied_probability": 0.18,
+          "divergence": 0.02,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Renesmee",
+          "model_probability": 0.15,
+          "market_implied_probability": 0.2,
+          "divergence": -0.05,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "H Key Lails",
+          "model_probability": 0.13,
+          "market_implied_probability": 0.11,
+          "divergence": 0.02,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Nordic Norm",
+          "model_probability": 0.08,
+          "market_implied_probability": 0.08,
+          "divergence": 0,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Dalmally",
+          "model_probability": 0.07,
+          "market_implied_probability": 0.06,
+          "divergence": 0.01,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Pivotal Days",
+          "model_probability": 0.07,
+          "market_implied_probability": 0.05,
+          "divergence": 0.02,
+          "divergence_class": "Neutral"
+        }
+      ],
+      "model_confidence_flag": "None",
+      "calibration_notes": [
+        "Neutral all around, a well aligned prediction to win."
+      ]
+    }
+  }
+}
