@@ -1,0 +1,187 @@
+{
+  "race_id": "ChelmsfordCity_2030_20260307",
+  "meta": {
+    "track": "Chelmsford City",
+    "time": "20:30",
+    "date": "2026-03-07",
+    "race_name": "Chelmsford Mile Series Qualifier Handicap",
+    "class": "Class 5",
+    "going": "Standard"
+  },
+  "analysis": {
+    "ruby": {
+      "race_id": "ChelmsfordCity_2030_20260307",
+      "race_volatility": "medium",
+      "rankings": [
+        {
+          "name": "Antiquity",
+          "win_probability": 27,
+          "place_probability": 60,
+          "fair_odds": 3.7,
+          "key_positive_factors": [
+            "Recent Winner"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Royal Jet",
+          "win_probability": 22,
+          "place_probability": 50,
+          "fair_odds": 4.55,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Renesmee",
+          "win_probability": 15,
+          "place_probability": 40,
+          "fair_odds": 6.67,
+          "key_positive_factors": [
+            "Course Distance Winner"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "H Key Lails",
+          "win_probability": 15,
+          "place_probability": 35,
+          "fair_odds": 6.67,
+          "key_positive_factors": [
+            "Course Distance Winner",
+            "Consistent Placement"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Nordic Norm",
+          "win_probability": 7,
+          "place_probability": 30,
+          "fair_odds": 14.29,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Dalmally",
+          "win_probability": 7,
+          "place_probability": 25,
+          "fair_odds": 14.29,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Pivotal Days",
+          "win_probability": 7,
+          "place_probability": 20,
+          "fair_odds": 14.29,
+          "key_positive_factors": [],
+          "key_risks": []
+        }
+      ],
+      "feature_weight_summary": {
+        "performance": 0.5,
+        "tactics": 0.2,
+        "trainer_jockey": 0.15,
+        "conditions": 0.1,
+        "market": 0.05
+      }
+    },
+    "keenan": {
+      "race_id": "ChelmsfordCity_2030_20260307",
+      "certainty_level": "medium",
+      "most_probable_winner": {
+        "horse": "Antiquity",
+        "probability": 0.27
+      },
+      "forecast_top_3": [
+        {
+          "combination": "Antiquity > Royal Jet",
+          "probability": 0.0594
+        },
+        {
+          "combination": "Royal Jet > Antiquity",
+          "probability": 0.0594
+        },
+        {
+          "combination": "Antiquity > Renesmee",
+          "probability": 0.0405
+        }
+      ],
+      "tricast_top_3": [
+        {
+          "combination": "Antiquity > Royal Jet > Renesmee",
+          "probability": 0.00891
+        },
+        {
+          "combination": "Antiquity > Royal Jet > H Key Lails",
+          "probability": 0.00891
+        },
+        {
+          "combination": "Royal Jet > Antiquity > Renesmee",
+          "probability": 0.00891
+        }
+      ],
+      "distribution_notes": [
+        "Forecast and Tricast probabilities are estimates based on conditional proportional allocation.",
+        "Slight preference of recent win factor in a competitive environment"
+      ]
+    },
+    "mordin": {
+      "race_id": "ChelmsfordCity_2030_20260307",
+      "market_comparison": [
+        {
+          "horse": "Antiquity",
+          "model_probability": 0.27,
+          "market_implied_probability": 0.31,
+          "divergence": -0.04,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Royal Jet",
+          "model_probability": 0.22,
+          "market_implied_probability": 0.36,
+          "divergence": -0.14,
+          "divergence_class": "Strong Divergence"
+        },
+        {
+          "horse": "Renesmee",
+          "model_probability": 0.15,
+          "market_implied_probability": 0.2,
+          "divergence": -0.05,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "H Key Lails",
+          "model_probability": 0.15,
+          "market_implied_probability": 0.2,
+          "divergence": -0.05,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Nordic Norm",
+          "model_probability": 0.07,
+          "market_implied_probability": 0.06,
+          "divergence": 0.01,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Dalmally",
+          "model_probability": 0.07,
+          "market_implied_probability": 0.06,
+          "divergence": 0.01,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Pivotal Days",
+          "model_probability": 0.07,
+          "market_implied_probability": 0.06,
+          "divergence": 0.01,
+          "divergence_class": "Neutral"
+        }
+      ],
+      "model_confidence_flag": "None",
+      "calibration_notes": [
+        "Market is giving high probability in recent form Royal Jet in Market ratings. Note the course is a CD winner with good probability with the Model as Renesmee and H Key Lails. Market not factoring CD into probability."
+      ]
+    }
+  }
+}
