@@ -1,0 +1,16 @@
+{
+  "race_id": "Wolverhampton_1830_20260307",
+  "results": {
+    "winner": "Elements Of Fire",
+    "order": [
+      "Elements Of Fire",
+      "Epictetus",
+      "Captain Parma"
+    ]
+  },
+  "insights": {
+    "ruby": "I will update `.learnings/LEARNINGS.md` with insights from the race result.\nNow for the Discord summary:\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "Elements Of Fire won, followed by Epictetus and Captain Parma. This contrasts the strong negative divergence identified initially for Captain Parma. Elements of Fire, the top favorite, did win, but market/form separation requires deeper review."
+  }
+}
