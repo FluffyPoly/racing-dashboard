@@ -1,0 +1,16 @@
+{
+  "race_id": "Wolverhampton_1900_20260307",
+  "results": {
+    "winner": "Tyger Bay",
+    "order": [
+      "Tyger Bay",
+      "Whenthedealinsdone",
+      "Spendmore Lane"
+    ]
+  },
+  "insights": {
+    "ruby": "I will update `.learnings/LEARNINGS.md` with insights from the race result.\nNow for the Discord summary:\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "Tyger Bay won, followed by Whenthedealinsdone and Spendmore Lane. In separation Tyger was a form value pick, the remainder did align with the market top 3 probabilities. The Model identified a strong probability here based on Market vs Form factors. Review."
+  }
+}
