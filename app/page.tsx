@@ -8,10 +8,16 @@ async function getRaces() {
   if (!fs.existsSync(dataDir)) return [];
   const files = fs.readdirSync(dataDir);
   return files.map(file => {
-    const filePath = path.join(dataDir, file);
-    const content = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(content);
-  });
+    try {
+      const filePath = path.join(dataDir, file);
+      const content = fs.readFileSync(filePath, 'utf8');
+      if (!content.trim()) return null;
+      return JSON.parse(content);
+    } catch (e) {
+      console.error(`Error parsing ${file}:`, e);
+      return null;
+    }
+  }).filter(race => race !== null);
 }
 
 export default async function PaddockPage() {
