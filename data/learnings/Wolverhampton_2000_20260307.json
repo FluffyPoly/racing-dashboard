@@ -1,0 +1,16 @@
+{
+  "race_id": "Wolverhampton_2000_20260307",
+  "results": {
+    "winner": "Kullazain",
+    "order": [
+      "Kullazain",
+      "Addarella",
+      "Dragon Leader"
+    ]
+  },
+  "insights": {
+    "ruby": "I am once again missing the race predictions for the reported race results. To update `.learnings/LEARNINGS.md`, I require the predictions for \"Kullazain\", \"Addarella\", and \"Dragon Leader\". Since I cannot find which race relates to from the data available, I will ask the user to enter the track, time and date.\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "Kullazain won, followed by Addarella and Dragon Leader. This result doesn't align the model probabilities in placement, further review is required."
+  }
+}
