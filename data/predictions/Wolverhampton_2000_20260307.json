@@ -1,0 +1,204 @@
+{
+  "race_id": "ChelmsfordCity_2000_20260307",
+  "meta": {
+    "track": "Chelmsford City",
+    "time": "20:00",
+    "date": "2026-03-07",
+    "race_name": "For The Love Of Horses Handicap",
+    "class": "Class 6",
+    "going": "Standard (Polytrack)"
+  },
+  "analysis": {
+    "ruby": {
+      "race_id": "ChelmsfordCity_2000_20260307",
+      "race_volatility": "medium",
+      "rankings": [
+        {
+          "name": "Buraback",
+          "win_probability": 30,
+          "place_probability": 60,
+          "fair_odds": 3.33,
+          "key_positive_factors": [
+            "Solid recent form",
+            "Favourable early odds"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Desdemona",
+          "win_probability": 25,
+          "place_probability": 55,
+          "fair_odds": 4,
+          "key_positive_factors": [
+            "Consistent placements"
+          ],
+          "key_risks": []
+        },
+        {
+          "name": "Top Star",
+          "win_probability": 13,
+          "place_probability": 40,
+          "fair_odds": 7.69,
+          "key_positive_factors": [],
+          "key_risks": [
+            "Inconsistent form"
+          ]
+        },
+        {
+          "name": "Sir Rodneyredblood",
+          "win_probability": 10,
+          "place_probability": 35,
+          "fair_odds": 10,
+          "key_positive_factors": [],
+          "key_risks": [
+            "Inconsistent form"
+          ]
+        },
+        {
+          "name": "Daley T",
+          "win_probability": 8,
+          "place_probability": 30,
+          "fair_odds": 12.5,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Master Zack",
+          "win_probability": 7,
+          "place_probability": 25,
+          "fair_odds": 14.29,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Battle Point",
+          "win_probability": 4,
+          "place_probability": 20,
+          "fair_odds": 25,
+          "key_positive_factors": [],
+          "key_risks": []
+        },
+        {
+          "name": "Hi Hoh Tonto",
+          "win_probability": 3,
+          "place_probability": 15,
+          "fair_odds": 33.33,
+          "key_positive_factors": [],
+          "key_risks": []
+        }
+      ],
+      "feature_weight_summary": {
+        "performance": 0.5,
+        "tactics": 0.2,
+        "trainer_jockey": 0.15,
+        "conditions": 0.1,
+        "market": 0.05
+      }
+    },
+    "keenan": {
+      "race_id": "ChelmsfordCity_2000_20260307",
+      "certainty_level": "medium",
+      "most_probable_winner": {
+        "horse": "Buraback",
+        "probability": 0.3
+      },
+      "forecast_top_3": [
+        {
+          "combination": "Buraback > Desdemona",
+          "probability": 0.075
+        },
+        {
+          "combination": "Desdemona > Buraback",
+          "probability": 0.075
+        },
+        {
+          "combination": "Buraback > Top Star",
+          "probability": 0.039
+        }
+      ],
+      "tricast_top_3": [
+        {
+          "combination": "Buraback > Desdemona > Top Star",
+          "probability": 0.00975
+        },
+        {
+          "combination": "Buraback > Desdemona > Sir Rodneyredblood",
+          "probability": 0.0075
+        },
+        {
+          "combination": "Desdemona > Buraback > Top Star",
+          "probability": 0.00975
+        }
+      ],
+      "distribution_notes": [
+        "Forecast and Tricast probabilities are estimates based on conditional proportional allocation.",
+        "Medium certainty due to solid but not outstanding form across the field."
+      ]
+    },
+    "mordin": {
+      "race_id": "ChelmsfordCity_2000_20260307",
+      "market_comparison": [
+        {
+          "horse": "Buraback",
+          "model_probability": 0.3,
+          "market_implied_probability": 0.35,
+          "divergence": -0.05,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Desdemona",
+          "model_probability": 0.25,
+          "market_implied_probability": 0.31,
+          "divergence": -0.06,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Top Star",
+          "model_probability": 0.13,
+          "market_implied_probability": 0.2,
+          "divergence": -0.07,
+          "divergence_class": "Mild Divergence"
+        },
+        {
+          "horse": "Sir Rodneyredblood",
+          "model_probability": 0.1,
+          "market_implied_probability": 0.11,
+          "divergence": -0.01,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Daley T",
+          "model_probability": 0.08,
+          "market_implied_probability": 0.11,
+          "divergence": -0.03,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Master Zack",
+          "model_probability": 0.07,
+          "market_implied_probability": 0.08,
+          "divergence": -0.01,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Battle Point",
+          "model_probability": 0.04,
+          "market_implied_probability": 0.07,
+          "divergence": -0.03,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Hi Hoh Tonto",
+          "model_probability": 0.03,
+          "market_implied_probability": 0.06,
+          "divergence": -0.03,
+          "divergence_class": "Neutral"
+        }
+      ],
+      "model_confidence_flag": "None",
+      "calibration_notes": [
+        "Neutral overall, no strong signals present."
+      ]
+    }
+  }
+}
