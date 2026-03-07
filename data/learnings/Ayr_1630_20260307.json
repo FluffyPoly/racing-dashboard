@@ -1,0 +1,16 @@
+{
+  "race_id": "Ayr_1630_20260307",
+  "results": {
+    "winner": "Ck O'mara (IRE)",
+    "order": [
+      "Ck O'mara (IRE)",
+      "Coylton King",
+      "Briery Butterfly"
+    ]
+  },
+  "insights": {
+    "ruby": "I will update `.learnings/LEARNINGS.md` with insights from the race result. Since I don't have ranks from the PREVIOUS input yet, I'll fetch the missing info using the race ID and then update the learnings file.\n\nFirst, I need the race ID. Based on the logs, the missing race ID appears to be `Ayr_16:30_20260307`. I'll read this file to get the correct PREVIOUS data.\nOkay, I have the old learnings. Now I will update the file.\nNow for the Discord summary:\n⚠️ ✉️ Message failed",
+    "keenan": "```",
+    "mordin": "Ck O'mara (IRE) won, followed by Coylton King and Briery Butterfly. This result defies the neutral divergence assessment, highlighting the unpredictability when form data is inconsistent. The model's calibration requires further review."
+  }
+}
