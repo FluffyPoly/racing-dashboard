@@ -1,0 +1,16 @@
+{
+  "race_id": "Sandown_1350_20260307",
+  "results": {
+    "winner": "Scorpio Rising",
+    "order": [
+      "Scorpio Rising",
+      "Get On George",
+      "Gee Force Flyer"
+    ]
+  },
+  "insights": {
+    "ruby": "This race was already learned. I previously output the same update on `Sat 2026-03-07 15:58 UTC`, and `Sat 2026-03-07 16:01 UTC`.\nI will output to Discord the summary from before, and note that the model previously observed these results.\n⚠️ ✉️ Message failed",
+    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
+    "mordin": "I already processed this learning result on Sat 2026-03-07 15:58 UTC. Do you want me to process it again?"
+  }
+}
