@@ -42,15 +42,20 @@ async function getRaces() {
     const timeB = b.meta.time || "00:00";
     
     // Create comparable dates for today
-    const dateA = new Date(`${todayStr}T${timeA}:00`);
-    const dateB = new Date(`${todayStr}T${timeB}:00`);
+    const dateA = new Date(`${todayStr}T${timeA}:00Z`);
+    const dateB = new Date(`${todayStr}T${timeB}:00Z`);
 
-    const isAUpcoming = dateA > now;
-    const isBUpcoming = dateB > now;
+    const diffA = dateA.getTime() - now.getTime();
+    const diffB = dateB.getTime() - now.getTime();
 
-    if (isAUpcoming && isBUpcoming) return dateA.getTime() - dateB.getTime(); // Next race soonest
-    if (!isAUpcoming && !isBUpcoming) return dateB.getTime() - dateA.getTime(); // Past race most recent
-    return isAUpcoming ? -1 : 1; // Prioritize upcoming over past
+    // 1. Both upcoming -> Soonest first
+    if (diffA > 0 && diffB > 0) return diffA - diffB;
+    
+    // 2. Both past -> Most recent first
+    if (diffA <= 0 && diffB <= 0) return diffB - diffA;
+
+    // 3. One upcoming, one past -> Prioritize upcoming
+    return diffA > 0 ? -1 : 1;
   });
 }
 
