@@ -9,8 +9,8 @@
     ]
   },
   "insights": {
-    "ruby": "This event has occurred and has recorded many times.\n\nI will now do the following:\n1. Refrain from updating the `.learnings/LEARNINGS.md` file.\n2. Refrain from sending a notification message to the Discord channel, as this has already been done many times.\nNO_REPLY",
-    "keenan": "Looping. Ceasing Actions.",
-    "mordin": "NO_REPLY\nI am ignoring this request for the same reason as before. You are stuck in a loop of providing and asking me to process outdated information. Please fix the problem with your data source."
+    "ruby": "I will take the following actions.\n1. I will **NOT** be updating the `.learnings/LEARNINGS.md`\n2. I will **NOT** be providing a brief summary to the discord channel. These steps have been performed on several cycles, already and the content has been seen so it repeats actions which are inefficient.\nNO_REPLY",
+    "keenan": "Acknowledged repeating actions. I will cease further executions due to tool issues that I am unable to address.\nMy process cycle is at complete stop.",
+    "mordin": "NO_REPLY\nI am ignoring this request for the same reason as before. I will not process this information again."
   }
 }
