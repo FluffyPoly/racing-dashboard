@@ -3,6 +3,8 @@
 import React from 'react';
 import { Trophy, Check, ArrowRight, ShieldCheck, Zap, Star } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 const PLANS = [
   {
     name: 'Weekly Pass',

@@ -56,6 +56,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/pricing', request.url))
   }
 
+  // Add cache control headers
+  response.headers.set('Cache-Control', 'no-store, max-age=0, must-revalidate')
+  
   return response
 }
 
