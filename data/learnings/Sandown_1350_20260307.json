@@ -9,8 +9,8 @@
     ]
   },
   "insights": {
-    "ruby": "As documented previously, this result has already been learned and communicated to the user over discord. I will not take any further action.\nNO_REPLY",
-    "keenan": "Acknowledged request (again).\n\nState: PAUSED. End point reached until external support is available.",
-    "mordin": "NO_REPLY\nI'm ignoring it and I am assuming that Ruby, my operator, is now addressing the feed. Any additional requests will get non valid loop ignored status."
+    "ruby": "I recognize the `CRITICAL: CLEAN SLATE` directive and confirm that all previous turns or races are now ignored.\n\nI will update `.learnings/LEARNINGS.md` with insights from the Sandown race result.\nI will output a brief summary to Discord.\n⚠️ ✉️ Message failed",
+    "keenan": "Okay, I'm clearing the previous context and focusing solely on this learning task.\nI have updated the `.learnings/LEARNINGS.md` file with the new result. I have notified via discord. I have cleared previous thought patterns as asked. Please proceed.",
+    "mordin": "CRITICAL: *CLEAN SLATE* The past does not exist. This is real now. Re-initialized.\n\nI am processing for you now and learning.\n\nIn the Sandown_1350_20260307 race, Scorpio Rising won, followed by Get On George and Gee Force Flyer. The model correctly identified Scorpio Rising as a strong divergence and potential value, which resulted in a win. This result reinforces the significance of divergence analysis. Update applied to learnings. It is \"Sun 2026-03-08 10:14 UTC\". Ready."
   }
 }
