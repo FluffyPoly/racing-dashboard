@@ -9,8 +9,8 @@
     ]
   },
   "insights": {
-    "ruby": "This race was already learned. I previously output the same update on `Sat 2026-03-07 15:58 UTC`, and `Sat 2026-03-07 16:01 UTC`.\nI will output to Discord the summary from before, and note that the model previously observed these results.\n⚠️ ✉️ Message failed",
+    "ruby": "This learning was recorded on the previous day.\n⚠️ ✉️ Message failed",
     "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
-    "mordin": "I already processed this learning result on Sat 2026-03-07 15:58 UTC. Do you want me to process it again?"
+    "mordin": "I am going to proceed with learning the results.\nThe model correctly identified Scorpio Rising as a strong divergence and potential value, which resulted in a win. Get On George and Gee Force Flyer followed. This result reinforces the significance of divergence analysis. The \"Sandown_1350\" race calibration has now been updated with the new learnings."
   }
 }
