@@ -14,8 +14,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Horse Racing Intelligence | Premium UK & IRE Analytics",
-  description: "Automated high-fidelity horse racing predictions and learning loops.",
+  title: "Horse Racing Intelligence | Expert UK & Ireland Racing Tips & AI Predictions",
+  description: "Get the professional edge with Horse Racing Intelligence. Data-driven UK and Ireland horse racing tips, AI predictions, market calibration, and daily analysis for Cheltenham, Aintree, and Royal Ascot.",
+  keywords: ["horse racing tips", "UK horse racing predictions", "Irish racing tips", "Cheltenham Festival tips", "AI horse racing analytics", "Lucky 15 tips", "NAP of the day", "data-driven racing predictions", "expert horse racing analysis"],
+  openGraph: {
+    title: "Horse Racing Intelligence | Expert UK & Ireland Racing Tips",
+    description: "Institutional-grade automated racing models. Predicted, Calibrated, and Verified.",
+    url: "https://racing-dashboard-murex.vercel.app/",
+    siteName: "Horse Racing Intelligence",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?auto=format&fit=crop&q=80&w=1200",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Horse Racing Intelligence | Expert UK & Ireland Racing Tips",
+    description: "Professional AI-driven horse racing predictions and analytics.",
+    images: ["https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?auto=format&fit=crop&q=80&w=1200"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

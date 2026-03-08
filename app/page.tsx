@@ -106,19 +106,31 @@ export default function LandingPage() {
       <section className="max-w-6xl mx-auto mt-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-6 relative z-20">
         <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 transform -translate-y-16 hover:-translate-y-18 transition-transform">
           <ShieldCheck className="mx-auto text-gold mb-4" size={44} />
-          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-xl">Verified Logic</h3>
-          <p className="text-[11px] text-gray-400 font-bold leading-relaxed mt-3 uppercase tracking-wider">Every prediction is proofed against official results in our Improvement Lab.</p>
+          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-xl">Expert UK Horse Racing Tips</h3>
+          <p className="text-[11px] text-gray-400 font-bold leading-relaxed mt-3 uppercase tracking-wider">Every prediction is proofed against official results in our data-driven Improvement Lab.</p>
         </div>
         <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 transform -translate-y-12 hover:-translate-y-14 transition-transform md:-translate-y-16">
           <Zap className="mx-auto text-gold mb-4" size={44} />
-          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-xl">T-30m Advantage</h3>
-          <p className="text-[11px] text-gray-400 font-bold leading-relaxed mt-3 uppercase tracking-wider">Live cards processed 30 minutes before off-time for maximum market alignment.</p>
+          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-xl">AI-Driven Racing Predictions</h3>
+          <p className="text-[11px] text-gray-400 font-bold leading-relaxed mt-3 uppercase tracking-wider">Live cards processed 30 minutes before off-time for professional market alignment.</p>
         </div>
         <div className="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 transform -translate-y-8 hover:-translate-y-10 transition-transform md:-translate-y-16">
           <Trophy className="mx-auto text-gold mb-4" size={44} />
-          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-xl">Festival Ready</h3>
-          <p className="text-[11px] text-gray-400 font-bold leading-relaxed mt-3 uppercase tracking-wider">Deep learning models primed for Cheltenham, Aintree, and Royal Ascot.</p>
+          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-xl">Cheltenham Festival Intel</h3>
+          <p className="text-[11px] text-gray-400 font-bold leading-relaxed mt-3 uppercase tracking-wider">Deep learning models primed for Cheltenham, Aintree, and Royal Ascot festivals.</p>
         </div>
+      </section>
+
+      {/* SEO Content Section */}
+      <section className="max-w-4xl mx-auto px-6 mt-12 text-center space-y-6">
+        <h2 className="text-2xl font-black text-racing-green uppercase italic tracking-tighter">Professional Horse Racing Analytics & Daily Tips</h2>
+        <p className="text-sm text-gray-600 leading-relaxed font-medium italic">
+          Welcome to the premier source for <span className="text-racing-green font-bold">UK and Ireland horse racing intelligence</span>. 
+          Our automated analytical engine provides <span className="text-racing-green font-bold">data-driven predictions</span>, market calibration, 
+          and <span className="text-racing-green font-bold">expert racing tips</span> for every meeting. Whether you are looking for the 
+          <span className="text-racing-green font-bold">NAP of the day</span>, <span className="text-racing-green font-bold">Lucky 15 combinations</span>, 
+          or deep festival analysis, our AI agents deliver the edge you need.
+        </p>
       </section>
 
       {/* Pricing Grid */}
