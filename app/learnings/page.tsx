@@ -6,7 +6,7 @@ import { BrainCircuit, Target, ArrowDownUp, ShieldCheck, Zap, TrendingUp } from 
 export const dynamic = 'force-dynamic';
 
 async function getLearnings() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

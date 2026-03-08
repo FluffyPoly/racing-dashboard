@@ -7,7 +7,7 @@ import RaceCard from '@/components/RaceCard';
 export const dynamic = 'force-dynamic';
 
 async function getRaces() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   
   // Use env vars with hardcoded fallbacks for reliability
   const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://txsuawougiptdlmmiasy.supabase.co';
