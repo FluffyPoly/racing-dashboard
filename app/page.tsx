@@ -6,9 +6,14 @@ import RaceCard from '@/components/RaceCard';
 
 async function getRaces() {
   const cookieStore = cookies();
+  
+  // Use env vars with hardcoded fallbacks for reliability
+  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://txsuawougiptdlmmiasy.supabase.co';
+  const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_Mq_3i8KG3M_6JIehVRT-iA_x8qdh-dr';
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY,
     {
       cookies: {
         get(name: string) {
