@@ -1,1 +1,161 @@
-
+{
+  "race_id": "Sandown_1350_20260307",
+  "meta": {
+    "track": "Sandown",
+    "time": "13:50",
+    "date": "2026-03-07",
+    "race_name": "EBF Betfair National Hunt Novices' Handicap Hurdle Final",
+    "class": "Premier Handicap",
+    "going": "Soft"
+  },
+  "analysis": {
+    "ruby": {
+      "race_id": "Sandown_1350_20260307",
+      "race_volatility": "medium",
+      "rankings": [
+        {
+          "name": "Wolf Walker",
+          "win_probability": 40,
+          "place_probability": 70,
+          "fair_odds": 2.5,
+          "key_positive_factors": [
+            "High OR",
+            "Short odds suggest market confidence"
+          ],
+          "key_risks": [
+            "Unknown jockey and trainer",
+            "High OR can be a handicap"
+          ]
+        },
+        {
+          "name": "Scorpio Rising",
+          "win_probability": 35,
+          "place_probability": 65,
+          "fair_odds": 2.86,
+          "key_positive_factors": [
+            "Strong recent form",
+            "Experienced jockey",
+            "Progressive profile"
+          ],
+          "key_risks": [
+            "Relatively high early odds compared to form",
+            "Handicap hurdle final is volatile"
+          ]
+        },
+        {
+          "name": "Gee Force Flyer",
+          "win_probability": 15,
+          "place_probability": 40,
+          "fair_odds": 6.67,
+          "key_positive_factors": [
+            "Solid form",
+            "Experienced jockey"
+          ],
+          "key_risks": [
+            "Mid-range OR",
+            "Needs to improve to win"
+          ]
+        },
+        {
+          "name": "Get On George",
+          "win_probability": 10,
+          "place_probability": 30,
+          "fair_odds": 10,
+          "key_positive_factors": [
+            "Improved form"
+          ],
+          "key_risks": [
+            "Low OR",
+            "High early odds"
+          ]
+        }
+      ],
+      "feature_weight_summary": {
+        "performance": 0.5,
+        "tactics": 0.2,
+        "trainer_jockey": 0.15,
+        "conditions": 0.1,
+        "market": 0.05
+      }
+    },
+    "keenan": {
+      "race_id": "Sandown_1350_20260307",
+      "certainty_level": "medium",
+      "most_probable_winner": {
+        "horse": "Wolf Walker",
+        "probability": 0.4
+      },
+      "forecast_top_3": [
+        {
+          "combination": "Wolf Walker > Scorpio Rising",
+          "probability": 0.14
+        },
+        {
+          "combination": "Scorpio Rising > Wolf Walker",
+          "probability": 0.14
+        },
+        {
+          "combination": "Wolf Walker > Gee Force Flyer",
+          "probability": 0.06
+        }
+      ],
+      "tricast_top_3": [
+        {
+          "combination": "Wolf Walker > Scorpio Rising > Gee Force Flyer",
+          "probability": 0.021
+        },
+        {
+          "combination": "Wolf Walker > Scorpio Rising > Get On George",
+          "probability": 0.014
+        },
+        {
+          "combination": "Scorpio Rising > Wolf Walker > Gee Force Flyer",
+          "probability": 0.0105
+        }
+      ],
+      "distribution_notes": [
+        "Forecast and Tricast probabilities are estimates based on conditional proportional allocation.",
+        "Adjusted with recent learnings on low OR, reweighting CD placing."
+      ]
+    },
+    "mordin": {
+      "race_id": "Sandown_1350_20260307",
+      "market_comparison": [
+        {
+          "horse": "Wolf Walker",
+          "model_probability": 0.4,
+          "market_implied_probability": 0.45,
+          "divergence": -0.05,
+          "divergence_class": "Neutral"
+        },
+        {
+          "horse": "Scorpio Rising",
+          "model_probability": 0.35,
+          "market_implied_probability": 0.22,
+          "divergence": 0.13,
+          "divergence_class": "Strong Divergence"
+        },
+        {
+          "horse": "Gee Force Flyer",
+          "model_probability": 0.15,
+          "market_implied_probability": 0.05,
+          "divergence": 0.1,
+          "divergence_class": "Strong Divergence"
+        },
+        {
+          "horse": "Get On George",
+          "model_probability": 0.1,
+          "market_implied_probability": 0.03,
+          "divergence": 0.07,
+          "divergence_class": "Mild Divergence"
+        }
+      ],
+      "model_confidence_flag": "None",
+      "calibration_notes": [
+        "Model appears to be well-calibrated overall.",
+        "Strong divergence identified in Scorpio Rising, and Gee Force Flyer suggesting potential value.",
+        "Market slightly favors Wolf Walker compared to the Model's probability."
+      ]
+    }
+  }
+}
