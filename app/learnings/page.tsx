@@ -1,7 +1,7 @@
 import React from 'react';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { BrainCircuit, Target, ArrowDownUp, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
+import { BrainCircuit, Target, ArrowDownUp, ShieldCheck, Zap, TrendingUp, LogOut } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,9 +49,16 @@ export default async function LearningsPage() {
               Autonomous Knowledge Base • Performance Calibration
             </p>
           </div>
-          <nav className="flex gap-8 text-sm font-bold uppercase tracking-widest">
-            <a href="/" className="text-white/70 hover:text-gold transition-colors">Dashboard</a>
-            <a href="/learnings" className="border-b-2 border-gold pb-1 text-gold">Improvement Lab</a>
+          <nav className="flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
+            <a href="/dashboard" className="text-white/70 hover:text-gold transition-colors">Dashboard</a>
+            <a href="/learnings" className="border-b-2 border-gold pb-1 text-gold">Lab</a>
+            
+            <form action="/api/logout" method="POST">
+              <button type="submit" className="flex items-center gap-2 text-white/40 hover:text-red-400 transition-colors cursor-pointer group">
+                <LogOut size={16} className="group-hover:translate-x-1 transition-transform" /> 
+                <span className="hidden md:inline text-[10px]">Exit</span>
+              </button>
+            </form>
           </nav>
         </div>
       </header>

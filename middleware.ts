@@ -6,16 +6,11 @@ export async function middleware(request: NextRequest) {
     request: { headers: request.headers },
   })
 
-  // 1. Skip auth check for login page itself and static assets
-  if (
-    request.nextUrl.pathname.startsWith('/login') ||
-    request.nextUrl.pathname.startsWith('/legal') ||
-    request.nextUrl.pathname.startsWith('/pricing') ||
-    request.nextUrl.pathname.startsWith('/_next') ||
-    request.nextUrl.pathname.startsWith('/favicon.ico') ||
-    request.nextUrl.pathname.startsWith('/api')
-  ) {
-    return response
+  // ONLY protect /dashboard and /learnings
+  const isProtectedRoute = request.nextUrl.pathname.startsWith('/dashboard') || request.nextUrl.pathname.startsWith('/learnings');
+
+  if (!isProtectedRoute) {
+    return response;
   }
 
   const supabase = createServerClient(
@@ -53,8 +48,8 @@ export async function middleware(request: NextRequest) {
     .single()
 
   if (!profile?.is_subscribed && !profile?.is_admin) {
-    // Redirect non-paid users to pricing
-    return NextResponse.redirect(new URL('/pricing', request.url))
+    // Redirect non-paid users to landing/pricing page
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   // Add cache control headers

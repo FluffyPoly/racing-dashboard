@@ -1,114 +1,156 @@
+'use client';
+
 import React from 'react';
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
-import { cookies } from 'next/headers';
-import { Clock, ShieldAlert, LogOut } from 'lucide-react';
-import RaceCard from '@/components/RaceCard';
-import { redirect } from 'next/navigation';
+import { Trophy, Check, ArrowRight, ShieldCheck, Zap, Star, Lock } from 'lucide-react';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
-async function getRaces() {
-  const cookieStore = await cookies();
-  
-  // Use env vars with hardcoded fallbacks for reliability
-  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://txsuawougiptdlmmiasy.supabase.co';
-  const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4c3Vhd291Z2lwdGRsbW1pYXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5NTczNDksImV4cCI6MjA4ODUzMzM0OX0.5QlkuPtjIxF3dNNUBIlgQeM3ZRw1KH-aoNOt_b9B8d0';
-
-  const supabase = createServerClient(
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
-        },
-      },
-    }
-  );
-
-  const { data: races, error } = await supabase
-    .from('races')
-    .select('*');
-
-  if (error) {
-    console.error('Supabase Error:', error);
-    return [];
+const PLANS = [
+  {
+    name: 'Weekly Pass',
+    price: '£14.99',
+    period: '/ week',
+    desc: 'Perfect for Festival weeks like Cheltenham.',
+    features: ['All UK/IRE Meetings', 'T-30m Predictions', 'Full Agent Analysis'],
+    highlight: false
+  },
+  {
+    name: 'Monthly Intel',
+    price: '£44.99',
+    period: '/ month',
+    desc: 'The professional choice for daily punters.',
+    features: ['Everything in Weekly', 'Priority Support', 'Full Improvement Lab access'],
+    highlight: true
+  },
+  {
+    name: 'Quarterly Edge',
+    price: '£99.99',
+    period: '/ quarter',
+    desc: 'Save 25% over monthly subscriptions.',
+    features: ['Everything in Monthly', 'Historical Data Export', 'Market Calibration Deep-Dive'],
+    highlight: false
+  },
+  {
+    name: 'Annual Legacy',
+    price: '£299.99',
+    period: '/ year',
+    desc: 'The ultimate punter package.',
+    features: ['Best Value', 'Exclusive Festival Intel', 'Personalized Agent Tuning'],
+    highlight: false
   }
+];
 
-  const now = new Date();
-  const todayStr = now.toISOString().split('T')[0];
-
-  return races.map(r => r.full_data).sort((a: any, b: any) => {
-    const timeA = a.meta.time || "00:00";
-    const timeB = b.meta.time || "00:00";
-    
-    // Create comparable dates for today
-    const dateA = new Date(`${todayStr}T${timeA}:00Z`);
-    const dateB = new Date(`${todayStr}T${timeB}:00Z`);
-
-    const diffA = dateA.getTime() - now.getTime();
-    const diffB = dateB.getTime() - now.getTime();
-
-    // 1. Both upcoming -> Soonest first
-    if (diffA > 0 && diffB > 0) return diffA - diffB;
-    
-    // 2. Both past -> Most recent first
-    if (diffA <= 0 && diffB <= 0) return diffB - diffA;
-
-    // 3. One upcoming, one past -> Prioritize upcoming
-    return diffA > 0 ? -1 : 1;
-  });
-}
-
-export default async function PaddockPage() {
-  const races = await getRaces();
-
+export default function LandingPage() {
   return (
-    <main className="min-h-screen pb-20 bg-[#f8f9fa]">
-      <header className="bg-racing-green text-white py-12 px-6 shadow-xl border-b-4 border-gold text-center md:text-left">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
-            <h1 className="text-4xl font-black tracking-tighter mb-2 uppercase italic">Racing Intelligence</h1>
-            <p className="text-gold font-bold flex items-center justify-center md:justify-start gap-2 tracking-widest text-xs">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              LIVE PADDOCK • SUBSCRIBER ACCESS
-            </p>
-          </div>
-          <nav className="flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
-            <a href="/" className="border-b-2 border-gold pb-1 text-gold hover:text-gold transition-colors">Dashboard</a>
-            <a href="/learnings" className="text-white/70 hover:text-gold transition-colors">Lab</a>
-            
-            <form action="/api/logout" method="POST">
-              <button type="submit" className="flex items-center gap-2 text-white/40 hover:text-red-400 transition-colors cursor-pointer group">
-                <LogOut size={16} className="group-hover:translate-x-1 transition-transform" /> 
-                <span className="hidden md:inline text-[10px]">Exit</span>
-              </button>
-            </form>
-          </nav>
+    <main className="min-h-screen bg-[#fcfcfc] pb-20">
+      {/* Top Nav */}
+      <nav className="absolute top-0 w-full z-50 p-6 flex justify-between items-center max-w-7xl mx-auto left-0 right-0">
+        <div className="text-white font-black italic uppercase tracking-tighter text-xl flex items-center gap-2 drop-shadow-md">
+          <Trophy className="text-gold" size={24} /> Racing Intelligence
         </div>
-      </header>
+        <Link href="/login" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs transition-all border border-white/20 flex items-center gap-2">
+          <Lock size={14} /> Subscriber Portal
+        </Link>
+      </nav>
 
-      <section className="max-w-6xl mx-auto px-6 mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
-        {races.length === 0 ? (
-          <div className="col-span-full text-center py-24 bg-white rounded-2xl border-2 border-dashed border-gray-200">
-            <ShieldAlert className="w-12 h-12 text-gray-200 mx-auto mb-4" />
-            <p className="text-gray-400 font-bold italic tracking-tight uppercase">Subscription Required or No Data Available</p>
+      {/* Visual Hero */}
+      <section className="relative h-[60vh] bg-racing-green overflow-hidden flex items-center justify-center text-center px-6">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?auto=format&fit=crop&q=80&w=2000" 
+            alt="UK Horse Racing" 
+            className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-racing-green/60 via-transparent to-[#fcfcfc]"></div>
+        </div>
+        <div className="relative z-10 space-y-6 mt-12">
+          <div className="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest border border-gold/30 backdrop-blur-sm shadow-xl">
+            <Star size={14} fill="currentColor" /> Premium UK/IRE Analytics
           </div>
-        ) : (
-          races.map((race: any) => (
-            <RaceCard key={race.race_id} race={race} />
-          ))
-        )}
+          <h1 className="text-5xl md:text-7xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-2xl">
+            Unlock the <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-200">Intelligence.</span>
+          </h1>
+          <p className="text-white/90 text-base md:text-xl max-w-2xl mx-auto font-medium italic drop-shadow-md">
+            Institutional-grade automated racing models. Predicted, Calibrated, and Verified. 
+            A clear edge for serious punters.
+          </p>
+        </div>
       </section>
 
-      <footer className="max-w-6xl mx-auto px-6 py-12 border-t border-gray-200 text-center space-y-4">
-        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">
+      {/* Trust Markers */}
+      <section className="max-w-5xl mx-auto mt-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-6 relative z-20">
+        <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 transform -translate-y-12">
+          <ShieldCheck className="mx-auto text-gold mb-4" size={36} />
+          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-lg">Verified Logic</h3>
+          <p className="text-xs text-gray-500 font-bold leading-relaxed mt-2">Every prediction is proofed against official results in our Improvement Lab.</p>
+        </div>
+        <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 transform -translate-y-8 md:-translate-y-12">
+          <Zap className="mx-auto text-gold mb-4" size={36} />
+          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-lg">T-30m Advantage</h3>
+          <p className="text-xs text-gray-500 font-bold leading-relaxed mt-2">Live cards processed 30 minutes before off-time for maximum market alignment.</p>
+        </div>
+        <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 transform -translate-y-4 md:-translate-y-12">
+          <Trophy className="mx-auto text-gold mb-4" size={36} />
+          <h3 className="font-black text-racing-green uppercase tracking-tighter italic text-lg">Festival Ready</h3>
+          <p className="text-xs text-gray-500 font-bold leading-relaxed mt-2">Deep learning models primed for Cheltenham, Aintree, and Royal Ascot.</p>
+        </div>
+      </section>
+
+      {/* Pricing Grid */}
+      <section className="max-w-7xl mx-auto px-6 mt-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-black text-racing-green uppercase tracking-tighter italic">Choose Your Plan</h2>
+          <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mt-2">Secure checkout via Stripe</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {PLANS.map((plan) => (
+            <div 
+              key={plan.name} 
+              className={`bg-white rounded-3xl p-8 shadow-xl border-2 transition-all hover:scale-[1.02] flex flex-col ${
+                plan.highlight ? 'border-gold ring-4 ring-gold/10 relative' : 'border-gray-100'
+              }`}
+            >
+              {plan.highlight && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-racing-green text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-md whitespace-nowrap">
+                  Most Popular
+                </div>
+              )}
+              <h2 className="text-racing-green font-black uppercase italic tracking-tight text-xl mb-1 mt-2">{plan.name}</h2>
+              <div className="flex items-baseline gap-1 mb-4">
+                <span className="text-4xl font-black text-racing-green">{plan.price}</span>
+                <span className="text-gray-400 font-bold uppercase text-[10px]">{plan.period}</span>
+              </div>
+              <p className="text-gray-500 text-xs italic mb-6 leading-relaxed flex-grow">{plan.desc}</p>
+              
+              <div className="space-y-3 mb-8 border-t border-gray-50 pt-6">
+                {plan.features.map((f) => (
+                  <div key={f} className="flex items-start gap-3 text-[11px] font-bold uppercase tracking-wide text-gray-600">
+                    <Check size={14} className="text-gold mt-0.5 shrink-0" /> {f}
+                  </div>
+                ))}
+              </div>
+
+              <Link href="/login" className={`w-full py-4 rounded-xl font-black uppercase tracking-widest text-[11px] transition-all flex items-center justify-center gap-2 italic active:scale-[0.98] ${
+                plan.highlight 
+                  ? 'bg-racing-green text-white shadow-lg shadow-racing-green/20 hover:bg-racing-green/90' 
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}>
+                Subscribe Now <ArrowRight size={14} />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <footer className="mt-20 border-t border-gray-200 pt-8 pb-12 text-center px-6">
+        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] mb-4">
           Professional Analytical Intelligence • Strictly 18+
         </p>
-        <div className="flex justify-center gap-6">
-          <a href="/legal" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-colors">
+        <div className="flex justify-center items-center gap-4 flex-wrap">
+          <Link href="/legal" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-colors">
             Legal & Risk Disclaimer
-          </a>
+          </Link>
           <span className="text-gray-300">|</span>
           <span className="text-[10px] text-red-500 font-black uppercase tracking-widest">
             Capital at Risk
@@ -118,4 +160,3 @@ export default async function PaddockPage() {
     </main>
   );
 }
-// Force rebuild for Next.js 16 cookie fix
