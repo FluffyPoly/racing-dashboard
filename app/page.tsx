@@ -4,6 +4,8 @@ import { cookies } from 'next/headers';
 import { Clock, ShieldAlert } from 'lucide-react';
 import RaceCard from '@/components/RaceCard';
 
+export const dynamic = 'force-dynamic';
+
 async function getRaces() {
   const cookieStore = cookies();
   

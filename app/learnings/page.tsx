@@ -3,6 +3,8 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { BrainCircuit, Target, ArrowDownUp, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 async function getLearnings() {
   const cookieStore = cookies();
   const supabase = createServerClient(
