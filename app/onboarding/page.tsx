@@ -5,6 +5,8 @@ import { createBrowserClient } from '@supabase/ssr';
 import { Trophy, ShieldCheck, Mail, Lock, ChevronRight, Loader2 } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 function OnboardingForm() {
   const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState('');
