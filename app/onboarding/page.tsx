@@ -2,16 +2,17 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
-import { Trophy, ShieldCheck, Mail, Lock, ChevronRight, Loader2, Calendar } from 'lucide-react';
+import { Trophy, ShieldCheck, Mail, Lock, ChevronRight, Loader2 } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 function OnboardingForm() {
+  const [email, setEmail] = useState<string | null>(null);
   const [password, setPassword] = useState('');
   const [confirmPassword, setPasswordConfirm] = useState('');
   const [ageVerified, setAgeVerified] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [verifying, setVerifying] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [paymentVerified, setPaymentVerified] = useState(false);
   
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -23,9 +24,23 @@ function OnboardingForm() {
   );
 
   useEffect(() => {
-    if (sessionId) {
-      setPaymentVerified(true);
+    async function verify() {
+      if (!sessionId) return;
+      try {
+        const res = await fetch(`/api/verify-session?session_id=${sessionId}`);
+        const data = await res.json();
+        if (data.email) {
+          setEmail(data.email);
+        } else {
+          setError("Could not verify payment session.");
+        }
+      } catch (err) {
+        setError("Connection error. Please contact support.");
+      } finally {
+        setVerifying(false);
+      }
     }
+    verify();
   }, [sessionId]);
 
   const handleOnboarding = async (e: React.FormEvent) => {
@@ -42,10 +57,8 @@ function OnboardingForm() {
     setLoading(true);
     setError(null);
 
-    const email = searchParams.get('email') || ""; 
-
     const { error: signUpError } = await supabase.auth.signUp({
-      email: email,
+      email: email!,
       password: password,
       options: {
         data: {
@@ -63,10 +76,20 @@ function OnboardingForm() {
     }
   };
 
-  if (!sessionId) {
+  if (verifying) {
     return (
-      <div className="text-center p-12 bg-white/10 rounded-2xl backdrop-blur-md">
-        <p className="font-bold italic text-white">Invalid Session. Please purchase a pass first.</p>
+      <div className="text-center p-12 bg-white/5 rounded-2xl backdrop-blur-md border border-white/10">
+        <Loader2 className="animate-spin mx-auto text-gold mb-4" size={32} />
+        <p className="font-bold italic text-white/70 uppercase tracking-widest text-[10px]">Syncing with Stripe...</p>
+      </div>
+    );
+  }
+
+  if (!sessionId || error) {
+    return (
+      <div className="text-center p-12 bg-white/10 rounded-2xl backdrop-blur-md border border-red-500/30">
+        <p className="font-bold italic text-white mb-4">{error || "Invalid Session"}</p>
+        <button onClick={() => router.push('/')} className="text-gold uppercase text-[10px] font-black tracking-widest border-b border-gold pb-1">Return Home</button>
       </div>
     );
   }
@@ -77,12 +100,13 @@ function OnboardingForm() {
         <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
           <ShieldCheck className="text-racing-green w-8 h-8" />
         </div>
-        <h1 className="text-2xl font-black text-white italic uppercase tracking-tighter">
-          Payment Confirmed
+        <h1 className="text-2xl font-black text-white italic uppercase tracking-tighter leading-tight">
+          Welcome to <br /> The Club
         </h1>
-        <p className="text-gold text-[10px] font-bold uppercase tracking-widest mt-1">
-          Initialize Your Premium Account
-        </p>
+        <div className="mt-4 bg-white/10 py-2 px-4 rounded-lg inline-flex items-center gap-2 border border-white/10">
+          <Mail size={12} className="text-gold" />
+          <span className="text-white text-xs font-bold">{email}</span>
+        </div>
       </div>
 
       <form onSubmit={handleOnboarding} className="p-8 space-y-6">
@@ -92,13 +116,13 @@ function OnboardingForm() {
           </div>
         )}
 
-        <div className="space-y-4 text-xs font-bold text-gray-400 uppercase tracking-widest text-center italic">
-          Please set your secure password to access the models.
-        </div>
+        <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest text-center italic leading-relaxed px-4">
+          Payment confirmed. Choose your access password to finalize your membership.
+        </p>
 
         <div className="space-y-2">
           <label className="text-[10px] font-black text-racing-green uppercase tracking-widest ml-1">
-            Set Password
+            Choose Password
           </label>
           <div className="relative">
             <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -139,7 +163,7 @@ function OnboardingForm() {
             className="mt-1 accent-racing-green" 
           />
           <p className="text-[10px] font-bold text-gray-600 uppercase leading-relaxed">
-            I verify that I am <span className="text-racing-green font-black">18 years or older</span> and I accept the legal & risk disclaimer.
+            I verify that I am <span className="text-racing-green font-black">18 years or older</span> and I accept the <a href="/legal" className="text-gold underline">legal disclaimer</a>.
           </p>
         </div>
 
@@ -152,7 +176,7 @@ function OnboardingForm() {
             <Loader2 className="w-5 h-5 animate-spin" />
           ) : (
             <>
-              Finalize & Enter Dashboard <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Enter Dashboard <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </>
           )}
         </button>
@@ -166,8 +190,8 @@ export default function OnboardingPage() {
     <main className="min-h-screen bg-racing-green flex items-center justify-center p-6">
       <Suspense fallback={
         <div className="flex flex-col items-center gap-4 text-white">
-          <Loader2 className="animate-spin" size={40} />
-          <p className="font-black uppercase tracking-widest text-xs italic">Verifying Session...</p>
+          <Loader2 className="animate-spin text-gold" size={40} />
+          <p className="font-black uppercase tracking-widest text-[10px] italic">Securing Portal...</p>
         </div>
       }>
         <OnboardingForm />
