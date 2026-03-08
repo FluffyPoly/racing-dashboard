@@ -110,10 +110,15 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <div className="bg-gray-50 p-4 text-center border-t border-gray-100">
+        <div className="bg-gray-50 p-4 text-center border-t border-gray-100 space-y-2">
           <p className="text-[9px] text-gray-400 font-bold uppercase tracking-tighter italic">
             Secure Master-Admin Provisioning Active
           </p>
+          <div className="pt-2 border-t border-gray-200/50">
+            <a href="/legal" className="text-[9px] text-gray-400 hover:text-gold font-bold uppercase tracking-widest transition-colors">
+              Legal & Risk Disclaimer • Capital at Risk
+            </a>
+          </div>
         </div>
       </div>
     </main>

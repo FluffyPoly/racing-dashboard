@@ -6,9 +6,10 @@ export async function middleware(request: NextRequest) {
     request: { headers: request.headers },
   })
 
-  // Skip checks for login, pricing, and public assets
+  // 1. Skip auth check for login page itself and static assets
   if (
     request.nextUrl.pathname.startsWith('/login') ||
+    request.nextUrl.pathname.startsWith('/legal') ||
     request.nextUrl.pathname.startsWith('/pricing') ||
     request.nextUrl.pathname.startsWith('/_next') ||
     request.nextUrl.pathname.startsWith('/favicon.ico') ||

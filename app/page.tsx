@@ -100,6 +100,21 @@ export default async function PaddockPage() {
           ))
         )}
       </section>
+
+      <footer className="max-w-6xl mx-auto px-6 py-12 border-t border-gray-200 text-center space-y-4">
+        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">
+          Professional Analytical Intelligence • Strictly 18+
+        </p>
+        <div className="flex justify-center gap-6">
+          <a href="/legal" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-colors">
+            Legal & Risk Disclaimer
+          </a>
+          <span className="text-gray-300">|</span>
+          <span className="text-[10px] text-red-500 font-black uppercase tracking-widest">
+            Capital at Risk
+          </span>
+        </div>
+      </footer>
     </main>
   );
 }
