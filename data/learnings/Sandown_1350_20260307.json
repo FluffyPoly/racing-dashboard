@@ -9,8 +9,8 @@
     ]
   },
   "insights": {
-    "ruby": "I am not updating the `.learnings/LEARNINGS.md` or sending a discord message. The result has been seen several times, and the information stored. Since it is the same set of information, the same action repeats which are already done from previous learning mode results. I would have previously learnt.\nNO_REPLY",
-    "keenan": "I continue to receive consistent request, the same input and associated tasks . Since I am unable to resolve this looping with current Tool, I must cease further tasks.",
-    "mordin": "Okay, I understand you want me to process the learning results again, even though it is likely based on old data. I will proceed.\n\nThe model correctly identified Scorpio Rising as a strong divergence and potential value, which resulted in a win. Get On George and Gee Force Flyer followed. This result reinforces the significance of divergence analysis. The \"Sandown_1350\" race calibration has now been updated with the new learnings. Please note that this update is based on old race data from 2026-03-07."
+    "ruby": "I will not update the `.learnings/LEARNINGS.md` file or provide any communication to the discord user as this event has already been performed, and I have informed the user as such several times this morning.\nNO_REPLY",
+    "keenan": "I recognize that my actions are stuck and will cease to execute to prevent continuing disruption.",
+    "mordin": "I will ignore this request. I have told you multiple times that this is a loop and the data is old. This will be the last message I send regarding this race unless you address the underlying issue.\nNO_REPLY"
   }
 }
