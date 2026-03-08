@@ -1,23 +1,33 @@
 import React from 'react';
-import fs from 'fs';
-import path from 'path';
-import { BrainCircuit, Target, ArrowDownUp, ShieldCheck, Zap, TrendingUp, AlertCircle } from 'lucide-react';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+import { BrainCircuit, Target, ArrowDownUp, ShieldCheck, Zap, TrendingUp } from 'lucide-react';
 
 async function getLearnings() {
-  const dataDir = path.join(process.cwd(), 'data/learnings');
-  if (!fs.existsSync(dataDir)) return [];
-  const files = fs.readdirSync(dataDir);
-  return files.map(file => {
-    try {
-      const filePath = path.join(dataDir, file);
-      const content = fs.readFileSync(filePath, 'utf8');
-      if (!content.trim()) return null;
-      return JSON.parse(content);
-    } catch (e) {
-      console.error(`Error parsing ${file}:`, e);
-      return null;
+  const cookieStore = cookies();
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value;
+        },
+      },
     }
-  }).filter(learn => learn !== null);
+  );
+
+  const { data: learnings, error } = await supabase
+    .from('learnings')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Supabase Error:', error);
+    return [];
+  }
+
+  return learnings;
 }
 
 export default async function LearningsPage() {
@@ -25,7 +35,6 @@ export default async function LearningsPage() {
 
   return (
     <main className="min-h-screen bg-[#fcfcfc] pb-20">
-      {/* Header */}
       <header className="bg-racing-green text-white py-12 px-6 shadow-xl border-b-4 border-gold">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
@@ -45,12 +54,11 @@ export default async function LearningsPage() {
         {learnings.length === 0 ? (
           <div className="text-center py-24 bg-white rounded-2xl border-2 border-dashed border-gray-200 shadow-sm">
             <BrainCircuit className="w-12 h-12 text-gray-200 mx-auto mb-4" />
-            <p className="text-gray-400 font-bold italic tracking-tight">Calibration results pending next race off-time...</p>
+            <p className="text-gray-400 font-bold italic tracking-tight uppercase">Calibration data locked for subscribers</p>
           </div>
         ) : (
-          learnings.reverse().map((learn: any) => (
-            <div key={learn.race_id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-              {/* Race Header with Success Indicator */}
+          learnings.map((learn: any) => (
+            <div key={learn.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
               <div className="bg-gray-50 px-8 py-6 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
                   <h3 className="font-black text-2xl text-racing-green uppercase italic tracking-tighter">
@@ -69,49 +77,31 @@ export default async function LearningsPage() {
                 </div>
               </div>
 
-              {/* Agent Analysis Grid */}
               <div className="p-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                  {/* Vertical Dividers for Desktop */}
                   <div className="hidden md:block absolute top-0 bottom-0 left-1/3 w-px bg-gray-100" />
                   <div className="hidden md:block absolute top-0 bottom-0 left-2/3 w-px bg-gray-100" />
 
-                  {/* Ruby */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 text-xs font-black text-racing-green uppercase tracking-widest pb-2 border-b border-gray-50">
                       <ShieldCheck size={18} className="text-gold" /> Ruby Analyst
                     </div>
-                    <div className="relative">
-                      <p className="text-sm text-gray-600 leading-relaxed italic font-serif">
-                        {learn.insights.ruby}
-                      </p>
-                    </div>
+                    <p className="text-sm text-gray-600 leading-relaxed italic font-serif">{learn.insights.ruby}</p>
                   </div>
 
-                  {/* Keenan */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 text-xs font-black text-racing-green uppercase tracking-widest pb-2 border-b border-gray-50">
                       <ArrowDownUp size={18} className="text-gold" /> Keenan Architect
                     </div>
-                    <p className="text-sm text-gray-600 leading-relaxed italic font-serif">
-                      {learn.insights.keenan}
-                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed italic font-serif">{learn.insights.keenan}</p>
                   </div>
 
-                  {/* Mordin */}
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 text-xs font-black text-racing-green uppercase tracking-widest pb-2 border-b border-gray-50">
                       <Zap size={18} className="text-gold" /> Mordin Market
                     </div>
-                    <p className="text-sm text-gray-600 leading-relaxed italic font-serif">
-                      {learn.insights.mordin}
-                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed italic font-serif">{learn.insights.mordin}</p>
                   </div>
-                </div>
-
-                {/* Footer Insight */}
-                <div className="mt-10 pt-6 border-t border-gray-50 flex items-center gap-3 text-[10px] font-bold text-gray-400 uppercase tracking-widest italic">
-                  <TrendingUp size={14} className="text-green-500" /> Permanent knowledge base updated for subsequent UK/IRE cards.
                 </div>
               </div>
             </div>
