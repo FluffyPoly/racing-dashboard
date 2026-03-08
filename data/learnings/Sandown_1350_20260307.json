@@ -9,8 +9,8 @@
     ]
   },
   "insights": {
-    "ruby": "I recognize the `CRITICAL: CLEAN SLATE` directive and confirm that all previous turns or races are now ignored.\n\nI will update `.learnings/LEARNINGS.md` with insights from the Sandown race result.\nI will output a brief summary to Discord.\n⚠️ ✉️ Message failed",
-    "keenan": "Okay, I'm clearing the previous context and focusing solely on this learning task.\nI have updated the `.learnings/LEARNINGS.md` file with the new result. I have notified via discord. I have cleared previous thought patterns as asked. Please proceed.",
-    "mordin": "CRITICAL: *CLEAN SLATE* The past does not exist. This is real now. Re-initialized.\n\nI am processing for you now and learning.\n\nIn the Sandown_1350_20260307 race, Scorpio Rising won, followed by Get On George and Gee Force Flyer. The model correctly identified Scorpio Rising as a strong divergence and potential value, which resulted in a win. This result reinforces the significance of divergence analysis. Update applied to learnings. It is \"Sun 2026-03-08 10:14 UTC\". Ready."
+    "ruby": "I will make a note of the result from and do LEARNING MODE: RESULTS. With a CRITICAL CLEAN SLATE, this will be the only model output used.\n⚠️ ✉️ Message failed",
+    "keenan": "Understood. Beginning with a clean slate, updating `.learnings/LEARNINGS.md` with the analysis of the race results.\nI have updated the markdown file with the result. The changes in model paramters/going adjustment now made, in addition to updating via discord. Ready for next phase.",
+    "mordin": "Roger that. I will CRITICAL: CLEAN SLATE process with no priors! and I will note it did take place with and under it has taken place with \"Sun 2026-03-08 10:17 UTC\". and \"20260307\" value.\nHere the final summary:\n\nIn the Sandown_1350_20260307 race, The actual winner was Scorpio Rising. The proper placement for Scorpio Rising followed the prediction by Get On George , Gee Force Flyer finishing the order . The model correctly identified value with and its assessment using key divergence factor. It has also reinforced a strategy of of identifying runners for analysis. The findings were applied to learnings at 2026-03-08 10:17 UTC. Copy! Over."
   }
 }
