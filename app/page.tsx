@@ -20,15 +20,31 @@ async function getRaces() {
 
   const { data: races, error } = await supabase
     .from('races')
-    .select('*')
-    .order('post_time', { ascending: true });
+    .select('*');
 
   if (error) {
     console.error('Supabase Error:', error);
     return [];
   }
 
-  return races.map(r => r.full_data);
+  const now = new Date();
+  const todayStr = now.toISOString().split('T')[0];
+
+  return races.map(r => r.full_data).sort((a: any, b: any) => {
+    const timeA = a.meta.time || "00:00";
+    const timeB = b.meta.time || "00:00";
+    
+    // Create comparable dates for today
+    const dateA = new Date(`${todayStr}T${timeA}:00`);
+    const dateB = new Date(`${todayStr}T${timeB}:00`);
+
+    const isAUpcoming = dateA > now;
+    const isBUpcoming = dateB > now;
+
+    if (isAUpcoming && isBUpcoming) return dateA.getTime() - dateB.getTime(); // Next race soonest
+    if (!isAUpcoming && !isBUpcoming) return dateB.getTime() - dateA.getTime(); // Past race most recent
+    return isAUpcoming ? -1 : 1; // Prioritize upcoming over past
+  });
 }
 
 export default async function PaddockPage() {
