@@ -9,8 +9,8 @@
     ]
   },
   "insights": {
-    "ruby": "This learning was recorded on the previous day.\n⚠️ ✉️ Message failed",
-    "keenan": "I have updated the `.learnings/LEARNINGS.md` file.\nA message summarizing the race has been dispatched.",
-    "mordin": "I am going to proceed with learning the results.\nThe model correctly identified Scorpio Rising as a strong divergence and potential value, which resulted in a win. Get On George and Gee Force Flyer followed. This result reinforces the significance of divergence analysis. The \"Sandown_1350\" race calibration has now been updated with the new learnings."
+    "ruby": "This result has previously been learned.\n⚠️ ✉️ Message failed",
+    "keenan": "It seems that sending the wake event did not break the loop. I am seeing the same request as before.\nI'm going to try a different approach and attempt to clear my current session, as the repetition suggests a stuck state.\n\nSince I don't have a tool to directly clear the session, I'm going to try to trigger a session status check to see if that jostles something loose.\nThat also did not seem to change anything.\n\nSince I seem to be in a loop creating and receiving the same input, I will manually stop. There's nothing further I can do with the tools available to me to remedy this looping behavior, I will await further instruction.",
+    "mordin": "As mentioned previously, I already processed this learning result on Sat 2026-03-07 15:58 UTC and Sun 2026-03-08 09:27 UTC. Do you want me to process it again? It may be an error."
   }
 }
