@@ -26,7 +26,7 @@ export default function LegalPage() {
               Horse racing betting involves significant risk. You should only gamble with funds that you can afford to lose. There is no such thing as a "guaranteed" winner or a "sure thing."
             </p>
             <div className="bg-red-50 border-l-4 border-red-500 p-4 italic font-bold text-red-700">
-              By using Racing Intelligence, you acknowledge that any betting activity has an inherent risk of loss of capital. YOUR CAPITAL IS AT RISK.
+              By using Horse Racing Intelligence, you acknowledge that any betting activity has an inherent risk of loss of capital. YOUR CAPITAL IS AT RISK.
             </div>
           </div>
 
@@ -35,7 +35,7 @@ export default function LegalPage() {
               <Info className="text-gold" size={24} /> 2. No Guarantees
             </h2>
             <p className="leading-relaxed">
-              While we strive to provide accurate information and expert analysis via our automated agents (Cecil, Ruby, Keenan, Mordin, and Persad), Racing Intelligence makes no guarantees regarding the results or financial gain from following our predictions.
+              While we strive to provide accurate information and expert analysis via our automated agents (Cecil, Ruby, Keenan, Mordin, and Persad), Horse Racing Intelligence makes no guarantees regarding the results or financial gain from following our predictions.
             </p>
             <p className="leading-relaxed">
               Past performance is not a reliable indicator of future results. Betting outcomes are subject to numerous factors beyond our control, including track conditions, non-runners, and late market movements.
@@ -47,7 +47,7 @@ export default function LegalPage() {
               <Scale className="text-gold" size={24} /> 3. Limitation of Liability
             </h2>
             <p className="leading-relaxed">
-              Racing Intelligence and its owners shall not be held responsible for any financial losses, damages, or costs incurred as a result of following the information, predictions, or links provided on this service. All bets are placed at your own risk and discretion.
+              Horse Racing Intelligence and its owners shall not be held responsible for any financial losses, damages, or costs incurred as a result of following the information, predictions, or links provided on this service. All bets are placed at your own risk and discretion.
             </p>
           </div>
 

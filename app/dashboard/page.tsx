@@ -68,7 +68,7 @@ export default async function PaddockPage() {
       <header className="bg-racing-green text-white py-12 px-6 shadow-xl border-b-4 border-gold text-center md:text-left">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
-            <h1 className="text-4xl font-black tracking-tighter mb-2 uppercase italic">Racing Intelligence</h1>
+            <h1 className="text-4xl font-black tracking-tighter mb-2 uppercase italic">Horse Racing Intelligence</h1>
             <p className="text-gold font-bold flex items-center justify-center md:justify-start gap-2 tracking-widest text-xs">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
               LIVE PADDOCK • SUBSCRIBER ACCESS

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Racing Intelligence | Premium UK & IRE Analytics",
+  title: "Horse Racing Intelligence | Premium UK & IRE Analytics",
   description: "Automated high-fidelity horse racing predictions and learning loops.",
 };
 
