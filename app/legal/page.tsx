@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldAlert, Scale, Info, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
 
 export default function LegalPage() {
   return (
@@ -23,7 +24,7 @@ export default function LegalPage() {
               <ShieldAlert className="text-red-500" size={24} /> 1. Risk Warning: Capital at Risk
             </h2>
             <p className="leading-relaxed font-medium">
-              Horse racing betting involves significant risk. You should only gamble with funds that you can afford to lose. There is no such thing as a "guaranteed" winner or a "sure thing."
+              Horse racing betting involves significant risk. You should only gamble with funds that you can afford to lose. There is no such thing as a &quot;guaranteed&quot; winner or a &quot;sure thing.&quot;
             </p>
             <div className="bg-red-50 border-l-4 border-red-500 p-4 italic font-bold text-red-700">
               By using Horse Racing Intelligence, you acknowledge that any betting activity has an inherent risk of loss of capital. YOUR CAPITAL IS AT RISK.
@@ -80,10 +81,22 @@ export default function LegalPage() {
           </div>
         </div>
 
+        <div className="bg-gray-100 p-6 rounded-2xl flex flex-wrap justify-center gap-6">
+          <Link href="/terms" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
+            Terms & Conditions
+          </Link>
+          <Link href="/privacy" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
+            Privacy Policy
+          </Link>
+          <Link href="/rules" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
+            Rules & Regulations
+          </Link>
+        </div>
+
         <div className="text-center">
-          <a href="/login" className="text-racing-green font-black uppercase tracking-widest text-xs hover:text-gold transition-colors">
-            Return to Portal
-          </a>
+          <Link href="/" className="text-racing-green font-black uppercase tracking-widest text-xs hover:text-gold transition-colors">
+            Return to Intelligence
+          </Link>
         </div>
       </section>
     </main>

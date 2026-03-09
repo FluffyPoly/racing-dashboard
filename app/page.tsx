@@ -96,7 +96,7 @@ export default function LandingPage() {
             Unlock the <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-200">Intelligence.</span>
           </h1>
           <p className="text-white/90 text-base md:text-xl max-w-2xl mx-auto font-medium italic drop-shadow-md">
-            The world's most disciplined automated racing models. <br />
+            The world&apos;s most disciplined automated racing models. <br />
             Predicted, Calibrated, and Verified.
           </p>
         </div>
@@ -191,13 +191,26 @@ export default function LandingPage() {
           <p className="text-[11px] text-gray-400 font-black uppercase tracking-[0.3em]">
             Professional Analytical Intelligence • Strictly 18+ Only
           </p>
-          <div className="flex justify-center items-center gap-8 flex-wrap">
-            <Link href="/legal" className="text-[11px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
-              Legal & Risk Disclaimer
+          <div className="flex justify-center items-center gap-6 flex-wrap">
+            <Link href="/legal" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
+              Risk Disclaimer
             </Link>
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-200"></span>
-            <span className="text-[11px] text-red-500/70 font-black uppercase tracking-widest">
-              Capital at Risk
+            <span className="w-1 h-1 rounded-full bg-gray-200"></span>
+            <Link href="/terms" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
+              Terms & Conditions
+            </Link>
+            <span className="w-1 h-1 rounded-full bg-gray-200"></span>
+            <Link href="/privacy" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
+              Privacy Policy
+            </Link>
+            <span className="w-1 h-1 rounded-full bg-gray-200"></span>
+            <Link href="/rules" className="text-[10px] text-gray-500 hover:text-gold font-black uppercase tracking-widest transition-all">
+              Rules & Regulations
+            </Link>
+          </div>
+          <div className="flex justify-center items-center gap-4">
+            <span className="text-[10px] text-red-500/70 font-black uppercase tracking-widest">
+              Strictly No Refunds • Capital at Risk
             </span>
           </div>
           <div className="pt-8 text-[10px] text-gray-300 font-medium italic">
