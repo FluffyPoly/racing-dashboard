@@ -167,7 +167,7 @@ export default async function PaddockPage() {
         </div>
 
         <section className="max-w-6xl mx-auto px-6 mt-12 pb-20 space-y-16">
-          {processed.length === 0 ? (
+          {allProcessed.length === 0 ? (
             <div className="text-center py-24 bg-white/80 backdrop-blur-sm rounded-2xl border-2 border-dashed border-racing-green/20">
               <ShieldAlert className="w-12 h-12 text-gray-200 mx-auto mb-4" />
               <p className="text-gray-400 font-bold italic tracking-tight uppercase">No upcoming races found</p>
