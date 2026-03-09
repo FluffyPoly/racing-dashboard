@@ -71,7 +71,7 @@ export default function LoginPage() {
                 type="email"
                 required
                 className="w-full bg-gray-50 border border-gray-100 rounded-xl py-3 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all text-gray-800"
-                placeholder="j.peetz69@gmail.com"
+                placeholder="member@horseracingintelligence.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
