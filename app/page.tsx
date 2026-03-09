@@ -82,7 +82,7 @@ export default function LandingPage() {
       <section className="relative h-[65vh] bg-racing-green overflow-hidden flex items-center justify-center text-center px-6">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1534491336323-4d3c5133767a?auto=format&fit=crop&q=80&w=2000" 
+            src="https://images.pexels.com/photos/12950515/pexels-photo-12950515.jpeg?auto=compress&cs=tinysrgb&w=2000" 
             alt="Horse Racing Intelligence" 
             className="w-full h-full object-cover opacity-40 mix-blend-luminosity scale-105 animate-pulse-slow"
           />
