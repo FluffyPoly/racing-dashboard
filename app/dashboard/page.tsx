@@ -40,8 +40,33 @@ async function getRaces() {
 
 export default async function PaddockPage() {
   const rawRaces = await getRaces();
-  const allRaces = rawRaces.map(r => r.full_data);
   const { totalAnalyzed, totalWins, totalTop2, winRate, top2Rate } = await getPerformanceStats();
+  
+  // 1. Process, Clean, and STRICT DEDUPLICATE
+  const uniqueRaces: Record<string, any> = {};
+  
+  rawRaces.forEach(r => {
+    const race = r.full_data;
+    const dateMatch = (race.race_id || '').match(/\d{8}/);
+    const date = dateMatch ? dateMatch[0] : (race.meta?.date?.replace(/-/g, '') || '00000000');
+    const track = (race.meta?.track || 'Unknown Track').trim();
+    const time = (race.meta?.time || '00:00').trim();
+    
+    // Create a canonical key for deduplication: Track_Time_YYYYMMDD
+    const canonicalKey = `${track}_${time}_${date}`.toLowerCase().replace(/\s+/g, '');
+    
+    // Only store if not seen, or if this version has analysis and the previous didn't
+    if (!uniqueRaces[canonicalKey] || (race.analysis?.ruby && !uniqueRaces[canonicalKey].analysis?.ruby)) {
+      uniqueRaces[canonicalKey] = {
+        ...race,
+        _date: date,
+        _track: track,
+        _time: time
+      };
+    }
+  });
+
+  const allProcessed = Object.values(uniqueRaces);
   
   // Use Europe/London to get "today" correctly for UK/IRE racing
   const todayStr = new Intl.DateTimeFormat('en-GB', {
@@ -51,24 +76,11 @@ export default async function PaddockPage() {
     timeZone: 'Europe/London'
   }).format(new Date()).split('/').reverse().join(''); // "YYYYMMDD"
 
-  // 2. Process, Clean, and STRICT FILTER
-  const processed = allRaces
-    .map(race => {
-      const dateMatch = (race.race_id || '').match(/\d{8}/);
-      const date = dateMatch ? dateMatch[0] : (race.meta?.date?.replace(/-/g, '') || '00000000');
-      
-      return {
-        ...race,
-        _date: date,
-        _track: (race.meta?.track || 'Unknown Track').trim(),
-        _time: (race.meta?.time || '00:00').trim()
-      };
-    })
-    .filter(race => race._date >= todayStr); // REMOVE YESTERDAY AND OLDER
+  const filtered = allProcessed.filter(race => race._date >= todayStr);
 
-  // 3. Grouping
+  // 2. Grouping
   const grouped: Record<string, Record<string, any[]>> = {};
-  processed.forEach(race => {
+  filtered.forEach(race => {
     if (!grouped[race._date]) grouped[race._date] = {};
     if (!grouped[race._date][race._track]) grouped[race._date][race._track] = [];
     grouped[race._date][race._track].push(race);

@@ -28,10 +28,17 @@ export async function getPerformanceStats() {
   const statsMap: Record<string, { win: boolean, top2: boolean }> = {};
   
   learnings.forEach((learn: any) => {
-    if (statsMap[learn.race_id]) return;
-    
     const correspondingRace = allRaces.find(r => r.race_id === learn.race_id);
     if (!correspondingRace) return;
+
+    const dateMatch = (correspondingRace.race_id || '').match(/\d{8}/);
+    const date = dateMatch ? dateMatch[0] : (correspondingRace.meta?.date?.replace(/-/g, '') || '00000000');
+    const track = (correspondingRace.meta?.track || 'Unknown Track').trim();
+    const time = (correspondingRace.meta?.time || '00:00').trim();
+    
+    // Create a canonical key for deduplication: Track_Time_YYYYMMDD
+    const canonicalKey = `${track}_${time}_${date}`.toLowerCase().replace(/\s+/g, '');
+    if (statsMap[canonicalKey]) return;
 
     const rubyRankings = [...(correspondingRace.analysis?.ruby?.rankings || [])].sort((a, b) => b.win_probability - a.win_probability);
     if (rubyRankings.length === 0) return;
@@ -42,7 +49,7 @@ export async function getPerformanceStats() {
     const isWin = clean(rubyRankings[0].name) === actualWinner;
     const isTop2 = rubyRankings.slice(0, 2).some(h => clean(h.name) === actualWinner);
     
-    statsMap[learn.race_id] = { win: isWin, top2: isTop2 };
+    statsMap[canonicalKey] = { win: isWin, top2: isTop2 };
   });
 
   const totalAnalyzed = Object.keys(statsMap).length;
