@@ -93,7 +93,7 @@ export default function LandingPage() {
             <Star size={12} fill="currentColor" /> Institutional Grade UK & IRE Analytics
           </div>
           <h1 className="text-5xl md:text-8xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-2xl">
-            Unlock the <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-200">Intelligence.</span>
+            Unlock the <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-amber-200">Intelligence.</span>
           </h1>
           <p className="text-white/90 text-base md:text-xl max-w-2xl mx-auto font-medium italic drop-shadow-md">
             The world&apos;s most disciplined automated racing models. <br />
