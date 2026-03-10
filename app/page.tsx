@@ -16,9 +16,14 @@ export default async function LandingPage() {
         <div className="text-white font-black italic uppercase tracking-tighter text-xl flex items-center gap-2 drop-shadow-md">
           <Trophy className="text-gold" size={24} /> Horse Racing Intelligence
         </div>
-        <Link href="/login" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs transition-all border border-white/20 flex items-center gap-2">
-          <Lock size={14} /> Subscriber Portal
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/performance" className="text-white/80 hover:text-white font-bold uppercase tracking-widest text-[10px] transition-colors">
+            Performance
+          </Link>
+          <Link href="/login" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest text-xs transition-all border border-white/20 flex items-center gap-2">
+            <Lock size={14} /> Subscriber Portal
+          </Link>
+        </div>
       </nav>
 
       {/* Visual Hero */}

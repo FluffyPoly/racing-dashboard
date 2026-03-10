@@ -20,24 +20,33 @@ export async function getPerformanceStats() {
   );
 
   const { data: races } = await supabase.from('races').select('*');
-  const { data: learnings } = await supabase.from('learnings').select('*');
+  const { data: learnings } = await supabase.from('learnings').select('*').order('created_at', { ascending: false });
 
-  if (!races || !learnings) return { totalAnalyzed: 0, totalWins: 0, totalTop2: 0, winRate: 0, top2Rate: 0 };
+  if (!races || !learnings) return { 
+    totalAnalyzed: 0, 
+    totalWins: 0, 
+    totalTop2: 0, 
+    winRate: 0, 
+    top2Rate: 0, 
+    roi: 0,
+    recentWinners: [] 
+  };
 
   const allRaces = races.map(r => r.full_data);
-  const statsMap: Record<string, { win: boolean, top2: boolean }> = {};
+  const statsMap: Record<string, { win: boolean, top2: boolean, odds: number, track: string, time: string, horse: string, date: string }> = {};
   
   learnings.forEach((learn: any) => {
+    const dateMatch = (learn.race_id || '').match(/\d{8}/);
+    const date = dateMatch ? dateMatch[0] : (learn.created_at?.split('T')[0].replace(/-/g, '') || '00000000');
+    
+    // We already have track and time in many cases, but let's try to find the canonical race
     const correspondingRace = allRaces.find(r => r.race_id === learn.race_id);
     if (!correspondingRace) return;
 
-    const dateMatch = (correspondingRace.race_id || '').match(/\d{8}/);
-    const date = dateMatch ? dateMatch[0] : (correspondingRace.meta?.date?.replace(/-/g, '') || '00000000');
-    const track = (correspondingRace.meta?.track || 'Unknown Track').trim();
+    const track = (correspondingRace.meta?.track || 'Unknown').trim();
     const time = (correspondingRace.meta?.time || '00:00').trim();
-    
-    // Create a canonical key for deduplication: Track_Time_YYYYMMDD
     const canonicalKey = `${track}_${time}_${date}`.toLowerCase().replace(/\s+/g, '');
+    
     if (statsMap[canonicalKey]) return;
 
     const rubyRankings = [...(correspondingRace.analysis?.ruby?.rankings || [])].sort((a, b) => b.win_probability - a.win_probability);
@@ -49,15 +58,51 @@ export async function getPerformanceStats() {
     const isWin = clean(rubyRankings[0].name) === actualWinner;
     const isTop2 = rubyRankings.slice(0, 2).some(h => clean(h.name) === actualWinner);
     
-    statsMap[canonicalKey] = { win: isWin, top2: isTop2 };
+    // Attempt to parse odds for ROI calculation
+    let odds = 2.0; // Default fallback for ROI
+    const oddsStr = learn.results?.odds || rubyRankings[0].fair_odds || "2/1";
+    if (typeof oddsStr === 'string' && oddsStr.includes('/')) {
+      const [num, den] = oddsStr.split('/').map(Number);
+      odds = (num / den) + 1;
+    } else {
+      odds = parseFloat(oddsStr) || 2.0;
+    }
+
+    statsMap[canonicalKey] = { 
+      win: isWin, 
+      top2: isTop2, 
+      odds: odds,
+      track: track,
+      time: time,
+      horse: learn.results?.winner || rubyRankings[0].name,
+      date: correspondingRace.meta?.date || date
+    };
   });
 
-  const totalAnalyzed = Object.keys(statsMap).length;
-  const totalWins = Object.values(statsMap).filter(s => s.win).length;
-  const totalTop2 = Object.values(statsMap).filter(s => s.top2).length;
+  const processedStats = Object.values(statsMap);
+  const totalAnalyzed = processedStats.length;
+  const totalWins = processedStats.filter(s => s.win).length;
+  const totalTop2 = processedStats.filter(s => s.top2).length;
   
   const winRate = totalAnalyzed > 0 ? Math.round((totalWins / totalAnalyzed) * 100) : 0;
   const top2Rate = totalAnalyzed > 0 ? Math.round((totalTop2 / totalAnalyzed) * 100) : 0;
 
-  return { totalAnalyzed, totalWins, totalTop2, winRate, top2Rate };
+  // ROI: Assuming flat £1 stakes on every top pick
+  // Total Stake = totalAnalyzed
+  // Total Return = Sum of (odds) for every win
+  const totalReturn = processedStats.filter(s => s.win).reduce((sum, s) => sum + s.odds, 0);
+  const roi = totalAnalyzed > 0 ? Math.round(((totalReturn - totalAnalyzed) / totalAnalyzed) * 100) : 0;
+
+  const recentWinners = processedStats
+    .filter(s => s.win)
+    .slice(0, 10)
+    .map(s => ({
+      track: s.track,
+      time: s.time,
+      horse: s.horse,
+      odds: s.odds,
+      date: s.date
+    }));
+
+  return { totalAnalyzed, totalWins, totalTop2, winRate, top2Rate, roi, recentWinners };
 }

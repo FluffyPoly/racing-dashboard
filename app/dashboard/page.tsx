@@ -113,6 +113,7 @@ export default async function PaddockPage() {
             </div>
             <nav className="flex items-center gap-8 text-sm font-bold uppercase tracking-widest">
               <a href="/dashboard" className="border-b-2 border-gold pb-1 text-gold hover:text-gold transition-colors">Dashboard</a>
+              <a href="/performance" className="text-white/70 hover:text-gold transition-colors">Performance</a>
               <a href="/learnings" className="text-white/70 hover:text-gold transition-colors">Lab</a>
               
               <form action="/api/logout" method="POST">
