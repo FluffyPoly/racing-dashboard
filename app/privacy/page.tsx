@@ -73,6 +73,18 @@ export default function PrivacyPolicy() {
             </p>
           </div>
 
+          <div className="space-y-4">
+            <h2 className="text-2xl font-black text-racing-green uppercase italic flex items-center gap-3">
+              <ShieldCheck className="text-gold" size={24} /> 5. Data Retention & Your Rights
+            </h2>
+            <p className="leading-relaxed text-sm font-bold uppercase tracking-tight text-gray-500">
+              Under GDPR, you have the right to access, rectify, or erase your personal data. We retain your account information for as long as your subscription is active. Upon account deletion, all personal data is purged from our production databases within 30 days.
+            </p>
+            <p className="text-[11px] italic">
+              To exercise your rights or request a data export, contact our compliance team at j.peetz69@gmail.com.
+            </p>
+          </div>
+
           <div className="pt-8 border-t border-gray-100 text-center space-y-6">
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">
               Last Updated: March 2026 • GDPR Compliant Analytics

@@ -70,6 +70,24 @@ export default function TermsAndConditions() {
             </p>
           </div>
 
+          <div className="space-y-4">
+            <h2 className="text-2xl font-black text-racing-green uppercase italic flex items-center gap-3">
+              <ShieldCheck className="text-gold" size={24} /> 5. Intellectual Property
+            </h2>
+            <p className="leading-relaxed text-sm font-bold uppercase tracking-tight text-gray-500">
+              All agent-driven analysis, probability distributions, and narrative reports (derived from Cecil, Ruby, Keenan, Mordin, and Persad) are the exclusive property of Horse Racing Intelligence. Users are granted a limited license to view this content for personal use only. Distribution, scraping, or resale of our intelligence is strictly prohibited.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-2xl font-black text-racing-green uppercase italic flex items-center gap-3">
+              <Scale className="text-gold" size={24} /> 6. Governing Law
+            </h2>
+            <p className="leading-relaxed">
+              These Terms & Conditions shall be governed by and construed in accordance with the laws of **England and Wales**. Any disputes relating to these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.
+            </p>
+          </div>
+
           <div className="pt-8 border-t border-gray-100 text-center space-y-6">
             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">
               Last Updated: March 2026 • Professional Terms of Service
