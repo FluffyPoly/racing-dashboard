@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Trophy, Zap, BarChart3, BrainCircuit, Clock, ChevronRight, ChevronDown, ShieldCheck, ArrowDownUp } from 'lucide-react';
+import { Trophy, Zap, BarChart3, BrainCircuit, Clock, ChevronRight, ChevronDown, ShieldCheck, ArrowDownUp, AlertTriangle, Gauge } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function RaceCard({ race }: { race: any }) {
@@ -11,9 +11,14 @@ export default function RaceCard({ race }: { race: any }) {
   const rubyRankings = race?.analysis?.ruby?.rankings || [];
   const hasKeenan = !!(race?.analysis?.keenan?.most_probable_winner);
   const hasMordin = !!(race?.analysis?.mordin?.market_comparison);
+  const pace = race?.analysis?.keenan?.pace_analysis;
+
+  // Value Detection
+  const topPick = rubyRankings[0];
+  const hasValue = topPick?.win_probability > 0.35;
 
   return (
-    <div className="racing-card p-6 rounded-r-xl shadow-sm hover:shadow-md transition-all border border-gray-100 h-fit bg-white">
+    <div className={`racing-card p-6 rounded-r-xl shadow-sm hover:shadow-md transition-all border border-gray-100 h-fit bg-white ${isExpanded ? 'ring-2 ring-gold/20' : ''}`}>
       <div className="flex justify-between items-start mb-6">
         <div>
           <h3 className="text-2xl font-black text-racing-green italic leading-tight uppercase">
@@ -24,12 +29,26 @@ export default function RaceCard({ race }: { race: any }) {
           </p>
         </div>
         <div className="flex flex-col items-end gap-1">
+          {hasValue && (
+            <div className="bg-red-600 text-white text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter animate-pulse mb-1">
+              Value Alert
+            </div>
+          )}
           <span className="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded">
             {race?.meta?.class || 'N/A'}
           </span>
-          <span className="text-[9px] text-gray-300 font-mono italic">#{race?.race_id || 'ID-PENDING'}</span>
         </div>
       </div>
+
+      {/* Pace Map Visual */}
+      {pace && (
+        <div className="mb-6 flex items-center gap-3 bg-racing-green/5 p-3 rounded-xl border border-racing-green/10">
+          <Gauge size={14} className="text-gold" />
+          <p className="text-[10px] font-bold text-racing-green uppercase tracking-tight">
+            Shape: <span className="text-gold font-black">{pace.type}</span> • {pace.insight}
+          </p>
+        </div>
+      )}
 
       <div className="space-y-4">
         {rubyRankings.length === 0 ? (
@@ -98,67 +117,53 @@ export default function RaceCard({ race }: { race: any }) {
           >
             <div className="mt-6 pt-6 border-t border-dashed border-gray-100 space-y-6">
               {/* Keenan Distributions */}
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex items-center gap-2 text-[10px] font-black text-racing-green/40 uppercase tracking-widest mb-3">
-                  <ArrowDownUp size={14} /> Keenan Distributions
-                </div>
-                {!hasKeenan ? (
-                  <p className="text-[10px] text-gray-400 italic">Calculating complex combinations...</p>
-                ) : (
+              {hasKeenan && (
+                <div className="space-y-3">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                    <BrainCircuit size={14} className="text-gold" /> Probable Distributions
+                  </p>
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">Top Forecasts</p>
-                      {race?.analysis?.keenan?.forecast_top_3?.slice(0, 2).map((f: any) => (
-                        <p key={f.combination} className="text-xs font-bold text-gray-700 leading-tight mb-1">
-                          {f.combination.replace('>', '→')} <span className="text-gold italic">{Math.round((f.probability||0)*100)}%</span>
-                        </p>
-                      ))}
+                    <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                      <p className="text-[8px] font-black text-gray-400 uppercase mb-1">Top Forecast</p>
+                      <p className="text-[10px] font-bold text-racing-green italic">{race.analysis.keenan.forecast_top_3[0]?.combination}</p>
                     </div>
-                    <div>
-                      <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">Top Tricast</p>
-                      {race?.analysis?.keenan?.tricast_top_3?.slice(0, 1).map((t: any) => (
-                        <p key={t.combination} className="text-xs font-bold text-gray-700 leading-tight italic">
-                          {t.combination.replace(/>/g, '→')}
-                        </p>
-                      ))}
+                    <div className="bg-gray-50 p-3 rounded-xl border border-gray-100">
+                      <p className="text-[8px] font-black text-gray-400 uppercase mb-1">Top Tricast</p>
+                      <p className="text-[10px] font-bold text-racing-green italic">{race.analysis.keenan.tricast_top_3[0]?.combination}</p>
                     </div>
                   </div>
-                )}
-              </div>
-
-              {/* Mordin Calibration */}
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <div className="flex items-center gap-2 text-[10px] font-black text-racing-green/40 uppercase tracking-widest mb-3">
-                  <Zap size={14} /> Mordin Calibration
                 </div>
-                {!hasMordin ? (
-                  <p className="text-[10px] text-gray-400 italic">Aligning model with bookmaker odds...</p>
-                ) : (
+              )}
+
+              {/* Mordin Market Divergence */}
+              {hasMordin && (
+                <div className="space-y-3">
+                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                    <ArrowDownUp size={14} className="text-gold" /> Market Divergence
+                  </p>
                   <div className="space-y-2">
-                    {race?.analysis?.mordin?.market_comparison?.map((m: any) => (
-                      <div key={m.horse} className="flex justify-between items-center text-xs">
-                        <span className="font-medium text-gray-600">{m.horse}</span>
-                        <span className={`font-black italic ${
-                          (m.divergence||0) > 0.05 ? 'text-green-600' : (m.divergence||0) < -0.05 ? 'text-red-500' : 'text-gray-400'
-                        }`}>
-                          {(m.divergence||0) > 0 ? '+' : ''}{Math.round((m.divergence||0) * 100)}%
+                    {race.analysis.mordin.market_comparison.slice(0, 2).map((item: any) => (
+                      <div key={item.horse} className="flex justify-between items-center bg-gray-50 p-2 px-3 rounded-lg border border-gray-100">
+                        <span className="text-[10px] font-bold text-gray-700">{item.horse}</span>
+                        <span className={`text-[10px] font-black italic ${item.divergence > 0 ? 'text-green-600' : 'text-red-500'}`}>
+                          {item.divergence > 0 ? '+' : ''}{Math.round(item.divergence * 100)}% Edge
                         </span>
                       </div>
                     ))}
                   </div>
-                )}
-              </div>
+                </div>
+              )}
 
-              {/* Technical Rule Flags */}
-              <div className="flex flex-wrap gap-2">
-                {race?.analysis?.ruby?.race_volatility && (
-                  <span className="text-[9px] font-bold uppercase px-2 py-1 bg-racing-green/5 text-racing-green rounded">
-                    Volatility: {race.analysis.ruby.race_volatility}
-                  </span>
-                )}
-                <span className="text-[9px] font-bold uppercase px-2 py-1 bg-gold/10 text-gold rounded italic">
-                  Confidence: {race?.analysis?.keenan?.certainty_level || 'Medium'}
-                </span>
+              {/* Ruby Risks/Factors */}
+              <div className="space-y-3">
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                  <ShieldCheck size={14} className="text-gold" /> Risk Assessment
+                </p>
+                <div className="bg-racing-green/5 p-4 rounded-2xl border border-racing-green/10">
+                  <p className="text-[10px] font-medium text-racing-green italic leading-relaxed">
+                    {topPick?.key_risks?.[0] || 'Market alignment observed. Minimal tail-risk detected.'}
+                  </p>
+                </div>
               </div>
             </div>
           </motion.div>

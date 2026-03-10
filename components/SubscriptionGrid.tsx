@@ -1,43 +1,36 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Check, ArrowRight, Loader2 } from 'lucide-react';
+import { Check, ArrowRight, Loader2, Sparkles } from 'lucide-react';
 
 const PLANS = [
   {
-    name: 'Weekly Pass',
-    priceId: 'price_1T8iCzIWMCL4q0q2TBCfKfcN',
-    price: '£14.99',
-    period: '/ week',
-    desc: 'Perfect for Festival weeks like Cheltenham.',
-    features: ['All UK/IRE Meetings', 'T-30m Predictions', 'Full Agent Analysis'],
-    highlight: false
+    name: 'Festival Pass',
+    priceId: 'price_festival_pass', // Note: Placeholder, would need Stripe sync
+    price: '£9.99',
+    period: '/ festival',
+    desc: 'Full access for the 4 days of Cheltenham. High-fidelity only.',
+    features: ['All 28 Festival Races', 'T-30m Deep Analytics', 'Daily Intel Recap'],
+    highlight: false,
+    badge: 'Limited Time'
   },
   {
     name: 'Monthly Intel',
     priceId: 'price_1T8iD0IWMCL4q0q22ixc4wy7',
-    price: '£44.99',
+    price: '£24.99',
     period: '/ month',
     desc: 'The professional choice for daily punters.',
-    features: ['Everything in Weekly', 'Priority Support', 'Full Improvement Lab access'],
-    highlight: true
-  },
-  {
-    name: 'Quarterly Edge',
-    priceId: 'price_1T8iD1IWMCL4q0q2q4epQ1Rh',
-    price: '£99.99',
-    period: '/ quarter',
-    desc: 'Save 25% over monthly subscriptions.',
-    features: ['Everything in Monthly', 'Historical Data Export', 'Market Calibration Deep-Dive'],
-    highlight: false
+    features: ['All UK/IRE Meetings', 'Historical Form Data', 'Value Alerts Enabled'],
+    highlight: true,
+    badge: 'Best Value'
   },
   {
     name: 'Annual Legacy',
     priceId: 'price_1T8iD1IWMCL4q0q2v6IIzRab',
-    price: '£299.99',
+    price: '£149.99',
     period: '/ year',
-    desc: 'The ultimate punter package.',
-    features: ['Best Value', 'Exclusive Festival Intel', 'Personalized Agent Tuning'],
+    desc: 'The ultimate season-long intelligence package.',
+    features: ['Everything in Monthly', 'Exclusive Festival Intel', 'Priority Agent Support'],
     highlight: false
   }
 ];
@@ -64,17 +57,17 @@ export default function SubscriptionGrid() {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
       {PLANS.map((plan) => (
         <div 
           key={plan.name} 
           className={`bg-white rounded-[2rem] p-10 shadow-xl border-2 transition-all hover:shadow-2xl flex flex-col ${
-            plan.highlight ? 'border-gold ring-8 ring-gold/5 relative scale-105' : 'border-gray-50 hover:border-gray-200'
+            plan.highlight ? 'border-gold ring-8 ring-gold/5 relative scale-105 z-10' : 'border-gray-50 hover:border-gray-200'
           }`}
         >
-          {plan.highlight && (
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold text-racing-green text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-xl whitespace-nowrap italic">
-              Most Popular Choice
+          {plan.badge && (
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gold text-racing-green text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-xl whitespace-nowrap italic flex items-center gap-2">
+              <Sparkles size={12} /> {plan.badge}
             </div>
           )}
           <h2 className="text-racing-green font-black uppercase italic tracking-tight text-2xl mb-2 mt-2">{plan.name}</h2>
