@@ -62,7 +62,10 @@ export default async function LandingPage() {
                 <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" /> Live Performance
               </div>
               <h2 className="text-3xl font-black text-racing-green uppercase italic tracking-tighter">Verified Intelligence.</h2>
-              <p className="text-[11px] text-gray-400 font-bold uppercase tracking-widest leading-relaxed">Agent performance proofed against official results in real-time.</p>
+              <p className="text-[11px] text-gray-400 font-bold uppercase tracking-widest leading-relaxed mb-4">Agent performance proofed against official results in real-time.</p>
+              <Link href="/performance" className="inline-flex items-center gap-2 text-gold font-black uppercase tracking-widest text-[10px] hover:translate-x-1 transition-transform group">
+                View Full Audit <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
             
             <div className="flex flex-col items-center text-center space-y-2">

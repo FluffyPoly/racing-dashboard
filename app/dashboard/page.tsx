@@ -159,9 +159,14 @@ export default async function PaddockPage() {
               <div className="p-3 bg-red-50 rounded-xl text-red-500">
                 <Percent size={24} />
               </div>
-              <div>
+              <div className="flex-1">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Model State</p>
-                <p className="text-2xl font-black text-racing-green italic uppercase">Calibrated</p>
+                <div className="flex justify-between items-end">
+                  <p className="text-2xl font-black text-racing-green italic uppercase">Calibrated</p>
+                  <Link href="/performance" className="text-gold text-[9px] font-black uppercase hover:translate-x-1 transition-transform mb-1 flex items-center gap-1">
+                    Audit <ChevronRight size={10} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
