@@ -1,0 +1,21 @@
+{
+  "race_id": "Cheltenham_1720_20260312",
+  "timestamp": "2026-03-12T18:15:06.159578",
+  "agents": {
+    "ruby": "Probability model requires recalibration based on actual race outcome.",
+    "keenan": "Forecast distribution predictions diverged from actual placings.",
+    "mordin": "Market-model alignment showed variance in final odds vs prediction."
+  },
+  "race_meta": {
+    "track": "Cheltenham",
+    "time": "17:20",
+    "date": "2026-03-12",
+    "race_name": "Rosconn Group Fulke Walwyn Kim Muir Challenge Cup Amateur Jockeys' Handicap Chase (GBB Race)",
+    "class": "Class 2",
+    "going": "Good",
+    "distance": "3m2f70y",
+    "prize": "\u00a336,233"
+  },
+  "winner_predicted": "Cheltenham",
+  "top_predicted_horse": "Monbeg Genius"
+}
