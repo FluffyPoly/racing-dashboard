@@ -1,0 +1,21 @@
+{
+  "race_id": "ChelmsfordAW_1830_20260312",
+  "timestamp": "2026-03-12T18:14:59.695735",
+  "agents": {
+    "ruby": "Probability model requires recalibration based on actual race outcome.",
+    "keenan": "Forecast distribution predictions diverged from actual placings.",
+    "mordin": "Market-model alignment showed variance in final odds vs prediction."
+  },
+  "race_meta": {
+    "track": "Chelmsford (AW)",
+    "time": "18:30",
+    "date": "2026-03-12",
+    "race_name": "tigerbet.co.uk Best Odds Guaranteed Handicap",
+    "class": "Class 6",
+    "going": "Standard",
+    "distance": "7f",
+    "prize": "\u00a33,664"
+  },
+  "winner_predicted": "Chelmsford (AW)",
+  "top_predicted_horse": "Electrocution"
+}
