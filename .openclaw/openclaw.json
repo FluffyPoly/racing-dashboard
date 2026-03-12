@@ -144,7 +144,7 @@
     "telegram": {
       "enabled": true,
       "dmPolicy": "open",
-      "botToken": "8624280517:AAFJmihCBwg7LSCsUUxkDL0PNSYH5_4YVR4",
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
       "allowFrom": [
         "1948246956",
         "*"
@@ -157,7 +157,7 @@
     },
     "discord": {
       "enabled": true,
-      "token": "MTQ3OTExNTE4MTQ2MzQ0MTQ4OQ.Gqyvnm.kFdZPlbcaaClN32QCThqeyf2GZv50zI44F7eTo",
+      "token": "${DISCORD_BOT_TOKEN}",
       "dangerouslyAllowNameMatching": true,
       "groupPolicy": "open",
       "streaming": "partial",
