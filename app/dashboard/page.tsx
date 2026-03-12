@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { Clock, ShieldAlert, LogOut, Trophy, Target, Percent, TrendingUp } from 'lucide-react';
+import { Clock, ShieldAlert, LogOut, Trophy, Target, Percent, TrendingUp, ChevronRight } from 'lucide-react';
 import RaceCard from '@/components/RaceCard';
 import { redirect } from 'next/navigation';
 import { getPerformanceStats } from '@/lib/stats';
