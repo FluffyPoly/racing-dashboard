@@ -109,28 +109,21 @@ def main():
                             log(f"⚠️ Failed to gather data for {race_topic}")
 
                 # 2. RESULTS & LEARNING: T+20 minutes
+                # TODO: Replace gemini-results.sh with agent-based results gathering to avoid Gemini CLI quota exhaustion
+                # For now, skip this phase until results gathering is refactored to use OpenClaw agents
                 if now >= (rt + timedelta(minutes=20)) and now < (rt + timedelta(minutes=300)):
                     if f"{race_id}_predicted" in completed and f"{race_id}_learned" not in completed:
-                        log(f"🧠 TRIGGER: Learning for {race_topic}")
-                        
-                        # Fetch results using Gemini
-                        res_json_str = subprocess.check_output(f"bash {WS}/bin/gemini-results.sh '{race_topic}'", shell=True).decode().strip()
-                        
-                        if res_json_str and len(res_json_str) > 10:
-                            res_data = json.loads(res_json_str)
-                            
-                            # PUSH TO SUPABASE RESULTS TABLE
-                            payload = {
-                                "race_id": race_id,
-                                "winner": res_data['winner'],
-                                "full_order": res_data['order']
-                            }
-                            headers = {"apikey": S_KEY, "Authorization": f"Bearer {S_KEY}", "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates"}
-                            requests.post(f"{S_URL}/results", headers=headers, json=payload)
-                            
-                            # Trigger Learning Loop (which now reads from DB)
-                            if run_command(f"bash {WS}/bin/race-feedback '{race_id}'"):
-                                mark_completed(race_id, "learned")
+                        log(f"⏭️  SKIPPED: Learning for {race_topic} (pending agent-based results gathering)")
+                        mark_completed(race_id, "learned")
+                        # TODO: Implement via agent (e.g., use Cecil or dedicated agent to fetch race results)
+                        # res_json_str = subprocess.check_output(f"bash {WS}/bin/gemini-results.sh '{race_topic}'", shell=True).decode().strip()
+                        # if res_json_str and len(res_json_str) > 10:
+                        #     res_data = json.loads(res_json_str)
+                        #     payload = {"race_id": race_id, "winner": res_data['winner'], "full_order": res_data['order']}
+                        #     headers = {"apikey": S_KEY, "Authorization": f"Bearer {S_KEY}", "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates"}
+                        #     requests.post(f"{S_URL}/results", headers=headers, json=payload)
+                        #     if run_command(f"bash {WS}/bin/race-feedback '{race_id}'"):
+                        #         mark_completed(race_id, "learned")
 
         except Exception as e:
             log(f"CRITICAL LOOP ERROR: {e}")
