@@ -1,0 +1,21 @@
+{
+  "race_id": "ChelmsfordAW_1730_20260312",
+  "timestamp": "2026-03-12T18:14:56.332157",
+  "agents": {
+    "ruby": "Probability model requires recalibration based on actual race outcome.",
+    "keenan": "Forecast distribution predictions diverged from actual placings.",
+    "mordin": "Market-model alignment showed variance in final odds vs prediction."
+  },
+  "race_meta": {
+    "track": "Chelmsford (AW)",
+    "time": "17:30",
+    "date": "2026-03-12",
+    "race_name": "bettingsites.co.uk New Betting Sites Handicap (GBBPlus Race)",
+    "class": "Class 3",
+    "going": "Standard",
+    "distance": "1m2f",
+    "prize": "\u00a37,851"
+  },
+  "winner_predicted": "Chelmsford (AW)",
+  "top_predicted_horse": "Respond"
+}
