@@ -1,0 +1,43 @@
+# Ignore everything by default
+*
+!*/
+!.gitignore
+
+# Track pipeline bin scripts
+!bin/
+!bin/*.sh
+!bin/*.py
+!bin/*.json
+
+# Track OpenClaw configuration
+!.openclaw/
+!.openclaw/openclaw.json
+
+# Track agent instruction files only
+!agents/
+!agents/cecil/
+!agents/ruby/
+!agents/keenan/
+!agents/mordin/
+!agents/persad/
+!agents/racing-supervisor/
+agents/*/
+!agents/*/SOUL.md
+!agents/*/IDENTITY.md
+!agents/*/TOOLS.md
+!agents/*/HEARTBEAT.md
+!agents/*/USER.md
+!agents/*/AGENTS.md
+
+# Exclude runtime state
+agents/*/.git/
+agents/*/memory/
+agents/*/workspace/
+agents/*/.learnings/
+agents/*/.cache/
+.openclaw/agents/
+.openclaw/workspace/
+races/
+tmp/
+.env
+.env.local

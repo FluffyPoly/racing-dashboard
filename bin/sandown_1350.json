@@ -1,0 +1,61 @@
+{
+  "race_id": "Sandown_1350_20260307",
+  "race_meta": {
+    "track": "Sandown",
+    "time": "13:50",
+    "date": "2026-03-07",
+    "race_name": "EBF Betfair National Hunt Novices' Handicap Hurdle Final",
+    "class": "Premier Handicap",
+    "going": "Soft"
+  },
+  "horses": [
+    {
+      "name": "Scorpio Rising",
+      "factors": {
+        "OR": 130,
+        "jockey": "Sean Bowen",
+        "trainer": "Olly Murphy",
+        "early_odds": "4.5",
+        "form": "111"
+      },
+      "confidence_score": 0.98,
+      "data_warnings": []
+    },
+    {
+      "name": "Get On George",
+      "factors": {
+        "OR": 115,
+        "jockey": "Danny McMenamin",
+        "trainer": "J. Parkinson",
+        "early_odds": "33.0",
+        "form": "Improved"
+      },
+      "confidence_score": 0.90,
+      "data_warnings": []
+    },
+    {
+      "name": "Gee Force Flyer",
+      "factors": {
+        "OR": 118,
+        "jockey": "Brendan Powell",
+        "trainer": "Tizzard",
+        "early_odds": "20.0",
+        "form": "Solid"
+      },
+      "confidence_score": 0.92,
+      "data_warnings": []
+    },
+    {
+      "name": "Wolf Walker",
+      "factors": {
+        "OR": 135,
+        "jockey": "TBC",
+        "trainer": "TBC",
+        "early_odds": "2.2",
+        "form": "Fav"
+      },
+      "confidence_score": 0.95,
+      "data_warnings": []
+    }
+  ]
+}

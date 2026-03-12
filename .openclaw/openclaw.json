@@ -1,0 +1,241 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.2",
+    "lastTouchedAt": "2026-03-06T14:45:11.181Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-05T16:50:08.578Z",
+    "lastRunVersion": "2026.3.2",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openrouter:default": {
+        "provider": "openrouter",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+      "models": {
+        "openrouter/auto": {
+          "alias": "OpenRouter"
+        },
+        "openrouter/google/gemini-2.0-flash-001": {},
+        "openrouter/google/gemini-flash-1-5": {},
+        "openrouter/meta-llama/llama-3.3-70b-instruct:free": {},
+        "openrouter/mistralai/mistral-small-3.1-24b-instruct": {},
+        "openrouter/deepseek/deepseek-chat-v3-0324": {},
+        "openrouter/qwen/qwen-2.5-72b-instruct": {}
+      },
+      "workspace": "/home/ruby/.openclaw/workspace",
+      "memorySearch": {
+        "enabled": false,
+        "model": "openrouter/openai/text-embedding-3-small"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "sandbox": {
+        "mode": "off"
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "name": "AP McCoy",
+        "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+        "tools": {
+          "profile": "full",
+          "fs": {
+            "workspaceOnly": false
+          }
+        }
+      },
+      {
+        "id": "mordin",
+        "name": "mordin",
+        "workspace": "/home/ruby/agents/mordin",
+        "agentDir": "/home/ruby/.openclaw/agents/mordin/agent",
+        "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+        "tools": {
+          "profile": "full"
+        }
+      },
+      {
+        "id": "ruby",
+        "name": "ruby",
+        "workspace": "/home/ruby/agents/ruby",
+        "agentDir": "/home/ruby/.openclaw/agents/ruby/agent",
+        "model": "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+        "tools": {
+          "profile": "full",
+          "fs": {
+            "workspaceOnly": true
+          }
+        }
+      },
+      {
+        "id": "persad",
+        "name": "persad",
+        "workspace": "/home/ruby/agents/persad",
+        "agentDir": "/home/ruby/.openclaw/agents/persad/agent",
+        "model": "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+        "tools": {
+          "profile": "full",
+          "fs": {
+            "workspaceOnly": true
+          }
+        }
+      },
+      {
+        "id": "cecil",
+        "name": "cecil",
+        "workspace": "/home/ruby/agents/cecil",
+        "agentDir": "/home/ruby/.openclaw/agents/cecil/agent",
+        "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+        "tools": {
+          "profile": "full",
+          "fs": {
+            "workspaceOnly": true
+          }
+        }
+      },
+      {
+        "id": "keenan",
+        "name": "keenan",
+        "workspace": "/home/ruby/agents/keenan",
+        "agentDir": "/home/ruby/.openclaw/agents/keenan/agent",
+        "model": "openrouter/deepseek/deepseek-chat-v3-0324",
+        "tools": {
+          "profile": "full"
+        }
+      }
+    ]
+  },
+  "tools": {
+    "agentToAgent": {
+      "enabled": true
+    },
+    "exec": {
+      "host": "gateway"
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "open",
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "allowFrom": [
+        "1948246956",
+        "*"
+      ],
+      "groupAllowFrom": [
+        "1948246956"
+      ],
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    },
+    "discord": {
+      "enabled": true,
+      "token": "${DISCORD_BOT_TOKEN}",
+      "dangerouslyAllowNameMatching": true,
+      "groupPolicy": "open",
+      "streaming": "partial",
+      "dmPolicy": "open",
+      "allowFrom": [
+        "1479090595300511786:cecil",
+        "1479090708705972265:ruby",
+        "1479090774460076154:keenan",
+        "1479090806018150513:mordin",
+        "1479090840390340680:persad",
+        "*",
+        "*:main"
+      ],
+      "guilds": {
+        "1479090461506404625": {
+          "requireMention": false,
+          "channels": {
+            "1479090595300511786": {
+              "requireMention": false,
+              "enabled": true
+            },
+            "1479090708705972265": {
+              "requireMention": false,
+              "enabled": true
+            },
+            "1479090774460076154": {
+              "requireMention": false,
+              "enabled": true
+            },
+            "1479090806018150513": {
+              "requireMention": false,
+              "enabled": true
+            },
+            "1479090840390340680": {
+              "requireMention": false,
+              "enabled": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "openclaw-racing-secret"
+    },
+    "trustedProxies": [],
+    "tailscale": {
+      "mode": "serve",
+      "resetOnExit": false
+    },
+    "remote": {
+      "token": "openclaw-racing-secret"
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send"
+      ]
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      },
+      "discord": {
+        "enabled": true
+      }
+    }
+  }
+}
