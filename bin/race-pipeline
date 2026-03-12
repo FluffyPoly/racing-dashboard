@@ -1,0 +1,321 @@
+#!/bin/bash
+race_id="$1"
+local_file="$2"
+
+if [ -z "$race_id" ]; then 
+  echo "Usage: race-pipeline 'race_id' [local_file.json]"
+  exit 1
+fi
+
+run_id=$(date +%s)
+echo "🏇 Resilient Pipeline initiated: $race_id"
+WS="/home/ruby"
+RACE_DIR="$WS/races/$race_id"
+mkdir -p "$RACE_DIR"
+
+# Supabase Config
+S_URL="https://txsuawougiptdlmmiasy.supabase.co/rest/v1"
+S_KEY="${SUPABASE_KEY}"
+
+# Discord Channels
+CH_CECIL="1479090595300511786"
+CH_RUBY="1479090708705972265"
+CH_KEENAN="1479090774460076154"
+CH_MORDIN="1479090806018150513"
+CH_PERSAD="1479090840390340680"
+
+# Robust JSON Cleaner
+clean_json_output() {
+  python3 -c "
+import json, sys, re
+text = sys.stdin.read()
+match = re.search(r'\{.*\}', text, re.DOTALL)
+if match:
+    try:
+        data = json.loads(match.group(0))
+        print(json.dumps(data))
+    except: pass
+" <<< "$1"
+}
+
+send_discord() {
+  local channel="$1"
+  local message="$2"
+  openclaw message send --channel discord --target "$channel" --message "$message" > /dev/null 2>&1
+}
+
+# OpenRouter API Key and Fallback Models
+OPENROUTER_KEY="${OPENROUTER_KEY}"
+FALLBACK_MODELS=("google/gemini-flash-1-5" "meta-llama/llama-3.3-70b-instruct:free" "mistralai/mistral-small-3.1-24b-instruct" "deepseek/deepseek-chat-v3-0324")
+
+# run_gather: Cecil data gathering with 3-tier fallback
+run_gather() {
+  local race_id="$1"
+  local track="$2"
+  local time="$3"
+
+  # Tier 1: rpscrape high-fidelity
+  echo "🔍 Tier 1: rpscrape gather..." >&2
+  result=$(python3 /home/ruby/bin/rpscrape-gatherer.py "$track" "$time" "$race_id" 2>/dev/null)
+  if [[ -n "$result" ]] && [[ ${#result} -ge 100 ]]; then
+    echo "✅ High-fidelity data secured." >&2
+    echo "$result"
+    return 0
+  fi
+
+  # Tier 2: Cecil openclaw agent (OpenRouter model, live web search tools)
+  echo "⚠️ rpscrape failed. Tier 2: Cecil agent via OpenRouter..." >&2
+  echo "[$(date)] [MODEL-SWITCH] gather falling back to Cecil agent for $race_id" >> "$WS/races/state/model-switch.log"
+  result=$(openclaw agent --agent "cecil" -m "Fetch the racecard for $race_id. Use google_web_search to find live runners, jockeys, trainers, OR and early odds. Output ONLY strict JSON." --json 2>/dev/null \
+    | python3 -c "import json,sys; d=json.load(sys.stdin); print(''.join(p.get('text','') for p in d.get('result',{}).get('payloads',[])))" 2>/dev/null)
+
+  result=$(python3 -c "
+import json, sys, re
+text = sys.stdin.read()
+match = re.search(r'\{.*\}', text, re.DOTALL)
+if match:
+    try:
+        data = json.loads(match.group(0))
+        print(json.dumps(data))
+    except: pass
+" <<< "$result" 2>/dev/null)
+
+  if [[ -n "$result" ]] && [[ ${#result} -ge 100 ]]; then
+    echo "✅ Cecil agent gather succeeded." >&2
+    echo "$result"
+    return 0
+  fi
+
+  # Tier 3: gemini-gatherer.sh (Gemini CLI with web search) — emergency fallback
+  echo "⚠️ Cecil agent failed. Tier 3: gemini-gatherer (emergency)..." >&2
+  result=$(bash /home/ruby/bin/gemini-gatherer.sh "$race_id" 2>/dev/null)
+  if [[ -n "$result" ]] && [[ ${#result} -ge 100 ]]; then
+    echo "⚠️ Using emergency Gemini fallback for $race_id" >&2
+    echo "[$(date)] [MODEL-SWITCH] gather emergency fallback to Gemini CLI for $race_id" >> "$WS/races/state/model-switch.log"
+    echo "$result"
+    return 0
+  fi
+
+  echo "Error: All gather tiers failed for $race_id" >&2
+  return 1
+}
+
+# run_llm: Route through OpenClaw agent first, fallback to OpenRouter
+run_llm() {
+  local prompt="$1"
+  local step="$2"
+  local agent_id="$3"
+
+  # 1. Try via OpenClaw agent (agent owns its task)
+  echo "🤖 Running $step via OpenClaw agent ($agent_id)..." >&2
+  result=$(openclaw agent --agent "$agent_id" -m "$prompt" --json 2>/dev/null \
+    | python3 -c "import json,sys; d=json.load(sys.stdin); print(''.join(p.get('text','') for p in d.get('result',{}).get('payloads',[])))" 2>/dev/null)
+
+  if [[ -n "$result" ]]; then
+    echo "✅ $step completed via $agent_id agent" >&2
+    echo "$result"
+    return 0
+  fi
+
+  echo "⚠️ Agent $agent_id failed for $step. Falling back to OpenRouter direct..." >&2
+  echo "[$(date)] [MODEL-SWITCH] $step agent failed, using OpenRouter direct" >> "$WS/races/state/model-switch.log"
+
+  # 2. Fallback: OpenRouter direct API
+  for model in "${FALLBACK_MODELS[@]}"; do
+    echo "🔄 Trying $model for $step..." >&2
+    result=$(curl -s "https://openrouter.ai/api/v1/chat/completions" \
+      -H "Authorization: Bearer $OPENROUTER_KEY" \
+      -H "Content-Type: application/json" \
+      -d "{\"model\": \"$model\", \"messages\": [{\"role\": \"user\", \"content\": $(echo "$prompt" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')}], \"max_tokens\": 4096}" \
+      2>/dev/null | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['choices'][0]['message']['content'])" 2>/dev/null)
+
+    if [[ -n "$result" ]]; then
+      echo "[$(date)] [MODEL-SWITCH] $step switched to $model (direct)" >> "$WS/races/state/model-switch.log"
+      echo "✅ $step completed via $model" >&2
+      echo "$result"
+      return 0
+    fi
+  done
+
+  echo "Error: All models failed for step $step" >&2
+  return 1
+}
+
+mkdir -p "$WS/races/state"
+
+# 1. GATHER DATA (CECIL)
+if [ -n "$local_file" ] && [ -f "$local_file" ]; then
+    cecil_json=$(cat "$local_file")
+else
+    # Extract track and time from race_id
+    # race_id example: Cheltenham_1320_20260310
+    track=$(echo "$race_id" | cut -d'_' -f1)
+    time_raw=$(echo "$race_id" | cut -d'_' -f2)
+    # Re-insert colon if needed (1320 -> 13:20)
+    if [[ ! "$time_raw" == *":"* ]]; then
+        time="${time_raw:0:2}:${time_raw:2:2}"
+    else
+        time="$time_raw"
+    fi
+
+    cecil_json=$(run_gather "$race_id" "$track" "$time")
+fi
+
+if [ -z "$cecil_json" ]; then echo "Error: Data gathering failed"; exit 1; fi
+echo "$cecil_json" > "$RACE_DIR/cecil.json"
+
+# CECIL DISCORD - HIGH FIDELITY MARKDOWN TABLE
+cecil_md=$(python3 -c "
+import json, sys
+data = json.loads(sys.stdin.read())
+meta = data['race_meta']
+print(f\"🏇 **OFFICIAL RACE CARD: {meta['track']} {meta['time']}**\")
+print(f\"Race: {meta['race_name']} | Class: {meta['class']} | Going: {meta['going']}\")
+print(\"\\n| Horse | Jockey | Trainer | OR | Odds |\")
+print(\"| :--- | :--- | :--- | :--- | :--- |\")
+for h in data['horses']:
+    f = h['factors']
+    print(f\"| {h['name']} | {f['jockey']} | {f['trainer']} | {f['OR']} | {f['early_odds']} |\")
+" <<< "$cecil_json")
+send_discord "$CH_CECIL" "$cecil_md"
+
+# 2. RUBY (PROBABILITIES) - USING STABLE HEADLESS GEMINI
+echo "1. Ruby Analysis..."
+ruby_prompt="Act as Analyst Ruby. Review this high-fidelity UK horse racing card: $cecil_json. 
+Assign win probabilities (0.0 to 1.0) to every horse.
+
+CRITICAL:
+1. Use the 'spotlight' and 'comment' fields for tactical context.
+2. Use the 'performance_history' field (last 5 runs) to verify form. Pay attention to RPR (Racing Post Rating) and TS (Top Speed) trends. If a horse's RPR is improving race-on-race, they are a primary contender.
+3. If a horse has no history in our database, rely on the spotlight.
+4. Do not just mirror the market order. Evaluate suitability independently.
+
+Output ONLY raw JSON matching this structure: 
+{
+  \"race_id\": \"$race_id\",
+  \"rankings\": [
+    { \"name\": \"Horse Name\", \"win_probability\": 0.45, \"place_probability\": 0.70, \"fair_odds\": 2.2, \"key_positive_factors\": [], \"key_risks\": [] }
+  ]
+}"
+ruby_raw=$(run_llm "$ruby_prompt" "ruby" "ruby")
+ruby_json=$(clean_json_output "$ruby_raw")
+echo "$ruby_json" > "$RACE_DIR/ruby.json"
+
+# 3. KEENAN (DISTRIBUTIONS)
+echo "2. Keenan Analysis..."
+keenan_prompt="Act as Architect Keenan. Review Ruby's probabilities: $ruby_json. 
+1. Calculate the most probable Forecast (1-2) and Tricast (1-2-3) combinations.
+2. Provide a 'pace_analysis' based on the horse profiles and spotlights in: $cecil_json. 
+   - Identify if the pace is likely to be: FAST, MODERATE, or SLOW.
+   - Mention which horse is likely to lead.
+Output ONLY raw JSON matching this structure:
+{
+  \"most_probable_winner\": { \"horse\": \"Name\", \"probability\": 0.45 },
+  \"forecast_top_3\": [ { \"combination\": \"A > B\", \"probability\": 0.15 } ],
+  \"tricast_top_3\": [ { \"combination\": \"A > B > C\", \"probability\": 0.05 } ],
+  \"pace_analysis\": { \"type\": \"FAST\", \"leader\": \"Horse Name\", \"insight\": \"One sentence on who this favors\" }
+}"
+keenan_raw=$(run_llm "$keenan_prompt" "keenan" "keenan")
+keenan_json=$(clean_json_output "$keenan_raw")
+echo "$keenan_json" > "$RACE_DIR/keenan.json"
+
+# 3b. LATE INTELLIGENCE (X/TWITTER)
+echo "🔍 Checking X for late intelligence..."
+top_horses=$(echo "$ruby_json" | jq -r '.rankings | sort_by(.win_probability) | reverse | .[0:3] | .[].name')
+twitter_intel=""
+if [ -f "$WS/.twitter_cookies" ]; then
+    while read -r horse; do
+        if [ -z "$horse" ]; then continue; fi
+        echo "   - Searching for $horse..."
+        # Add 30s timeout to prevent hanging the pipeline
+        sentiment=$(timeout 30s python3 /home/ruby/bin/twitter-sentiment.py "$horse" 2>/dev/null)
+        if [[ -n "$sentiment" ]] && [[ ! "$sentiment" == *"No significant paddock buzz"* ]] && [[ ! "$sentiment" == *"No recent buzz detected"* ]]; then
+            twitter_intel="${twitter_intel}\n- **$horse**: $sentiment"
+        fi
+    done <<< "$top_horses"
+else
+    echo "⚠️ Skipping X intelligence (no cookies provided in .twitter_cookies)"
+fi
+
+# 4. MORDIN (MARKET CALIBRATION)
+echo "3. Mordin Analysis..."
+mordin_prompt="Act as Market Analyst Mordin. 
+Compare Ruby's Model: $ruby_json 
+against the actual Market: $(echo "$cecil_json" | jq -c '.horses | map({name, odds: .factors.early_odds})').
+Identify 'Divergence' (Model Prob - Market Implied Prob).
+
+CRITICAL LATE INTELLIGENCE FROM X (TWITTER):
+$twitter_intel
+
+TASK:
+1. If the late intelligence reports physical issues (sweat, agitation, lameness), DOWNGRADE the horse's win probability in your final calibration.
+2. If it reports 'massive support' or 'stable whispers', UPGRADE it.
+3. If no intelligence is provided, stick to the ratings.
+
+Output ONLY raw JSON matching this structure:
+{
+  \"market_comparison\": [ { \"horse\": \"Name\", \"model_probability\": 0.45, \"market_implied_probability\": 0.40, \"divergence\": 0.05, \"adjustment_reason\": \"...\" } ]
+}"
+mordin_raw=$(run_llm "$mordin_prompt" "mordin" "mordin")
+mordin_json=$(clean_json_output "$mordin_raw")
+echo "$mordin_json" > "$RACE_DIR/mordin.json"
+
+# 5. PERSAD (SUBSCRIBER REPORT) - BACK TO AGENT FOR NARRATIVE
+echo "4. Persad Finalizing..."
+persad_prompt="Generate high-fidelity Subscriber Tier report for $race_id. 
+CARD: $cecil_json
+RUBY: $ruby_json
+KEENAN: $keenan_json
+MORDIN: $mordin_json
+Note: If the top picks match the market favorites, explain why (e.g. 'Strong ratings agreement' vs 'Model unable to find divergence')."
+persad_report=$(openclaw agent --agent "persad" -m "$persad_prompt" --json 2>/dev/null | jq -r '[.result.payloads[].text] | join("\n")')
+
+# PIPELINE MONITOR (INTERNAL)
+if [[ "$persad_report" == *"Pattern recognition adjusted"* ]]; then
+  echo "[$(date)] [MONITOR] Fallback detected for $race_id" >> "$WS/races/state/pipeline_issues.log"
+fi
+top_prob=$(echo "$ruby_json" | jq -r '.rankings | sort_by(.win_probability) | reverse | .[0].win_probability // 0')
+if (( $(echo "$top_prob > 0.60" | bc -l) )); then
+  echo "[$(date)] [MONITOR] Extreme Bias/Confidence ($top_prob) for $race_id" >> "$WS/races/state/pipeline_issues.log"
+fi
+
+send_discord "$CH_PERSAD" "$persad_report"
+
+# 5b. WINNER VERIFICATION & X POST (when results available)
+# This will be triggered from race-feedback once race results are confirmed
+# Persad will use twitter_cli to post winning predictions to X
+# Format: Under 278 chars, include horse name, race, dashboard URL
+# TODO: Implement via race-feedback integration
+
+# 6. SUPABASE OFFLOAD (ROBUST)
+S_RACE_ID=$(python3 -c "import re; print(re.sub(r'[^a-zA-Z0-9]', '_', '$race_id'))")
+today_id=$(date +"%Y%m%d")
+if [[ ! "$S_RACE_ID" =~ _$today_id$ ]]; then 
+  # If it doesn't end with today's ID, but already has a date pattern, don't append
+  if [[ ! "$S_RACE_ID" =~ _[0-9]{8}$ ]]; then
+    S_RACE_ID="${S_RACE_ID}_$today_id"
+  fi
+fi
+
+dashboard_json=$(python3 -c "
+import json
+with open('$RACE_DIR/cecil.json', 'r') as f: cecil = json.load(f)
+with open('$RACE_DIR/ruby.json', 'r') as f: ruby = json.load(f)
+with open('$RACE_DIR/keenan.json', 'r') as f: keenan = json.load(f)
+with open('$RACE_DIR/mordin.json', 'r') as f: mordin = json.load(f)
+data = {
+    'race_id': '$S_RACE_ID',
+    'meta': cecil['race_meta'],
+    'analysis': {'ruby': ruby, 'keenan': keenan, 'mordin': mordin}
+}
+print(json.dumps(data))
+")
+
+echo "$dashboard_json" > "$RACE_DIR/dashboard.json"
+python3 /home/ruby/bin/supabase-races-uploader.py "$S_RACE_ID" "$RACE_DIR"
+
+# GIT BACKUP
+echo "$dashboard_json" > "$WS/racing-dashboard/data/predictions/${race_id}.json"
+bash "$WS/bin/sync-dashboard.sh" "$race_id" "prediction"
+
+echo "✅ Pipeline Complete."
