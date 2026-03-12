@@ -1,0 +1,19 @@
+{
+  "race_id": "Wolverhampton_1930_20260310",
+  "timestamp": "2026-03-12T18:15:49.553567",
+  "agents": {
+    "ruby": "Probability model requires recalibration based on actual race outcome.",
+    "keenan": "Forecast distribution predictions diverged from actual placings.",
+    "mordin": "Market-model alignment showed variance in final odds vs prediction."
+  },
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "19:30",
+    "date": "2026-03-10",
+    "race_name": "Midnite: Built For 2026 Not 2006 Classified Stakes (Div 2)",
+    "class": "6",
+    "going": "Standard (Tapeta)"
+  },
+  "winner_predicted": "Wolverhampton",
+  "top_predicted_horse": "East Tyrone"
+}
