@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-12T17:48:05.308603",
+  "timestamp": "2026-03-12T18:04:00.796626",
   "total_races": 100,
   "races_with_results": 76,
-  "correct_predictions": 15,
-  "win_accuracy": 19.74,
+  "correct_predictions": 16,
+  "win_accuracy": 21.05,
   "by_agent": {
     "ruby": {
-      "correct": 15,
+      "correct": 16,
       "total": 76,
-      "accuracy": 19.74
+      "accuracy": 21.05
     },
     "keenan": {
       "correct": 0,
@@ -22,11 +22,6 @@
     }
   },
   "by_track": {
-    "Cheltenham": {
-      "correct": 3,
-      "total": 12,
-      "accuracy": 25.0
-    },
     "Naas": {
       "correct": 1,
       "total": 6,
@@ -41,6 +36,11 @@
       "correct": 3,
       "total": 7,
       "accuracy": 42.86
+    },
+    "Cheltenham": {
+      "correct": 3,
+      "total": 11,
+      "accuracy": 27.27
     },
     "Southwell": {
       "correct": 0,
@@ -72,6 +72,11 @@
       "total": 5,
       "accuracy": 40.0
     },
+    "Chelmsford (AW)": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 100.0
+    },
     "Huntingdon": {
       "correct": 0,
       "total": 3,
@@ -84,31 +89,23 @@
     }
   },
   "by_confidence": {
-    "low": {
-      "correct": 0,
-      "total": 7,
-      "accuracy": 0.0
-    },
     "high": {
       "correct": 3,
       "total": 25,
       "accuracy": 12.0
     },
     "medium": {
-      "correct": 12,
-      "total": 44,
-      "accuracy": 27.27
+      "correct": 13,
+      "total": 45,
+      "accuracy": 28.89
+    },
+    "low": {
+      "correct": 0,
+      "total": 6,
+      "accuracy": 0.0
     }
   },
   "recent_races": [
-    {
-      "race_id": "Cheltenham_1400_20260311",
-      "track": "Cheltenham",
-      "predicted": "kaid d'authie",
-      "actual": "romeo coolio",
-      "correct": false,
-      "confidence": "low"
-    },
     {
       "race_id": "Naas1430_20260308",
       "track": "Naas",
@@ -282,6 +279,14 @@
       "track": "Cheltenham",
       "predicted": "favori de champdou",
       "actual": "favori de champdou",
+      "correct": true,
+      "confidence": "medium"
+    },
+    {
+      "race_id": "ChelmsfordAW_1649_20260312",
+      "track": "Chelmsford (AW)",
+      "predicted": "bronte beach",
+      "actual": "bronte beach",
       "correct": true,
       "confidence": "medium"
     },
