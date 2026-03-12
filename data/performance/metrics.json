@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-12T16:10:30.658759",
-  "total_races": 98,
-  "races_with_results": 82,
+  "timestamp": "2026-03-12T16:42:13.824813",
+  "total_races": 100,
+  "races_with_results": 80,
   "correct_predictions": 16,
-  "win_accuracy": 19.51,
+  "win_accuracy": 20.0,
   "by_agent": {
     "ruby": {
       "correct": 16,
-      "total": 82,
-      "accuracy": 19.51
+      "total": 80,
+      "accuracy": 20.0
     },
     "keenan": {
       "correct": 0,
@@ -22,16 +22,6 @@
     }
   },
   "by_track": {
-    "Carlisle": {
-      "correct": 2,
-      "total": 7,
-      "accuracy": 28.57
-    },
-    "Naas": {
-      "correct": 1,
-      "total": 7,
-      "accuracy": 14.29
-    },
     "Plumpton": {
       "correct": 2,
       "total": 7,
@@ -46,6 +36,11 @@
       "correct": 3,
       "total": 12,
       "accuracy": 25.0
+    },
+    "Naas": {
+      "correct": 1,
+      "total": 6,
+      "accuracy": 16.67
     },
     "Warwick": {
       "correct": 1,
@@ -67,6 +62,11 @@
       "total": 6,
       "accuracy": 16.67
     },
+    "Carlisle": {
+      "correct": 2,
+      "total": 6,
+      "accuracy": 33.33
+    },
     "Stratford": {
       "correct": 1,
       "total": 6,
@@ -86,8 +86,8 @@
   "by_confidence": {
     "high": {
       "correct": 4,
-      "total": 30,
-      "accuracy": 13.33
+      "total": 28,
+      "accuracy": 14.29
     },
     "medium": {
       "correct": 12,
@@ -101,22 +101,6 @@
     }
   },
   "recent_races": [
-    {
-      "race_id": "Carlisle1420_20260308",
-      "track": "Carlisle",
-      "predicted": "lucy the wire",
-      "actual": "majordomo (fr)",
-      "correct": false,
-      "confidence": "high"
-    },
-    {
-      "race_id": "Naas1637_20260308",
-      "track": "Naas",
-      "predicted": "ballygunner castle",
-      "actual": "spread boss ted",
-      "correct": false,
-      "confidence": "high"
-    },
     {
       "race_id": "Plumpton_1400_20260309",
       "track": "Plumpton",
