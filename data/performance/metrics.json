@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-12T17:20:10.894399",
+  "timestamp": "2026-03-12T17:34:20.884455",
   "total_races": 100,
-  "races_with_results": 77,
+  "races_with_results": 76,
   "correct_predictions": 15,
-  "win_accuracy": 19.48,
+  "win_accuracy": 19.74,
   "by_agent": {
     "ruby": {
       "correct": 15,
-      "total": 77,
-      "accuracy": 19.48
+      "total": 76,
+      "accuracy": 19.74
     },
     "keenan": {
       "correct": 0,
@@ -22,11 +22,6 @@
     }
   },
   "by_track": {
-    "Wolverhampton": {
-      "correct": 1,
-      "total": 12,
-      "accuracy": 8.33
-    },
     "Cheltenham": {
       "correct": 3,
       "total": 12,
@@ -67,6 +62,11 @@
       "total": 6,
       "accuracy": 16.67
     },
+    "Wolverhampton": {
+      "correct": 1,
+      "total": 11,
+      "accuracy": 9.09
+    },
     "Plumpton": {
       "correct": 2,
       "total": 5,
@@ -84,15 +84,15 @@
     }
   },
   "by_confidence": {
-    "high": {
-      "correct": 3,
-      "total": 26,
-      "accuracy": 11.54
-    },
     "low": {
       "correct": 0,
       "total": 7,
       "accuracy": 0.0
+    },
+    "high": {
+      "correct": 3,
+      "total": 25,
+      "accuracy": 12.0
     },
     "medium": {
       "correct": 12,
@@ -101,14 +101,6 @@
     }
   },
   "recent_races": [
-    {
-      "race_id": "Wolverhampton_1700_20260310",
-      "track": "Wolverhampton",
-      "predicted": "prince quattro",
-      "actual": "wasthatok",
-      "correct": false,
-      "confidence": "high"
-    },
     {
       "race_id": "Cheltenham_1400_20260311",
       "track": "Cheltenham",
