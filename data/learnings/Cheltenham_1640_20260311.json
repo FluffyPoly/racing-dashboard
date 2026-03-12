@@ -1,0 +1,34 @@
+{
+  "race_id": "Cheltenham_1640_20260311",
+  "race_meta": {
+    "track": "Cheltenham",
+    "time": "16:40",
+    "date": "2026-03-11",
+    "race_name": "Debenhams Johnny Henderson Grand Annual Challenge Cup Handicap Chase",
+    "class": "Premier Handicap",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:16.205491",
+  "official_result": {
+    "winner": "Martator",
+    "order": [
+      "Martator",
+      "Jazzy Matty",
+      "Break My Soul"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked martator at position 9 with only 4.0% probability. Top pick was Be Aware (22.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Be Aware > Jazzy Matty, but actual result was Martator > Jazzy Matty. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Martator had well-aligned model/market values (divergence -1.9%). Market pricing efficient for this outcome."
+    }
+  }
+}

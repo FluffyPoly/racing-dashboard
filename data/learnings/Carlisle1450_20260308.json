@@ -1,0 +1,34 @@
+{
+  "race_id": "Carlisle1450_20260308",
+  "race_meta": {
+    "track": "Carlisle",
+    "time": "14:50",
+    "date": "2026-03-08",
+    "race_name": "First Past The Post At CopyBet Veterans' Handicap Chase",
+    "class": "Class 2",
+    "going": "Good to Soft (Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:10.420934",
+  "official_result": {
+    "winner": "Tommy's Oscar (IRE)",
+    "order": [
+      "Tommy's Oscar (IRE)",
+      "Credo (IRE)",
+      "Hillcrest (IRE)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner tommy's oscar (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Tommy's Oscar with 38.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Tommy's Oscar > Hillcrest, but actual result was Tommy's Oscar (IRE) > Credo (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

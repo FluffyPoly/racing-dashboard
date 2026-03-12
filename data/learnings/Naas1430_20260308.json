@@ -1,0 +1,34 @@
+{
+  "race_id": "Naas1430_20260308",
+  "race_meta": {
+    "track": "Naas",
+    "time": "14:30",
+    "date": "2026-03-07",
+    "race_name": "Kingsfurze Novice Hurdle (Grade 3)",
+    "class": "Grade 3",
+    "going": "Soft to Heavy"
+  },
+  "timestamp": "2026-03-12T18:33:18.868099",
+  "official_result": {
+    "winner": "Le Labo",
+    "order": [
+      "Le Labo",
+      "Blake",
+      "Parnell Street"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed le labo at position 3 (18.0% probability) vs top pick Blake (42.0%). Underestimated winning horse by ~24.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Blake > Davy Crockett, but actual result was Le Labo > Blake. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Le Labo had well-aligned model/market values (divergence -2.0%). Market pricing efficient for this outcome."
+    }
+  }
+}

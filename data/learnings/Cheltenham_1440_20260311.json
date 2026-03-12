@@ -1,0 +1,34 @@
+{
+  "race_id": "Cheltenham_1440_20260311",
+  "race_meta": {
+    "track": "Cheltenham",
+    "time": "14:40",
+    "date": "2026-03-11",
+    "race_name": "BetMGM Cup Handicap Hurdle",
+    "class": "Premier Handicap",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:14.871551",
+  "official_result": {
+    "winner": "Jingko Blue",
+    "order": [
+      "Jingko Blue",
+      "Franciscan Rock",
+      "Storm Heart"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked jingko blue at position 5 with only 9.5% probability. Top pick was Storm Heart (15.5%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Storm Heart > Kateira, but actual result was Jingko Blue > Franciscan Rock. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Jingko Blue had well-aligned model/market values (divergence -2.1%). Market pricing efficient for this outcome."
+    }
+  }
+}

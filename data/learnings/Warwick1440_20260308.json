@@ -1,0 +1,34 @@
+{
+  "race_id": "Warwick1440_20260308",
+  "race_meta": {
+    "track": "Warwick",
+    "time": "14:40",
+    "date": "2026-03-08",
+    "race_name": "Oddschecker Free Bets Novices' Hurdle (Qualifier) (Class 4) (Division II)",
+    "class": "4",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:29.761860",
+  "official_result": {
+    "winner": "Cosmic Connection",
+    "order": [
+      "Cosmic Connection",
+      "Road To Wembley",
+      "Ionian"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked cosmic connection at position 7 with only 2.0% probability. Top pick was Wondering Why (30.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Wondering Why > King Al, but actual result was Cosmic Connection > Road To Wembley. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Cosmic Connection had well-aligned model/market values (divergence -1.8%). Market pricing efficient for this outcome."
+    }
+  }
+}

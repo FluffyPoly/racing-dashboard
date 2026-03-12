@@ -1,0 +1,34 @@
+{
+  "race_id": "Warwick1340_20260308",
+  "race_meta": {
+    "track": "Warwick",
+    "time": "13:40",
+    "date": "2026-03-08",
+    "race_name": "Bet Smarter With Oddschecker Conditional Jockeys' Handicap Hurdle",
+    "class": "Class 4",
+    "going": "Good to Soft"
+  },
+  "timestamp": "2026-03-12T18:33:29.372769",
+  "official_result": {
+    "winner": "Newtown Rambler (IRE)",
+    "order": [
+      "Newtown Rambler (IRE)",
+      "So You Know (IRE)",
+      "A Good Yomp"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner newtown rambler (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was So You Know with 26.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was So You Know > Ukantango, but actual result was Newtown Rambler (IRE) > So You Know (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

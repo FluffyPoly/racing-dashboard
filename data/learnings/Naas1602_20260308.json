@@ -1,0 +1,34 @@
+{
+  "race_id": "Naas1602_20260308",
+  "race_meta": {
+    "track": "Naas",
+    "time": "16:02",
+    "date": "2026-03-08",
+    "race_name": "Bar 1 Betting Leinster National Handicap Chase (Listed)",
+    "class": "Listed Class 1",
+    "going": "Heavy (Soft to Heavy in places)"
+  },
+  "timestamp": "2026-03-12T18:33:19.482178",
+  "official_result": {
+    "winner": "Goraibhmaithagat",
+    "order": [
+      "Goraibhmaithagat",
+      "Uhavemeinstitches",
+      "Bioluminescence"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed goraibhmaithagat at position 3 (19.0% probability) vs top pick Uhavemeinstitches (24.0%). Underestimated winning horse by ~5.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Uhavemeinstitches > Chosen Witness, but actual result was Goraibhmaithagat > Uhavemeinstitches. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Goraibhmaithagat had well-aligned model/market values (divergence -3.2%). Market pricing efficient for this outcome."
+    }
+  }
+}

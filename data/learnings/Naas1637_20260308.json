@@ -1,0 +1,34 @@
+{
+  "race_id": "Naas1637_20260308",
+  "race_meta": {
+    "track": "Naas",
+    "time": "16:37",
+    "date": "2026-03-08",
+    "race_name": "BAR 1 Betting 'Download Our App For Cheltenham Rewards' Beginners Chase",
+    "class": "1",
+    "going": "Heavy"
+  },
+  "timestamp": "2026-03-12T18:33:19.708958",
+  "official_result": {
+    "winner": "Spread Boss Ted",
+    "order": [
+      "Spread Boss Ted",
+      "Ballygunner Castle",
+      "Champagne Jury"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed spread boss ted at position 2 (18.0% probability) vs top pick Ballygunner Castle (58.0%). Underestimated winning horse by ~40.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Ballygunner Castle > Spread Boss Ted, but actual result was Spread Boss Ted > Ballygunner Castle. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Spread Boss Ted had well-aligned model/market values (divergence -0.2%). Market pricing efficient for this outcome."
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "race_id": "Stratford_1620_20260309",
+  "race_meta": {
+    "track": "Stratford-on-Avon",
+    "time": "16:20",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Cheltenham Welcome Offer Handicap Chase",
+    "class": "4",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:27.408183",
+  "official_result": {
+    "winner": "As Legends Have It",
+    "order": [
+      "As Legends Have It",
+      "Realta Liath",
+      "Pescatorius"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed as legends have it at position 2 (23.0% probability) vs top pick Star Of Affinity (25.0%). Underestimated winning horse by ~2.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Star Of Affinity > As Legends Have It, but actual result was As Legends Have It > Realta Liath. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner As Legends Have It showed negative divergence (-19.1%): Model overvalued at 23.0% vs Market 42.1%. Market sentiment more accurate than model."
+    }
+  }
+}

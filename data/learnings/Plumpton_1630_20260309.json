@@ -1,0 +1,34 @@
+{
+  "race_id": "Plumpton_1630_20260309",
+  "race_meta": {
+    "track": "Plumpton",
+    "time": "16:30",
+    "date": "2026-03-09",
+    "race_name": "John Ellis Memorial Handicap Hurdle",
+    "class": "4",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:22.179899",
+  "official_result": {
+    "winner": "Valadon (IRE)",
+    "order": [
+      "Valadon (IRE)",
+      "Oakley's Way (IRE)",
+      "Moon Hunter"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner valadon (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Lasko Des Obeaux with 31.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Lasko Des Obeaux > Oakley's Way, but actual result was Valadon (IRE) > Oakley's Way (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

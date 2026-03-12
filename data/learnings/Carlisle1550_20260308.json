@@ -1,0 +1,34 @@
+{
+  "race_id": "Carlisle1550_20260308",
+  "race_meta": {
+    "track": "Carlisle",
+    "time": "15:50",
+    "date": "2026-03-07",
+    "race_name": "Best Odds Guaranteed Overnight At CopyBet Novices' Handicap Chase",
+    "class": "4",
+    "going": "Good to Soft (Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:10.826006",
+  "official_result": {
+    "winner": "Benmore",
+    "order": [
+      "Benmore",
+      "Kahavari",
+      "Celestial Fashion"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed benmore at position 2 (24.0% probability) vs top pick Celestial Fashion (46.0%). Underestimated winning horse by ~22.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Celestial Fashion > Benmore, but actual result was Benmore > Kahavari. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Benmore had well-aligned model/market values (divergence -3.0%). Market pricing efficient for this outcome."
+    }
+  }
+}

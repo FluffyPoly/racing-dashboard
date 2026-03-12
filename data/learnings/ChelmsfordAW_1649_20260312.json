@@ -1,11 +1,5 @@
 {
   "race_id": "ChelmsfordAW_1649_20260312",
-  "timestamp": "2026-03-12T18:02:15.876456",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Chelmsford (AW)",
     "time": "16:49",
@@ -16,6 +10,27 @@
     "distance": "1m2f",
     "prize": "\u00a33,477"
   },
-  "winner_predicted": "Chelmsford (AW)",
-  "top_predicted_horse": "Bronte Beach"
+  "timestamp": "2026-03-12T18:33:11.677610",
+  "official_result": {
+    "winner": "Bronte Beach",
+    "order": [
+      "Bronte Beach",
+      "Hes Our Cracker",
+      "Beachborough Girl"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified bronte beach (ranked 1st with 30.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Bronte Beach > Beachborough Girl, but actual result was Bronte Beach > Hes Our Cracker. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Bronte Beach had well-aligned model/market values (divergence 0.0%). Market pricing efficient for this outcome."
+    }
+  }
 }

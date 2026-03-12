@@ -1,0 +1,34 @@
+{
+  "race_id": "Sedgefield_1458_20260310",
+  "race_meta": {
+    "track": "Sedgefield",
+    "time": "14:58",
+    "date": "2026-03-10",
+    "race_name": "Heritage Drives The Goings Always Good Maiden Hurdle (GBB Race)",
+    "class": "Class 4",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:24.138544",
+  "official_result": {
+    "winner": "Las Canals (FR)",
+    "order": [
+      "Las Canals (FR)",
+      "Rebel Tribesman (IRE)",
+      "Liberty Coach"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked las canals (fr) at position 5 with only 2.0% probability. Top pick was Rebel Tribesman (58.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Rebel Tribesman (IRE) > Liberty Coach, but actual result was Las Canals (FR) > Rebel Tribesman (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Las Canals (FR) showed negative divergence (-6.0%): Model overvalued at 2.0% vs Market 8.0%. Market sentiment more accurate than model."
+    }
+  }
+}

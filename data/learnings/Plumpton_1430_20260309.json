@@ -1,0 +1,34 @@
+{
+  "race_id": "Plumpton_1430_20260309",
+  "race_meta": {
+    "track": "Plumpton",
+    "time": "14:30",
+    "date": "2026-03-07",
+    "race_name": "DragonBet The Roar Before BOG At Cheltenham Novices' Handicap Chase",
+    "class": "5",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:21.432736",
+  "official_result": {
+    "winner": "Rap Soul (FR)",
+    "order": [
+      "Rap Soul (FR)",
+      "Lunar Ocean (IRE)",
+      "Carpe Diem (FR)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner rap soul (fr) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Rap Soul with 53.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Rap Soul > Carpe Diem, but actual result was Rap Soul (FR) > Lunar Ocean (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

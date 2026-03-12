@@ -1,0 +1,34 @@
+{
+  "race_id": "Stratford_1650_20260309",
+  "race_meta": {
+    "track": "Stratford",
+    "time": "16:50",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Daily Faller Insurance 'Junior' National Hunt Flat Race (GBB Race)",
+    "class": "4",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:27.602189",
+  "official_result": {
+    "winner": "Frenati",
+    "order": [
+      "Frenati",
+      "Equi Libre",
+      "Monsieur Fernand"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed frenati at position 3 (15.0% probability) vs top pick Red Metal (38.0%). Underestimated winning horse by ~23.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Red Metal > Goliath Flight, but actual result was Frenati > Equi Libre. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Frenati had well-aligned model/market values (divergence -3.2%). Market pricing efficient for this outcome."
+    }
+  }
+}

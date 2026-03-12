@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_1900_20260309",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "19:00",
+    "date": "2026-03-09",
+    "race_name": "Always Gamble Responsibly At BetMGM Handicap",
+    "class": "4",
+    "going": "Standard (Tapeta)"
+  },
+  "timestamp": "2026-03-12T18:33:33.320314",
+  "official_result": {
+    "winner": "Champion Again Ole (IRE)",
+    "order": [
+      "Champion Again Ole (IRE)",
+      "Pressure's On (FR)",
+      "Kit Gabriel (IRE)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner champion again ole (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Champion Again Ole with 32.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Champion Again Ole > Monsieur Kodi, but actual result was Champion Again Ole (IRE) > Pressure's On (FR). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

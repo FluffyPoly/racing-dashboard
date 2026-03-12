@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_1800_20260309",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "18:00",
+    "date": "2026-03-09",
+    "race_name": "Daily Profit Boosts At betmgm.co.uk Fillies' Novice Stakes (GBB Race)",
+    "class": "4",
+    "going": "Standard"
+  },
+  "timestamp": "2026-03-12T18:33:32.092195",
+  "official_result": {
+    "winner": "Ribbon Of Sea (IRE)",
+    "order": [
+      "Ribbon Of Sea (IRE)",
+      "Oscar Nominee",
+      "Too Hot To Tango"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner ribbon of sea (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Oscar Nominee with 35.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Oscar Nominee > Ribbon Of Sea, but actual result was Ribbon Of Sea (IRE) > Oscar Nominee. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

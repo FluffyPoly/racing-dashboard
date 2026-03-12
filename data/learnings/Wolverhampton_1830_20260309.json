@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_1830_20260309",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "18:30",
+    "date": "2026-03-09",
+    "race_name": "Win \u00a3250,000 With BetMGM's Golden Goals Novice Stakes",
+    "class": "4",
+    "going": "Standard (Tapeta)"
+  },
+  "timestamp": "2026-03-12T18:33:32.742915",
+  "official_result": {
+    "winner": "Crown Relic (AUS)",
+    "order": [
+      "Crown Relic (AUS)",
+      "Powder Monkey (IRE)",
+      "I'm Just Ken"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified crown relic (aus) (ranked 1st with 68.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Crown Relic (AUS) > Powder Monkey, but actual result was Crown Relic (AUS) > Powder Monkey (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Crown Relic (AUS) showed negative divergence (-5.3%): Model overvalued at 68.0% vs Market 73.3%. Market sentiment more accurate than model."
+    }
+  }
+}

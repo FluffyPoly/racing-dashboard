@@ -1,11 +1,5 @@
 {
   "race_id": "Southwell_1945_20260310",
-  "timestamp": "2026-03-12T18:15:47.349729",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Southwell",
     "time": "19:45",
@@ -14,6 +8,27 @@
     "class": "6",
     "going": "Tapeta (Standard)"
   },
-  "winner_predicted": "Southwell",
-  "top_predicted_horse": "Homer Stokes"
+  "timestamp": "2026-03-12T18:33:26.354978",
+  "official_result": {
+    "winner": "Ring Of Gold",
+    "order": [
+      "Ring Of Gold",
+      "Homer Stokes",
+      "Elettaria"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed ring of gold at position 2 (22.0% probability) vs top pick Homer Stokes (35.0%). Underestimated winning horse by ~13.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Homer Stokes > Ring Of Gold, but actual result was Ring Of Gold > Homer Stokes. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Ring Of Gold had well-aligned model/market values (divergence 2.0%). Market pricing efficient for this outcome."
+    }
+  }
 }

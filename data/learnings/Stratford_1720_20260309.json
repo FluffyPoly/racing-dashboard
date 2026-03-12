@@ -1,0 +1,34 @@
+{
+  "race_id": "Stratford_1720_20260309",
+  "race_meta": {
+    "track": "Stratford",
+    "time": "17:20",
+    "date": "2026-03-09",
+    "race_name": "DragonBet Safer Gambling Tools No Roar Tonight Novices' Hunters' Chase",
+    "class": "Class 5",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:27.798321",
+  "official_result": {
+    "winner": "Corporal Jackjones",
+    "order": [
+      "Corporal Jackjones",
+      "High Game Royal",
+      "Tara Storm"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner corporal jackjones was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Corporal Jackjones (IRE) with 52.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Corporal Jackjones (IRE) > High Game Royal (FR), but actual result was Corporal Jackjones > High Game Royal. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

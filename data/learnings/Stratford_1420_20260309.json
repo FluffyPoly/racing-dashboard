@@ -1,0 +1,34 @@
+{
+  "race_id": "Stratford_1420_20260309",
+  "race_meta": {
+    "track": "Stratford",
+    "time": "14:20",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Cheltenham Extra Places Juvenile Hurdle (GBB Race)",
+    "class": "4",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:26.639914",
+  "official_result": {
+    "winner": "Cloaks Of Gold",
+    "order": [
+      "Cloaks Of Gold",
+      "Scarlet Moon",
+      "Forever Penywern"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed cloaks of gold at position 3 (18.0% probability) vs top pick Scarlet Moon (38.0%). Underestimated winning horse by ~20.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Scarlet Moon > Love You Back, but actual result was Cloaks Of Gold > Scarlet Moon. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Cloaks Of Gold had well-aligned model/market values (divergence -4.2%). Market pricing efficient for this outcome."
+    }
+  }
+}

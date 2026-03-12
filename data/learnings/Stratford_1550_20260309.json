@@ -1,0 +1,34 @@
+{
+  "race_id": "Stratford_1550_20260309",
+  "race_meta": {
+    "track": "Stratford",
+    "time": "15:50",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Cheltenham Dragonboosts Novices' Limited Handicap Hurdle",
+    "class": "5",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:27.220240",
+  "official_result": {
+    "winner": "Harbour Light",
+    "order": [
+      "Harbour Light",
+      "Eaststone Buck's",
+      "Colby Mayfield"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed harbour light at position 2 (22.0% probability) vs top pick Ballyhiho (32.0%). Underestimated winning horse by ~10.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Ballyhiho > Harbour Light, but actual result was Harbour Light > Eaststone Buck's. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Harbour Light had well-aligned model/market values (divergence -3.0%). Market pricing efficient for this outcome."
+    }
+  }
+}

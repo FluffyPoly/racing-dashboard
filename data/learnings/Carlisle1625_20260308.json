@@ -1,0 +1,34 @@
+{
+  "race_id": "Carlisle1625_20260308",
+  "race_meta": {
+    "track": "Carlisle",
+    "time": "16:25",
+    "date": "2026-03-08",
+    "race_name": "Johnny Burke's Cheltenham Blog At CopyBet Handicap Chase",
+    "class": "4",
+    "going": "Good to Soft (Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:11.068898",
+  "official_result": {
+    "winner": "Hudson De Grugy",
+    "order": [
+      "Hudson De Grugy",
+      "Super Citizen",
+      "Marown"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified hudson de grugy (ranked 1st with 28.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Hudson De Grugy > Lady In The Park, but actual result was Hudson De Grugy > Super Citizen. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Hudson De Grugy had well-aligned model/market values (divergence -2.8%). Market pricing efficient for this outcome."
+    }
+  }
+}

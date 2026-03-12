@@ -1,0 +1,34 @@
+{
+  "race_id": "Naas1400_20260308",
+  "race_meta": {
+    "track": "Naas",
+    "time": "14:00",
+    "date": "2026-03-08",
+    "race_name": "BAR 1 Betting 'Best Odds Guaranteed' Maiden Hurdle",
+    "class": "Maiden Hurdle",
+    "going": "Soft to Heavy"
+  },
+  "timestamp": "2026-03-12T18:33:18.647281",
+  "official_result": {
+    "winner": "Healys Pub",
+    "order": [
+      "Healys Pub",
+      "Doctor Elvis",
+      "Sine Qua Non"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked healys pub at position 4 with only 12.0% probability. Top pick was Colcannon (32.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Colcannon > Sine Qua Non, but actual result was Healys Pub > Doctor Elvis. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Healys Pub had well-aligned model/market values (divergence -3.4%). Market pricing efficient for this outcome."
+    }
+  }
+}

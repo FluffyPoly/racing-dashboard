@@ -1,11 +1,5 @@
 {
   "race_id": "Limerick_1654_20260312",
-  "timestamp": "2026-03-12T18:15:28.205915",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Limerick",
     "time": "16:54",
@@ -16,6 +10,27 @@
     "distance": "2m200y",
     "prize": "\u20ac8,835"
   },
-  "winner_predicted": "Limerick",
-  "top_predicted_horse": "Border Lad"
+  "timestamp": "2026-03-12T18:33:18.432606",
+  "official_result": {
+    "winner": "Jury Time",
+    "order": [
+      "Jury Time",
+      "Border Lad",
+      "Bois dAngos"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed jury time at position 2 (25.0% probability) vs top pick Border Lad (35.0%). Underestimated winning horse by ~10.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Border Lad > Jury Time, but actual result was Jury Time > Border Lad. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Jury Time had well-aligned model/market values (divergence 0.0%). Market pricing efficient for this outcome."
+    }
+  }
 }

@@ -1,11 +1,5 @@
 {
   "race_id": "Cheltenham_1640_20260312",
-  "timestamp": "2026-03-12T18:15:04.542293",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Cheltenham",
     "time": "16:40",
@@ -16,6 +10,27 @@
     "distance": "2m7f213y",
     "prize": "\u00a361,897"
   },
-  "winner_predicted": "Cheltenham",
-  "top_predicted_horse": "Staffordshire Knot"
+  "timestamp": "2026-03-12T18:33:16.440557",
+  "official_result": {
+    "winner": "Unexpected Winner",
+    "order": [
+      "Unexpected Winner",
+      "Staffordshire Knot",
+      "Kikijo"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner unexpected winner was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Staffordshire Knot with 25.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Staffordshire Knot > Kikijo, but actual result was Unexpected Winner > Staffordshire Knot. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
 }

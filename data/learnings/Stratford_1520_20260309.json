@@ -1,0 +1,34 @@
+{
+  "race_id": "Stratford_1520_20260309",
+  "race_meta": {
+    "track": "Stratford",
+    "time": "15:20",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Cheltenham Infernoboosts Handicap Hurdle",
+    "class": "Class 3",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:27.030615",
+  "official_result": {
+    "winner": "Let It Rain",
+    "order": [
+      "Let It Rain",
+      "Comanche Magic",
+      "Mr Mcloughlan"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified let it rain (ranked 1st with 32.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Let It Rain > Comanche Magic. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Let It Rain showed negative divergence (-8.0%): Model overvalued at 32.0% vs Market 40.0%. Market sentiment more accurate than model."
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "race_id": "Carlisle1420_20260308",
+  "race_meta": {
+    "track": "Carlisle",
+    "time": "14:20",
+    "date": "2026-03-07",
+    "race_name": "CopyBet Supporting UK Horse Racing EBF Junior 'National Hunt' Hurdle",
+    "class": "Class 4",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:10.204004",
+  "official_result": {
+    "winner": "Majordomo (FR)",
+    "order": [
+      "Majordomo (FR)",
+      "Molly's Lad",
+      "Masterfield (FR)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner majordomo (fr) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Lucy The Wire with 38.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Lucy The Wire > Molly's Lad, but actual result was Majordomo (FR) > Molly's Lad. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "race_id": "Taunton_1640_20260309",
+  "race_meta": {
+    "track": "Taunton",
+    "time": "16:40",
+    "date": "2026-03-09",
+    "race_name": "DragonBet Safer Gambling Tools No Roar Tonight Handicap Chase",
+    "class": "5",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:28.994692",
+  "official_result": {
+    "winner": "Kally Des Bruyeres",
+    "order": [
+      "Kally Des Bruyeres",
+      "Away For The Night",
+      "Blackijo Dagrostis"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified kally des bruyeres (ranked 1st with 42.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Kally Des Bruyeres > Away For The Night. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Kally Des Bruyeres had well-aligned model/market values (divergence -0.1%). Market pricing efficient for this outcome."
+    }
+  }
+}

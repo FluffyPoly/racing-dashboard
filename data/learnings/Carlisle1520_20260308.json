@@ -1,0 +1,34 @@
+{
+  "race_id": "Carlisle1520_20260308",
+  "race_meta": {
+    "track": "Carlisle",
+    "time": "15:20",
+    "date": "2026-03-08",
+    "race_name": "Safer Gambling At CopyBet Novices' Hurdle (GBB Race)",
+    "class": "4",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:10.617848",
+  "official_result": {
+    "winner": "Guet Apens",
+    "order": [
+      "Guet Apens",
+      "Forever Louie",
+      "King Kodiak"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified guet apens (ranked 1st with 55.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Guet Apens > They Want Me, but actual result was Guet Apens > Forever Louie. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Guet Apens had well-aligned model/market values (divergence 2.6%). Market pricing efficient for this outcome."
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "race_id": "Carlisle1700_20260308",
+  "race_meta": {
+    "track": "Carlisle",
+    "time": "17:00",
+    "date": "2026-03-08",
+    "race_name": "CopyBet Daily Profit Boost Mares' Handicap Hurdle",
+    "class": "5",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:11.268569",
+  "official_result": {
+    "winner": "Queen Roslyn",
+    "order": [
+      "Queen Roslyn",
+      "Out On Her Own",
+      "Disco Annie"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed queen roslyn at position 2 (16.0% probability) vs top pick Holly Bird (34.0%). Underestimated winning horse by ~18.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Holly Bird > Queen Roslyn, but actual result was Queen Roslyn > Out On Her Own. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Queen Roslyn had well-aligned model/market values (divergence -2.2%). Market pricing efficient for this outcome."
+    }
+  }
+}

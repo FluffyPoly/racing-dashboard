@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_2030_20260309",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "20:30",
+    "date": "2026-03-09",
+    "race_name": "Bet \u00a310 Get \u00a340 With BetMGM Handicap",
+    "class": "6",
+    "going": "Tapeta"
+  },
+  "timestamp": "2026-03-12T18:33:34.865103",
+  "official_result": {
+    "winner": "Wedonttellthetruth (IRE)",
+    "order": [
+      "Wedonttellthetruth (IRE)",
+      "Crown Inn To Win (IRE)",
+      "Corduroy"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed wedonttellthetruth (ire) at position 2 (20.0% probability) vs top pick Corduroy (22.0%). Underestimated winning horse by ~2.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Corduroy > Wedonttellthetruth (IRE), but actual result was Wedonttellthetruth (IRE) > Crown Inn To Win (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Wedonttellthetruth (IRE) had well-aligned model/market values (divergence 1.8%). Market pricing efficient for this outcome."
+    }
+  }
+}

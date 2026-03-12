@@ -1,11 +1,5 @@
 {
   "race_id": "ChelmsfordAW_1800_20260312",
-  "timestamp": "2026-03-12T18:14:58.053480",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Chelmsford (AW)",
     "time": "18:00",
@@ -16,6 +10,27 @@
     "distance": "7f",
     "prize": "\u00a35,234"
   },
-  "winner_predicted": "Chelmsford (AW)",
-  "top_predicted_horse": "Likeness"
+  "timestamp": "2026-03-12T18:33:12.084136",
+  "official_result": {
+    "winner": "Unexpected Winner",
+    "order": [
+      "Unexpected Winner",
+      "Likeness",
+      "Forbidden Colours"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner unexpected winner was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Likeness with 30.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Likeness > Forbidden Colours, but actual result was Unexpected Winner > Likeness. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
 }

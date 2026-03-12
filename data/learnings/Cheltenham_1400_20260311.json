@@ -1,11 +1,5 @@
 {
   "race_id": "Cheltenham_1400_20260311",
-  "timestamp": "2026-03-12T17:51:44.467751",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Cheltenham",
     "time": "14:00",
@@ -14,6 +8,27 @@
     "class": "Grade 1",
     "going": "Good to Soft (Good in places)"
   },
-  "winner_predicted": "Cheltenham",
-  "top_predicted_horse": "Kaid D'authie"
+  "timestamp": "2026-03-12T18:33:14.520909",
+  "official_result": {
+    "winner": "Romeo Coolio",
+    "order": [
+      "Romeo Coolio",
+      "Kaid D'authie",
+      "Final Demand"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed romeo coolio at position 2 (16.0% probability) vs top pick Kaid D'authie (18.0%). Underestimated winning horse by ~2.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Kaid D'authie > Romeo Coolio, but actual result was Romeo Coolio > Kaid D'authie. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Romeo Coolio had well-aligned model/market values (divergence -2.2%). Market pricing efficient for this outcome."
+    }
+  }
 }

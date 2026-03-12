@@ -1,0 +1,34 @@
+{
+  "race_id": "Naas1712_20260308",
+  "race_meta": {
+    "track": "Naas",
+    "time": "17:12",
+    "date": "2026-03-08",
+    "race_name": "BAR 1 Casino 'Slot Games & Live Casino' Mares (Pro/Am) INH Flat Race",
+    "class": "INH Flat",
+    "going": "Heavy"
+  },
+  "timestamp": "2026-03-12T18:33:19.942916",
+  "official_result": {
+    "winner": "Kiltybo",
+    "order": [
+      "Kiltybo",
+      "Poetisa",
+      "Moyneard"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed kiltybo at position 2 (12.0% probability) vs top pick Poetisa (68.0%). Underestimated winning horse by ~56.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Poetisa > Kiltybo, but actual result was Kiltybo > Poetisa. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Kiltybo had well-aligned model/market values (divergence -1.3%). Market pricing efficient for this outcome."
+    }
+  }
+}

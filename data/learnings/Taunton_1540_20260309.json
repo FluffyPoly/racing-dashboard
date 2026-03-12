@@ -1,0 +1,34 @@
+{
+  "race_id": "Taunton_1540_20260309",
+  "race_meta": {
+    "track": "Taunton",
+    "time": "15:40",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Cheltenham Dragonboosts Handicap Chase",
+    "class": "Class 3",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:28.568755",
+  "official_result": {
+    "winner": "Kap Vert",
+    "order": [
+      "Kap Vert",
+      "Royal Jewel",
+      "Kelce"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified kap vert (ranked 1st with 33.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Kap Vert > Royal Jewel. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Kap Vert had well-aligned model/market values (divergence 2.2%). Market pricing efficient for this outcome."
+    }
+  }
+}

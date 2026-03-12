@@ -1,0 +1,34 @@
+{
+  "race_id": "Sedgefield_1418_20260311",
+  "race_meta": {
+    "track": "Sedgefield",
+    "time": "14:18",
+    "date": "2026-03-11",
+    "race_name": "Mowden Park RFC Novices' Handicap Hurdle (Class 5)",
+    "class": "5",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:23.827332",
+  "official_result": {
+    "winner": "Wind Your Neck In (IRE)",
+    "order": [
+      "Wind Your Neck In (IRE)",
+      "Saint Polo (FR)",
+      "Shan't Wait (IRE)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner wind your neck in (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Wind Your Neck In with 25.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Wind Your Neck In > Shan't Wait, but actual result was Wind Your Neck In (IRE) > Saint Polo (FR). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

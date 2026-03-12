@@ -1,0 +1,34 @@
+{
+  "race_id": "Stratford_1450_20260309",
+  "race_meta": {
+    "track": "Stratford",
+    "time": "14:50",
+    "date": "2026-03-07",
+    "race_name": "DragonBet The Roar Before BOG @ Cheltenham Handicap Chase",
+    "class": "Class 4",
+    "going": "Soft (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:26.833580",
+  "official_result": {
+    "winner": "Harel Du Marais (FR)",
+    "order": [
+      "Harel Du Marais (FR)",
+      "Gaelic Rambler (IRE)",
+      "Non Stop (FR)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner harel du marais (fr) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Gaelic Rambler with 35.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Gaelic Rambler > Non Stop, but actual result was Harel Du Marais (FR) > Gaelic Rambler (IRE). Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

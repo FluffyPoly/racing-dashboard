@@ -1,0 +1,34 @@
+{
+  "race_id": "Taunton_1510_20260309",
+  "race_meta": {
+    "track": "Taunton",
+    "time": "15:10",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Cheltenham Infernoboosts Handicap Hurdle",
+    "class": "Class 4",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:28.367621",
+  "official_result": {
+    "winner": "Knight Templar",
+    "order": [
+      "Knight Templar",
+      "Tilehurst",
+      "St Lukes Chelsea"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked knight templar at position 5 with only 7.0% probability. Top pick was Postponed Legacy (32.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Postponed Legacy > Siam Park, but actual result was Knight Templar > Tilehurst. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Knight Templar had well-aligned model/market values (divergence -2.1%). Market pricing efficient for this outcome."
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "race_id": "Taunton_1710_20260309",
+  "race_meta": {
+    "track": "Taunton",
+    "time": "17:10",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Daily Faller Insurance 'Hands And Heels' Handicap Hurdle",
+    "class": "Class 5",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:29.188189",
+  "official_result": {
+    "winner": "Thankyouandplease",
+    "order": [
+      "Thankyouandplease",
+      "Prairie Diamond",
+      "Jetty May"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified thankyouandplease (ranked 1st with 23.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Thankyouandplease > Prairie Diamond. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Thankyouandplease had well-aligned model/market values (divergence -0.1%). Market pricing efficient for this outcome."
+    }
+  }
+}

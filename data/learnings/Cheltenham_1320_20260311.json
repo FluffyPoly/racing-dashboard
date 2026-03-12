@@ -1,0 +1,34 @@
+{
+  "race_id": "Cheltenham_1320_20260311",
+  "race_meta": {
+    "track": "Cheltenham",
+    "time": "13:20",
+    "date": "2026-03-11",
+    "race_name": "Turners Novices' Hurdle (Grade 1)",
+    "class": "Grade 1",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:14.154372",
+  "official_result": {
+    "winner": "King Rasko Grey",
+    "order": [
+      "King Rasko Grey",
+      "Act Of Innocence",
+      "Zeus Power"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed king rasko grey at position 2 (16.0% probability) vs top pick No Drama This End (22.0%). Underestimated winning horse by ~6.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was No Drama This End > King Rasko Grey, but actual result was King Rasko Grey > Act Of Innocence. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner King Rasko Grey had well-aligned model/market values (divergence -2.7%). Market pricing efficient for this outcome."
+    }
+  }
+}

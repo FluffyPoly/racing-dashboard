@@ -1,0 +1,34 @@
+{
+  "race_id": "Warwick1510_20260308",
+  "race_meta": {
+    "track": "Warwick",
+    "time": "15:10",
+    "date": "2026-03-08",
+    "race_name": "Royal Pug Handicap Hurdle",
+    "class": "4",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:29.950170",
+  "official_result": {
+    "winner": "Mount Anglesby",
+    "order": [
+      "Mount Anglesby",
+      "Kel Du Large",
+      "Jimmy Hurdstrom"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked mount anglesby at position 7 with only 4.0% probability. Top pick was Got A Dream (23.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Got A Dream > Kel Du Large, but actual result was Mount Anglesby > Kel Du Large. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Mount Anglesby had well-aligned model/market values (divergence -1.9%). Market pricing efficient for this outcome."
+    }
+  }
+}

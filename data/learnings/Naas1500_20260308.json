@@ -1,0 +1,34 @@
+{
+  "race_id": "Naas1500_20260308",
+  "race_meta": {
+    "track": "Naas",
+    "time": "15:00",
+    "date": "2026-03-08",
+    "race_name": "BAR 1 Betting Handicap Hurdle (0-100)",
+    "class": "Handicap",
+    "going": "Yielding"
+  },
+  "timestamp": "2026-03-12T18:33:19.073663",
+  "official_result": {
+    "winner": "Thankyouforthedays",
+    "order": [
+      "Thankyouforthedays",
+      "King Bob",
+      "Might Be The One"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified thankyouforthedays (ranked 1st with 28.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Thankyouforthedays > King Bob. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Thankyouforthedays had well-aligned model/market values (divergence -2.8%). Market pricing efficient for this outcome."
+    }
+  }
+}

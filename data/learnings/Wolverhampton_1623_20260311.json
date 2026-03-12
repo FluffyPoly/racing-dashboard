@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_1623_20260311",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "16:23",
+    "date": "2026-03-11",
+    "race_name": "Read Meg Nicholls' Blog At betmgm.co.uk Handicap",
+    "class": "Class 5",
+    "going": "Standard (Tapeta)"
+  },
+  "timestamp": "2026-03-12T18:33:31.101005",
+  "official_result": {
+    "winner": "Zipwire",
+    "order": [
+      "Zipwire",
+      "Aneirin's Sword",
+      "Extraterrestrial"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked zipwire at position 5 with only 12.0% probability. Top pick was Berkshire Schmokin (35.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Berkshire Schmokin (IRE) > Extraterrestrial (IRE), but actual result was Zipwire > Aneirin's Sword. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

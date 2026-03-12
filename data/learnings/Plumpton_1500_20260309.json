@@ -1,0 +1,34 @@
+{
+  "race_id": "Plumpton_1500_20260309",
+  "race_meta": {
+    "track": "Plumpton",
+    "time": "15:00",
+    "date": "2026-03-07",
+    "race_name": "Mayo Wynne Baxter Novices' Limited Handicap Hurdle",
+    "class": "5",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:21.619830",
+  "official_result": {
+    "winner": "Desert Halo",
+    "order": [
+      "Desert Halo",
+      "Lord Of The Glance",
+      "Kotari"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked desert halo at position 4 with only 9.0% probability. Top pick was Lord Of The Glance (38.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Lord Of The Glance > Kotari, but actual result was Desert Halo > Lord Of The Glance. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Desert Halo had well-aligned model/market values (divergence -0.1%). Market pricing efficient for this outcome."
+    }
+  }
+}

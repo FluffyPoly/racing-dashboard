@@ -1,0 +1,36 @@
+{
+  "race_id": "Cheltenham_1720_20260310",
+  "race_meta": {
+    "track": "Cheltenham",
+    "time": "17:20",
+    "date": "2026-03-10",
+    "race_name": "National Hunt Challenge Cup Novices' Handicap Chase (GBB Race)",
+    "class": "Class 2",
+    "going": "Good To Soft",
+    "distance": "3m5f201y",
+    "prize": "\u00a351,440"
+  },
+  "timestamp": "2026-03-12T18:33:16.623797",
+  "official_result": {
+    "winner": "Holloway Queen",
+    "order": [
+      "Holloway Queen",
+      "King of Answers",
+      "One Big Bang"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model ranked holloway queen at position 6 with only 7.0% probability. Top pick was Grand Geste (14.0%). Analysis missed key factors driving the winning horse's form."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Grand Geste > Newton Tornado, but actual result was Holloway Queen > King of Answers. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Holloway Queen had well-aligned model/market values (divergence -2.1%). Market pricing efficient for this outcome."
+    }
+  }
+}

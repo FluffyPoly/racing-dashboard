@@ -1,11 +1,5 @@
 {
   "race_id": "ChelmsfordAW_1830_20260312",
-  "timestamp": "2026-03-12T18:14:59.695735",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Chelmsford (AW)",
     "time": "18:30",
@@ -16,6 +10,27 @@
     "distance": "7f",
     "prize": "\u00a33,664"
   },
-  "winner_predicted": "Chelmsford (AW)",
-  "top_predicted_horse": "Electrocution"
+  "timestamp": "2026-03-12T18:33:12.301831",
+  "official_result": {
+    "winner": "Giles Glory",
+    "order": [
+      "Giles Glory",
+      "Oh So Perfect",
+      "Electrocution"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed giles glory at position 2 (20.0% probability) vs top pick Electrocution (25.0%). Underestimated winning horse by ~5.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Electrocution > Giles Glory, but actual result was Giles Glory > Oh So Perfect. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Giles Glory had well-aligned model/market values (divergence 0.0%). Market pricing efficient for this outcome."
+    }
+  }
 }

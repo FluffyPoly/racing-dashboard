@@ -1,0 +1,34 @@
+{
+  "race_id": "Sedgefield_1618_20260310",
+  "race_meta": {
+    "track": "Sedgefield",
+    "time": "16:18",
+    "date": "2026-03-10",
+    "race_name": "MW Civils & Groundworks Handicap Chase (Go North One Man Series Qualifier)",
+    "class": "Class 5",
+    "going": "Good (Good to Soft in places)"
+  },
+  "timestamp": "2026-03-12T18:33:24.889720",
+  "official_result": {
+    "winner": "Tanking Along (IRE)",
+    "order": [
+      "Tanking Along (IRE)",
+      "Intenzo (FR)",
+      "Powerofjet (IRE)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified tanking along (ire) (ranked 1st with 34.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Tanking Along (IRE) > Intenzo (FR). Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Tanking Along (IRE) had well-aligned model/market values (divergence -4.1%). Market pricing efficient for this outcome."
+    }
+  }
+}

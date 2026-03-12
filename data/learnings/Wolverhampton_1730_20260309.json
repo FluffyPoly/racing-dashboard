@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_1730_20260309",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "17:30",
+    "date": "2026-03-09",
+    "race_name": "Daily Profit Boosts At betmgm.co.uk Apprentice Handicap",
+    "class": "6",
+    "going": "Standard"
+  },
+  "timestamp": "2026-03-12T18:33:31.498866",
+  "official_result": {
+    "winner": "Always Fearless (IRE)",
+    "order": [
+      "Always Fearless (IRE)",
+      "Pessoa",
+      "Pitney (IRE)"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner always fearless (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Book Of Life with 29.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Book Of Life > Pessoa, but actual result was Always Fearless (IRE) > Pessoa. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

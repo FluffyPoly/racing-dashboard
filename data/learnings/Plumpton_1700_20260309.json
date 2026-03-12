@@ -1,0 +1,34 @@
+{
+  "race_id": "Plumpton_1700_20260309",
+  "race_meta": {
+    "track": "Plumpton",
+    "time": "17:00",
+    "date": "2026-03-09",
+    "race_name": "DragonBet The Roar Before Cheltenham Welcome Offer Open National Hunt Flat Race (GBB Race)",
+    "class": "5",
+    "going": "Good to Soft (Good in places)"
+  },
+  "timestamp": "2026-03-12T18:33:22.368480",
+  "official_result": {
+    "winner": "Otie's Friend",
+    "order": [
+      "Otie's Friend",
+      "Mint Approved",
+      "Chocks Away"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified otie's friend (ranked 1st with 30.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Otie's Friend > Mint Approved. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Otie's Friend had well-aligned model/market values (divergence -3.3%). Market pricing efficient for this outcome."
+    }
+  }
+}

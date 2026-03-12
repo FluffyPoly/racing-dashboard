@@ -1,0 +1,34 @@
+{
+  "race_id": "Cheltenham_1520_20260311",
+  "race_meta": {
+    "track": "Cheltenham",
+    "time": "15:20",
+    "date": "2026-03-11",
+    "race_name": "Glenfarclas Cross Country Chase (Limited Handicap)",
+    "class": "2",
+    "going": "Good to Soft"
+  },
+  "timestamp": "2026-03-12T18:33:15.167741",
+  "official_result": {
+    "winner": "Favori De Champdou",
+    "order": [
+      "Favori De Champdou",
+      "Stumptown",
+      "Desertmore House"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified favori de champdou (ranked 1st with 30.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Favori De Champdou > Stumptown. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Favori De Champdou had well-aligned model/market values (divergence 4.4%). Market pricing efficient for this outcome."
+    }
+  }
+}

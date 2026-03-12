@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_1930_20260309",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "19:30",
+    "date": "2026-03-09",
+    "race_name": "Midnite, Building The Future Of Betting Handicap",
+    "class": "4",
+    "going": "Standard (Tapeta)"
+  },
+  "timestamp": "2026-03-12T18:33:33.798139",
+  "official_result": {
+    "winner": "Moulin Booj (IRE)",
+    "order": [
+      "Moulin Booj (IRE)",
+      "Almaty Star (IRE)",
+      "American Bay"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified moulin booj (ire) (ranked 1st with 32.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Moulin Booj (IRE) > Almaty Star (IRE). Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Moulin Booj (IRE) had well-aligned model/market values (divergence -1.3%). Market pricing efficient for this outcome."
+    }
+  }
+}

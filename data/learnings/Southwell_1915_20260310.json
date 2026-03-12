@@ -1,0 +1,34 @@
+{
+  "race_id": "Southwell_1915_20260310",
+  "race_meta": {
+    "track": "Southwell",
+    "time": "19:15",
+    "date": "2026-03-10",
+    "race_name": "Midnite: Built For 2026 Not 2006 Handicap (GBBPlus Race)",
+    "class": "4",
+    "going": "Standard (Tapeta)"
+  },
+  "timestamp": "2026-03-12T18:33:26.164213",
+  "official_result": {
+    "winner": "Caliban (IRE)",
+    "order": [
+      "Caliban (IRE)",
+      "Midnight Rumble",
+      "Charlie's Choice"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner caliban (ire) was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Caliban with 48.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Caliban > Charlie's Choice, but actual result was Caliban (IRE) > Midnight Rumble. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
+}

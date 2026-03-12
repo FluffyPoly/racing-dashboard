@@ -1,0 +1,34 @@
+{
+  "race_id": "Wolverhampton_1700_20260310",
+  "race_meta": {
+    "track": "Wolverhampton",
+    "time": "17:00",
+    "date": "2026-03-10",
+    "race_name": "Midnite A Next Generation Betting App Handicap",
+    "class": "5",
+    "going": "Tapeta (Standard)"
+  },
+  "timestamp": "2026-03-12T18:33:31.296513",
+  "official_result": {
+    "winner": "Wasthatok",
+    "order": [
+      "Wasthatok",
+      "Tuba",
+      "King's Cruiser"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed wasthatok at position 3 (16.0% probability) vs top pick Prince Quattro (38.0%). Underestimated winning horse by ~22.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Prince Quattro > Tuba, but actual result was Wasthatok > Tuba. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Wasthatok had well-aligned model/market values (divergence -4.0%). Market pricing efficient for this outcome."
+    }
+  }
+}

@@ -1,11 +1,5 @@
 {
   "race_id": "NewcastleAW_1628_20260312",
-  "timestamp": "2026-03-12T18:15:41.705663",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Newcastle (AW)",
     "time": "16:28",
@@ -16,6 +10,27 @@
     "distance": "1m2f42y",
     "prize": "\u00a33,140"
   },
-  "winner_predicted": "Newcastle (AW)",
-  "top_predicted_horse": "Heartened"
+  "timestamp": "2026-03-12T18:33:20.365907",
+  "official_result": {
+    "winner": "Heartened",
+    "order": [
+      "Heartened",
+      "Regal Glory",
+      "Falaise Blanc"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model correctly identified heartened (ranked 1st with 25.0% predicted probability). Strong analytical framework."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Forecast distribution correctly predicted Heartened > Regal Glory. Win-place accuracy validated."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Heartened had well-aligned model/market values (divergence 0.0%). Market pricing efficient for this outcome."
+    }
+  }
 }

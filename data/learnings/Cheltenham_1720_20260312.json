@@ -1,11 +1,5 @@
 {
   "race_id": "Cheltenham_1720_20260312",
-  "timestamp": "2026-03-12T18:15:06.159578",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Cheltenham",
     "time": "17:20",
@@ -16,6 +10,27 @@
     "distance": "3m2f70y",
     "prize": "\u00a336,233"
   },
-  "winner_predicted": "Cheltenham",
-  "top_predicted_horse": "Monbeg Genius"
+  "timestamp": "2026-03-12T18:33:16.822285",
+  "official_result": {
+    "winner": "Insurrection",
+    "order": [
+      "Insurrection",
+      "Monbeg Genius",
+      "Herakles Westwood"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Model placed insurrection at position 3 (15.0% probability) vs top pick Monbeg Genius (25.0%). Underestimated winning horse by ~10.0 percentage points."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Monbeg Genius > Herakles Westwood, but actual result was Insurrection > Monbeg Genius. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Winner Insurrection had well-aligned model/market values (divergence 0.0%). Market pricing efficient for this outcome."
+    }
+  }
 }

@@ -1,11 +1,5 @@
 {
   "race_id": "ChelmsfordAW_1730_20260312",
-  "timestamp": "2026-03-12T18:14:56.332157",
-  "agents": {
-    "ruby": "Probability model requires recalibration based on actual race outcome.",
-    "keenan": "Forecast distribution predictions diverged from actual placings.",
-    "mordin": "Market-model alignment showed variance in final odds vs prediction."
-  },
   "race_meta": {
     "track": "Chelmsford (AW)",
     "time": "17:30",
@@ -16,6 +10,27 @@
     "distance": "1m2f",
     "prize": "\u00a37,851"
   },
-  "winner_predicted": "Chelmsford (AW)",
-  "top_predicted_horse": "Respond"
+  "timestamp": "2026-03-12T18:33:11.877345",
+  "official_result": {
+    "winner": "Unexpected Winner",
+    "order": [
+      "Unexpected Winner",
+      "Respond",
+      "Penzance"
+    ]
+  },
+  "analysis": {
+    "ruby": {
+      "title": "Probability Analysis",
+      "insight": "Actual winner unexpected winner was not in model's ranked horses. Model focused too heavily on pre-race favorites. Top prediction was Respond with 30.0% confidence."
+    },
+    "keenan": {
+      "title": "Forecast & Distribution",
+      "insight": "Top forecast prediction was Respond > Penzance, but actual result was Unexpected Winner > Respond. Distribution model underestimated variance in placing combinations."
+    },
+    "mordin": {
+      "title": "Market Alignment",
+      "insight": "Actual winner not found in market analysis. Market dynamics shifted unexpectedly from pre-race state."
+    }
+  }
 }
