@@ -1,0 +1,21 @@
+{
+  "race_id": "NewcastleAW_1548_20260312",
+  "timestamp": "2026-03-12T18:15:35.838976",
+  "agents": {
+    "ruby": "Probability model requires recalibration based on actual race outcome.",
+    "keenan": "Forecast distribution predictions diverged from actual placings.",
+    "mordin": "Market-model alignment showed variance in final odds vs prediction."
+  },
+  "race_meta": {
+    "track": "Newcastle (AW)",
+    "time": "15:48",
+    "date": "2026-03-12",
+    "race_name": "Midnite: Built For 2026 Not 2006 Handicap",
+    "class": "Class 6",
+    "going": "Standard",
+    "distance": "6f",
+    "prize": "\u00a33,140"
+  },
+  "winner_predicted": "Newcastle (AW)",
+  "top_predicted_horse": "Yorkshire Glory"
+}
