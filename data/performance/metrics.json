@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-12T18:16:07.419626",
+  "timestamp": "2026-03-12T18:18:26.858475",
   "total_races": 100,
-  "races_with_results": 93,
-  "correct_predictions": 21,
-  "win_accuracy": 22.58,
+  "races_with_results": 92,
+  "correct_predictions": 20,
+  "win_accuracy": 21.74,
   "by_agent": {
     "ruby": {
-      "correct": 21,
-      "total": 93,
-      "accuracy": 22.58
+      "correct": 20,
+      "total": 92,
+      "accuracy": 21.74
     },
     "keenan": {
       "correct": 0,
@@ -22,11 +22,6 @@
     }
   },
   "by_track": {
-    "Limerick": {
-      "correct": 3,
-      "total": 4,
-      "accuracy": 75.0
-    },
     "Naas": {
       "correct": 1,
       "total": 6,
@@ -92,6 +87,11 @@
       "total": 3,
       "accuracy": 0.0
     },
+    "Limerick": {
+      "correct": 2,
+      "total": 3,
+      "accuracy": 66.67
+    },
     "Stratford-on-Avon": {
       "correct": 0,
       "total": 1,
@@ -99,15 +99,15 @@
     }
   },
   "by_confidence": {
-    "medium": {
-      "correct": 16,
-      "total": 56,
-      "accuracy": 28.57
-    },
     "high": {
       "correct": 5,
       "total": 31,
       "accuracy": 16.13
+    },
+    "medium": {
+      "correct": 15,
+      "total": 55,
+      "accuracy": 27.27
     },
     "low": {
       "correct": 0,
@@ -116,14 +116,6 @@
     }
   },
   "recent_races": [
-    {
-      "race_id": "Limerick_1614_20260312",
-      "track": "Limerick",
-      "predicted": "snow punt",
-      "actual": "snow punt",
-      "correct": true,
-      "confidence": "medium"
-    },
     {
       "race_id": "Naas1430_20260308",
       "track": "Naas",
