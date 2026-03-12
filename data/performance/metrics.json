@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-12T17:05:26.569864",
+  "timestamp": "2026-03-12T17:19:32.793593",
   "total_races": 100,
-  "races_with_results": 78,
-  "correct_predictions": 16,
-  "win_accuracy": 20.51,
+  "races_with_results": 77,
+  "correct_predictions": 15,
+  "win_accuracy": 19.48,
   "by_agent": {
     "ruby": {
-      "correct": 16,
-      "total": 78,
-      "accuracy": 20.51
+      "correct": 15,
+      "total": 77,
+      "accuracy": 19.48
     },
     "keenan": {
       "correct": 0,
@@ -23,9 +23,9 @@
   },
   "by_track": {
     "Wolverhampton": {
-      "correct": 2,
-      "total": 13,
-      "accuracy": 15.38
+      "correct": 1,
+      "total": 12,
+      "accuracy": 8.33
     },
     "Cheltenham": {
       "correct": 3,
@@ -85,9 +85,9 @@
   },
   "by_confidence": {
     "high": {
-      "correct": 4,
-      "total": 27,
-      "accuracy": 14.81
+      "correct": 3,
+      "total": 26,
+      "accuracy": 11.54
     },
     "low": {
       "correct": 0,
@@ -101,14 +101,6 @@
     }
   },
   "recent_races": [
-    {
-      "race_id": "Wolverhampton_1830_20260309",
-      "track": "Wolverhampton",
-      "predicted": "crown relic (aus)",
-      "actual": "crown relic (aus)",
-      "correct": true,
-      "confidence": "high"
-    },
     {
       "race_id": "Wolverhampton_1700_20260310",
       "track": "Wolverhampton",
