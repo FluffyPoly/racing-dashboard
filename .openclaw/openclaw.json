@@ -51,7 +51,7 @@
       {
         "id": "main",
         "name": "AP McCoy",
-        "model": "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+        "model": "openrouter/deepseek/deepseek-chat-v3-0324",
         "tools": {
           "profile": "full",
           "fs": {
@@ -144,7 +144,7 @@
     "telegram": {
       "enabled": true,
       "dmPolicy": "open",
-      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "botToken": "8624280517:AAFJmihCBwg7LSCsUUxkDL0PNSYH5_4YVR4",
       "allowFrom": [
         "1948246956",
         "*"
@@ -157,7 +157,7 @@
     },
     "discord": {
       "enabled": true,
-      "token": "${DISCORD_BOT_TOKEN}",
+      "token": "MTQ3OTExNTE4MTQ2MzQ0MTQ4OQ.Gqyvnm.kFdZPlbcaaClN32QCThqeyf2GZv50zI44F7eTo",
       "dangerouslyAllowNameMatching": true,
       "groupPolicy": "open",
       "streaming": "partial",
