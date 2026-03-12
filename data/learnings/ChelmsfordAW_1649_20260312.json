@@ -1,0 +1,21 @@
+{
+  "race_id": "ChelmsfordAW_1649_20260312",
+  "timestamp": "2026-03-12T18:02:15.876456",
+  "agents": {
+    "ruby": "Probability model requires recalibration based on actual race outcome.",
+    "keenan": "Forecast distribution predictions diverged from actual placings.",
+    "mordin": "Market-model alignment showed variance in final odds vs prediction."
+  },
+  "race_meta": {
+    "track": "Chelmsford (AW)",
+    "time": "16:49",
+    "date": "2026-03-12",
+    "race_name": "bettingsites.co.uk UK Betting Sites Amateur Jockeys' Handicap",
+    "class": "Class 6",
+    "going": "Standard",
+    "distance": "1m2f",
+    "prize": "\u00a33,477"
+  },
+  "winner_predicted": "Chelmsford (AW)",
+  "top_predicted_horse": "Bronte Beach"
+}
