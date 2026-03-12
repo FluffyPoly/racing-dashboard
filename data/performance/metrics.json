@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-12T18:04:09.285243",
+  "timestamp": "2026-03-12T18:16:07.419626",
   "total_races": 100,
-  "races_with_results": 76,
-  "correct_predictions": 16,
-  "win_accuracy": 21.05,
+  "races_with_results": 93,
+  "correct_predictions": 21,
+  "win_accuracy": 22.58,
   "by_agent": {
     "ruby": {
-      "correct": 16,
-      "total": 76,
-      "accuracy": 21.05
+      "correct": 21,
+      "total": 93,
+      "accuracy": 22.58
     },
     "keenan": {
       "correct": 0,
@@ -22,6 +22,11 @@
     }
   },
   "by_track": {
+    "Limerick": {
+      "correct": 3,
+      "total": 4,
+      "accuracy": 75.0
+    },
     "Naas": {
       "correct": 1,
       "total": 6,
@@ -39,18 +44,23 @@
     },
     "Cheltenham": {
       "correct": 3,
-      "total": 11,
-      "accuracy": 27.27
+      "total": 15,
+      "accuracy": 20.0
     },
     "Southwell": {
       "correct": 0,
-      "total": 5,
+      "total": 6,
       "accuracy": 0.0
     },
     "Sedgefield": {
       "correct": 1,
       "total": 6,
       "accuracy": 16.67
+    },
+    "Newcastle (AW)": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 50.0
     },
     "Carlisle": {
       "correct": 2,
@@ -64,8 +74,8 @@
     },
     "Wolverhampton": {
       "correct": 1,
-      "total": 11,
-      "accuracy": 9.09
+      "total": 12,
+      "accuracy": 8.33
     },
     "Plumpton": {
       "correct": 2,
@@ -74,8 +84,8 @@
     },
     "Chelmsford (AW)": {
       "correct": 1,
-      "total": 1,
-      "accuracy": 100.0
+      "total": 4,
+      "accuracy": 25.0
     },
     "Huntingdon": {
       "correct": 0,
@@ -89,15 +99,15 @@
     }
   },
   "by_confidence": {
-    "high": {
-      "correct": 3,
-      "total": 25,
-      "accuracy": 12.0
-    },
     "medium": {
-      "correct": 13,
-      "total": 45,
-      "accuracy": 28.89
+      "correct": 16,
+      "total": 56,
+      "accuracy": 28.57
+    },
+    "high": {
+      "correct": 5,
+      "total": 31,
+      "accuracy": 16.13
     },
     "low": {
       "correct": 0,
@@ -106,6 +116,14 @@
     }
   },
   "recent_races": [
+    {
+      "race_id": "Limerick_1614_20260312",
+      "track": "Limerick",
+      "predicted": "snow punt",
+      "actual": "snow punt",
+      "correct": true,
+      "confidence": "medium"
+    },
     {
       "race_id": "Naas1430_20260308",
       "track": "Naas",
@@ -171,6 +189,14 @@
       "confidence": "medium"
     },
     {
+      "race_id": "NewcastleAW_1628_20260312",
+      "track": "Newcastle (AW)",
+      "predicted": "heartened",
+      "actual": "heartened",
+      "correct": true,
+      "confidence": "medium"
+    },
+    {
       "race_id": "Warwick1440_20260308",
       "track": "Warwick",
       "predicted": "wondering why",
@@ -225,6 +251,14 @@
       "actual": "jingko blue",
       "correct": false,
       "confidence": "low"
+    },
+    {
+      "race_id": "Cheltenham_1640_20260312",
+      "track": "Cheltenham",
+      "predicted": "staffordshire knot",
+      "actual": "unexpected winner",
+      "correct": false,
+      "confidence": "medium"
     },
     {
       "race_id": "Carlisle1450_20260308",
@@ -347,6 +381,14 @@
       "confidence": "medium"
     },
     {
+      "race_id": "Limerick_1654_20260312",
+      "track": "Limerick",
+      "predicted": "border lad",
+      "actual": "jury time",
+      "correct": false,
+      "confidence": "high"
+    },
+    {
       "race_id": "Warwick1510_20260308",
       "track": "Warwick",
       "predicted": "got a dream",
@@ -399,6 +441,14 @@
       "track": "Huntingdon",
       "predicted": "jessie jump jet",
       "actual": "no no fizz",
+      "correct": false,
+      "confidence": "medium"
+    },
+    {
+      "race_id": "NewcastleAW_1708_20260312",
+      "track": "Newcastle (AW)",
+      "predicted": "clansman",
+      "actual": "golspie",
       "correct": false,
       "confidence": "medium"
     },
@@ -459,6 +509,14 @@
       "confidence": "high"
     },
     {
+      "race_id": "Cheltenham_1720_20260312",
+      "track": "Cheltenham",
+      "predicted": "monbeg genius",
+      "actual": "insurrection",
+      "correct": false,
+      "confidence": "medium"
+    },
+    {
       "race_id": "Naas1530_20260308",
       "track": "Naas",
       "predicted": "better times ahead",
@@ -507,6 +565,14 @@
       "confidence": "medium"
     },
     {
+      "race_id": "ChelmsfordAW_1730_20260312",
+      "track": "Chelmsford (AW)",
+      "predicted": "respond",
+      "actual": "unexpected winner",
+      "correct": false,
+      "confidence": "medium"
+    },
+    {
       "race_id": "Warwick1540_20260308",
       "track": "Warwick",
       "predicted": "she is for me boys",
@@ -547,6 +613,22 @@
       "confidence": "high"
     },
     {
+      "race_id": "Limerick_1454_20260312",
+      "track": "Limerick",
+      "predicted": "river vale",
+      "actual": "river vale",
+      "correct": true,
+      "confidence": "high"
+    },
+    {
+      "race_id": "NewcastleAW_1745_20260312",
+      "track": "Newcastle (AW)",
+      "predicted": "portman blue",
+      "actual": "supreme lillia",
+      "correct": false,
+      "confidence": "medium"
+    },
+    {
       "race_id": "Carlisle1550_20260308",
       "track": "Carlisle",
       "predicted": "celestial fashion",
@@ -579,6 +661,30 @@
       "confidence": "high"
     },
     {
+      "race_id": "Wolverhampton_1930_20260310",
+      "track": "Wolverhampton",
+      "predicted": "east tyrone",
+      "actual": "legendsoftheland",
+      "correct": false,
+      "confidence": "medium"
+    },
+    {
+      "race_id": "Cheltenham_1520_20260312",
+      "track": "Cheltenham",
+      "predicted": "teahupoo",
+      "actual": "bob olinger",
+      "correct": false,
+      "confidence": "high"
+    },
+    {
+      "race_id": "ChelmsfordAW_1800_20260312",
+      "track": "Chelmsford (AW)",
+      "predicted": "likeness",
+      "actual": "unexpected winner",
+      "correct": false,
+      "confidence": "medium"
+    },
+    {
       "race_id": "Naas1602_20260308",
       "track": "Naas",
       "predicted": "uhavemeinstitches",
@@ -607,6 +713,30 @@
       "track": "Sedgefield",
       "predicted": "upfordebate",
       "actual": "alright dai",
+      "correct": false,
+      "confidence": "medium"
+    },
+    {
+      "race_id": "Southwell_1945_20260310",
+      "track": "Southwell",
+      "predicted": "homer stokes",
+      "actual": "ring of gold",
+      "correct": false,
+      "confidence": "high"
+    },
+    {
+      "race_id": "Limerick_1534_20260312",
+      "track": "Limerick",
+      "predicted": "rockys howya",
+      "actual": "rockys howya",
+      "correct": true,
+      "confidence": "high"
+    },
+    {
+      "race_id": "ChelmsfordAW_1830_20260312",
+      "track": "Chelmsford (AW)",
+      "predicted": "electrocution",
+      "actual": "giles glory",
       "correct": false,
       "confidence": "medium"
     },
@@ -648,6 +778,14 @@
       "predicted": "no drama this end",
       "actual": "king rasko grey",
       "correct": false,
+      "confidence": "medium"
+    },
+    {
+      "race_id": "NewcastleAW_1548_20260312",
+      "track": "Newcastle (AW)",
+      "predicted": "yorkshire glory",
+      "actual": "yorkshire glory",
+      "correct": true,
       "confidence": "medium"
     },
     {
@@ -713,6 +851,14 @@
       "actual": "cosmic soul",
       "correct": false,
       "confidence": "medium"
+    },
+    {
+      "race_id": "Cheltenham_1600_20260312",
+      "track": "Cheltenham",
+      "predicted": "fact to file",
+      "actual": "banbridge",
+      "correct": false,
+      "confidence": "high"
     }
   ]
 }
