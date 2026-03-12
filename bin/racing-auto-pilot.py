@@ -109,21 +109,51 @@ def main():
                             log(f"⚠️ Failed to gather data for {race_topic}")
 
                 # 2. RESULTS & LEARNING: T+20 minutes
-                # TODO: Replace gemini-results.sh with agent-based results gathering to avoid Gemini CLI quota exhaustion
-                # For now, skip this phase until results gathering is refactored to use OpenClaw agents
+                # Fetch race results and trigger learning/feedback loop
                 if now >= (rt + timedelta(minutes=20)) and now < (rt + timedelta(minutes=300)):
                     if f"{race_id}_predicted" in completed and f"{race_id}_learned" not in completed:
-                        log(f"⏭️  SKIPPED: Learning for {race_topic} (pending agent-based results gathering)")
-                        mark_completed(race_id, "learned")
-                        # TODO: Implement via agent (e.g., use Cecil or dedicated agent to fetch race results)
-                        # res_json_str = subprocess.check_output(f"bash {WS}/bin/gemini-results.sh '{race_topic}'", shell=True).decode().strip()
-                        # if res_json_str and len(res_json_str) > 10:
-                        #     res_data = json.loads(res_json_str)
-                        #     payload = {"race_id": race_id, "winner": res_data['winner'], "full_order": res_data['order']}
-                        #     headers = {"apikey": S_KEY, "Authorization": f"Bearer {S_KEY}", "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates"}
-                        #     requests.post(f"{S_URL}/results", headers=headers, json=payload)
-                        #     if run_command(f"bash {WS}/bin/race-feedback '{race_id}'"):
-                        #         mark_completed(race_id, "learned")
+                        log(f"🧠 TRIGGER: Learning & Winner Detection for {race_topic}")
+
+                        try:
+                            # Fetch results (using gemini-results.sh - results fetching only, not prediction)
+                            res_json_str = subprocess.check_output(
+                                f"bash {WS}/bin/gemini-results.sh '{race_topic}'",
+                                shell=True,
+                                timeout=30
+                            ).decode().strip()
+
+                            if res_json_str and len(res_json_str) > 10:
+                                res_data = json.loads(res_json_str)
+                                log(f"✅ Race results fetched: Winner = {res_data.get('winner', 'Unknown')}")
+
+                                # Store results in Supabase
+                                payload = {
+                                    "race_id": race_id,
+                                    "winner": res_data.get('winner'),
+                                    "full_order": res_data.get('order'),
+                                    "result_timestamp": datetime.now().isoformat()
+                                }
+                                headers = {
+                                    "apikey": S_KEY,
+                                    "Authorization": f"Bearer {S_KEY}",
+                                    "Content-Type": "application/json",
+                                    "Prefer": "resolution=merge-duplicates"
+                                }
+                                requests.post(f"{S_URL}/results", headers=headers, json=payload, timeout=10)
+                                log(f"📊 Results stored to Supabase")
+
+                                # Trigger race-feedback (learning loop + Persad winner detection)
+                                if run_command(f"bash {WS}/bin/race-feedback '{race_id}'"):
+                                    log(f"🏇 Learning complete. Persad will post winner if prediction matched.")
+                                    mark_completed(race_id, "learned")
+                                else:
+                                    log(f"⚠️  race-feedback failed for {race_id}")
+                            else:
+                                log(f"⚠️  No results found yet for {race_topic}")
+                        except subprocess.TimeoutExpired:
+                            log(f"⚠️  Results fetch timeout for {race_topic}")
+                        except Exception as e:
+                            log(f"⚠️  Results fetch error for {race_topic}: {e}")
 
         except Exception as e:
             log(f"CRITICAL LOOP ERROR: {e}")

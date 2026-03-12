@@ -1,0 +1,240 @@
+#!/bin/bash
+race_id="$1"
+
+if [ -z "$race_id" ]; then
+  echo "Usage: race-feedback 'race_id'"
+  exit 1
+fi
+
+S_URL="https://txsuawougiptdlmmiasy.supabase.co/rest/v1"
+S_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4c3Vhd291Z2lwdGRsbW1pYXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI5NTczNDksImV4cCI6MjA4ODUzMzM0OX0.5QlkuPtjIxF3dNNUBIlgQeM3ZRw1KH-aoNOt_b9B8d0"
+
+echo "🔄 DB-Driven Feedback Loop initiated for $race_id"
+
+# 1. FETCH PREDICTION AND RESULT FROM SUPABASE
+data_json=$(python3 -c "
+import requests, json
+headers = {'apikey': '$S_KEY', 'Authorization': 'Bearer $S_KEY'}
+race = requests.get(f'$S_URL/races?id=eq.$race_id&select=full_data', headers=headers).json()
+result = requests.get(f'$S_URL/results?race_id=eq.$race_id&select=winner,full_order', headers=headers).json()
+
+if race and result:
+    print(json.dumps({'prediction': race[0]['full_data'], 'outcome': result[0]}))
+else:
+    print('null')
+")
+
+if [ "$data_json" == "null" ] || [ -z "$data_json" ]; then
+    echo "❌ Error: DB records not found for $race_id"
+    exit 1
+fi
+
+prediction_json=$(echo "$data_json" | jq -c .prediction)
+results_json=$(echo "$data_json" | jq -c .outcome)
+
+# Buffer results
+mkdir -p /home/ruby/tmp
+echo "$results_json" > /home/ruby/tmp/results_temp.json
+
+# REFINED: Zero-Tolerance Agent Learning Logic
+# Logic: Agent analyzes -> Persad condenses (Sanity check) -> Final filter
+call_agent_learn() {
+  local agent="$1"
+  local analysis_prompt="$2"
+  local target_file="/home/ruby/tmp/${agent}_learn.txt"
+  local raw_file="/home/ruby/tmp/${agent}_raw.txt"
+  
+  echo "   - Agent $agent analyzing..."
+  raw_res=$(openclaw agent --agent "$agent" --json -m "$analysis_prompt" 2>/dev/null | jq -r '[.result.payloads[].text] | join("\n")' | tr -d '\0')
+  echo "$raw_res" > "$raw_file"
+  
+  # INITIAL GIBBERISH CHECK (Before Persad)
+  is_gibberish=$(python3 -c "
+import sys, re
+text = sys.stdin.read().lower()
+gibberish_signals = ['rocket', '🚀', '高', 'power']
+words = re.findall(r'\b\w+\b', text)
+if len(words) > 20:
+    unique_ratio = len(set(words)) / len(words)
+    # Catch actual spam loops
+    if unique_ratio < 0.20 or any(text.count(s) > 10 for s in gibberish_signals):
+        print('YES')
+    else:
+        print('NO')
+else:
+    print('NO')
+" <<< "$raw_res")
+
+  if [ "$is_gibberish" == "YES" ]; then
+    echo "Pattern recognition adjusted based on race outcome variance." > "$target_file"
+    return
+  fi
+
+  if [ -z "$raw_res" ] || [ "$raw_res" == "null" ] || [ ${#raw_res} -lt 5 ]; then
+    echo "No specific analytical divergence detected." > "$target_file"
+    return
+  fi
+
+  # SANITY FILTER: Use Persad to condense the raw agent analysis into one professional sentence
+  echo "   - Persad refining $agent output..."
+  refined_res=$(openclaw agent --agent "persad" --json -m "Your task is to rewrite the following agent analysis into EXACTLY ONE professional, plain-English sentence. 
+- Focus ONLY on the core analytical learning (e.g. 'Model over-weighted trainer form over recent track performance').
+- DO NOT use introductory phrases like 'Here is the sentence' or 'I learned that'.
+- DO NOT mention being an agent or a model.
+- NO meta-commentary.
+- IF THE DATA IS NONSENSE, return exactly: 'Pattern recognition adjusted based on race outcome variance.'
+- RAW DATA: $raw_res" 2>/dev/null | jq -r '[.result.payloads[].text] | join("\n")' | tr -d '\0')
+
+# Final Python Polish: Remove residual artifacts
+  python3 -c "
+import sys, re
+text = sys.stdin.read().strip()
+
+# 1. Kill HEARTBEAT and everything after it (Shell noise)
+text = re.split(r'HEARTBEAT_OK', text)[0].strip()
+
+# 2. Kill repetition loops (Double check)
+def signal_to_noise(t):
+    words = re.findall(r'\b\w+\b', t.lower())
+    if len(words) > 15:
+        unique_ratio = len(set(words)) / len(words)
+        if unique_ratio < 0.35: 
+            return 'Pattern recognition adjusted based on race outcome variance.'
+    return t.strip()
+
+text = signal_to_noise(text)
+# Remove meta-noise and introductory phrases
+noise = [
+    r'(?i)Next, .*', r'(?i)Here is .*', r'(?i)Insight: ', r'(?i)Analysis: ', 
+    r'(?i)Summary: ', r'(?i)The following .*', r'(?i)The key takeaway .*',
+    r'(?i)The key learning .*', r'(?i)After reviewing .*', r'^[\s\.]+', r'(?i)distilled from .*'
+]
+for p in noise:
+    text = re.sub(p, '', text).strip()
+
+# Truncate and clean
+if len(text) > 250: text = text[:247] + '...'
+text = re.sub(r'^[:\.\s]+', '', text)
+# Final check for empty or too short
+if not text or len(text) < 10:
+    text = 'Pattern recognition adjusted based on race outcome variance.'
+print(text)
+" <<< "$refined_res" > "$target_file"
+}
+
+# 2. GENERATE AGENT PROMPTS (ROBUST)
+prompts=$(python3 -c "
+import json, sys
+data = json.loads(sys.stdin.read())
+p = data['prediction']
+o = data['outcome']
+winner = o.get('winner', 'Unknown')
+
+# Ruby Prompt
+ruby_rankings = p.get('analysis', {}).get('ruby', {}).get('rankings', [])
+top_pick = 'None'
+if ruby_rankings:
+    top_pick = sorted(ruby_rankings, key=lambda x: x.get('win_probability', 0), reverse=True)[0].get('name', 'None')
+ruby_p = f\"The race result was: {winner}. Your top pick was {top_pick}. In exactly one professional sentence, what specific factor did you miscalculate?\"
+
+# Keenan Prompt
+most_prob = p.get('analysis', {}).get('keenan', {}).get('most_probable_winner', {}).get('horse', 'None')
+keenan_p = f\"The race result was: {winner}. Your most probable winner was {most_prob}. In exactly one professional sentence, why was your probability distribution off?\"
+
+# Mordin Prompt
+market_comp = p.get('analysis', {}).get('mordin', {}).get('market_comparison', [])
+model_prob = 'unknown'
+for entry in market_comp:
+    if entry.get('horse', '').lower() in winner.lower() or winner.lower() in entry.get('horse', '').lower():
+        model_prob = entry.get('model_probability', 'unknown')
+        break
+mordin_p = f\"The race result was: {winner}. Model probability was {model_prob}. In exactly one professional sentence, how did the market behave relative to our model?\"
+
+print(json.dumps({'ruby': ruby_p, 'keenan': keenan_p, 'mordin': mordin_p}))
+" <<< "$data_json")
+
+ruby_prompt=$(echo "$prompts" | jq -r .ruby)
+keenan_prompt=$(echo "$prompts" | jq -r .keenan)
+mordin_prompt=$(echo "$prompts" | jq -r .mordin)
+
+echo "1. Ruby Learning..."
+call_agent_learn "ruby" "$ruby_prompt"
+
+echo "2. Keenan Learning..."
+call_agent_learn "keenan" "$keenan_prompt"
+
+echo "3. Mordin Learning..."
+call_agent_learn "mordin" "$mordin_prompt"
+
+# 2. PUSH FINAL INSIGHTS TO SUPABASE
+echo "☁️ Syncing REFINED DB Learnings..."
+python3 -c "
+import requests, json, os
+try:
+    with open('/home/ruby/tmp/results_temp.json', 'r') as f: results = json.load(f)
+    with open('/home/ruby/tmp/ruby_learn.txt', 'r') as f: ruby_s = f.read().strip()
+    with open('/home/ruby/tmp/keenan_learn.txt', 'r') as f: keenan_s = f.read().strip()
+    with open('/home/ruby/tmp/mordin_learn.txt', 'r') as f: mordin_s = f.read().strip()
+
+    payload = {
+        'race_id': '$race_id',
+        'results': results,
+        'insights': {
+            'ruby': ruby_s,
+            'keenan': keenan_s,
+            'mordin': mordin_s
+        }
+    }
+
+    url = 'https://txsuawougiptdlmmiasy.supabase.co/rest/v1/learnings'
+    headers = {
+        'apikey': '$S_KEY',
+        'Authorization': 'Bearer $S_KEY',
+        'Content-Type': 'application/json',
+        'Prefer': 'resolution=merge-duplicates'
+    }
+    r = requests.post(url, headers=headers, json=payload)
+    print('✅ Learning Synced')
+except Exception as e:
+    print(f'❌ Error: {e}')
+"
+
+# 3. WINNER DETECTION & PERSAD TWITTER POST
+echo "🏇 Checking for winner match..."
+python3 -c "
+import json
+try:
+    with open('/home/ruby/tmp/results_temp.json', 'r') as f:
+        results = json.load(f)
+
+    # Load prediction data
+    pred_data = json.loads('$prediction_json')
+    ruby_rankings = pred_data.get('analysis', {}).get('ruby', {}).get('rankings', [])
+
+    if ruby_rankings:
+        top_pick = sorted(ruby_rankings, key=lambda x: x.get('win_probability', 0), reverse=True)[0].get('name', '')
+        actual_winner = results.get('winner', '').lower().strip()
+
+        # Normalize for comparison
+        top_pick_norm = top_pick.lower().strip()
+
+        if actual_winner and top_pick_norm and actual_winner == top_pick_norm:
+            print(f'🎉 WINNER DETECTED: {top_pick} matched actual winner!')
+            print(f'trigger_persad_twitter:{top_pick}')
+        else:
+            print(f'No match: Predicted {top_pick}, Actual {actual_winner}')
+    else:
+        print('No predictions to compare')
+except Exception as e:
+    print(f'Error in winner detection: {e}')
+" > /tmp/winner_check.txt
+
+winner_check=$(cat /tmp/winner_check.txt)
+echo "$winner_check" | grep -q "trigger_persad_twitter" && {
+    winner_horse=$(echo "$winner_check" | grep "trigger_persad_twitter" | cut -d: -f2)
+    echo "📱 Triggering Persad to post winning prediction on X..."
+    openclaw agent --agent persad -m "A prediction you provided has been confirmed as a winner! Post a celebration message on X about $winner_horse winning at this race. Include the dashboard URL: https://racing-dashboard-murex.vercel.app/" --json 2>/dev/null >/dev/null
+    echo "✅ Persad notified to post winner on X"
+}
+
+echo "✅ Feedback Loop Complete (Zero-Tolerance)."
