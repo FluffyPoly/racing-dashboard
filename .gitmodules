@@ -1,0 +1,4 @@
+[submodule "racing-dashboard"]
+	path = racing-dashboard
+	url = https://github.com/FluffyPoly/racing-dashboard.git
+	branch = master
