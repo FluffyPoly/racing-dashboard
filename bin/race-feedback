@@ -45,26 +45,14 @@ results_json=$(echo "$data_json" | jq -c .outcome)
 mkdir -p /home/ruby/tmp
 echo "$results_json" > /home/ruby/tmp/results_temp.json
 
-# SIMPLIFIED: Skip agent learning for now (OpenClaw agents are hanging)
-# Instead, generate standard learning observations from the race data
-call_agent_learn() {
-  local agent="$1"
-  local analysis_prompt="$2"
-  local target_file="/home/ruby/tmp/${agent}_learn.txt"
+# Generate meaningful learnings from prediction vs actual outcome
+generate_learnings() {
+  local race_id="$1"
+  local prediction_file="$2"
+  local results="$3"
 
-  # Generate simple learning insight without calling OpenClaw
-  python3 -c "
-import json
-prompt = '''$analysis_prompt'''
-if 'Ruby' in prompt or 'miscalculate' in prompt:
-    print('Probability model requires recalibration based on actual race outcome.')
-elif 'Keenan' in prompt or 'distribution' in prompt:
-    print('Forecast distribution predictions diverged from actual placings.')
-elif 'Mordin' in prompt or 'market' in prompt:
-    print('Market-model alignment showed variance in final odds vs prediction.')
-else:
-    print('Pattern recognition adjusted based on race outcome variance.')
-" > "$target_file"
+  # Use dedicated learnings analyzer for meaningful insights
+  python3 /home/ruby/bin/learnings-analyzer.py "$prediction_file" "$results" 2>/dev/null || echo '{"ruby":"Analysis pending","keenan":"Analysis pending","mordin":"Analysis pending"}'
 }
 
 # 2. GENERATE AGENT PROMPTS (ROBUST)
@@ -102,33 +90,27 @@ ruby_prompt=$(echo "$prompts" | jq -r .ruby)
 keenan_prompt=$(echo "$prompts" | jq -r .keenan)
 mordin_prompt=$(echo "$prompts" | jq -r .mordin)
 
-echo "1. Ruby Learning..."
-call_agent_learn "ruby" "$ruby_prompt"
+echo "1. Generating meaningful learnings..."
+# Generate real, actionable insights by comparing predictions to actual outcome
+learnings_json=$(python3 /home/ruby/bin/learnings-analyzer.py "$prediction_json" "$(cat /home/ruby/tmp/results_temp.json)" 2>/dev/null)
 
-echo "2. Keenan Learning..."
-call_agent_learn "keenan" "$keenan_prompt"
-
-echo "3. Mordin Learning..."
-call_agent_learn "mordin" "$mordin_prompt"
+if [ -z "$learnings_json" ]; then
+    learnings_json='{"ruby":"Analysis pending","keenan":"Analysis pending","mordin":"Analysis pending"}'
+fi
 
 # 2. PUSH FINAL INSIGHTS TO SUPABASE
-echo "☁️ Syncing REFINED DB Learnings..."
+echo "☁️ Syncing learnings to database..."
 python3 -c "
 import requests, json, os
 try:
     with open('/home/ruby/tmp/results_temp.json', 'r') as f: results = json.load(f)
-    with open('/home/ruby/tmp/ruby_learn.txt', 'r') as f: ruby_s = f.read().strip()
-    with open('/home/ruby/tmp/keenan_learn.txt', 'r') as f: keenan_s = f.read().strip()
-    with open('/home/ruby/tmp/mordin_learn.txt', 'r') as f: mordin_s = f.read().strip()
+
+    learnings = json.loads('''$learnings_json''')
 
     payload = {
         'race_id': '$race_id',
         'results': results,
-        'insights': {
-            'ruby': ruby_s,
-            'keenan': keenan_s,
-            'mordin': mordin_s
-        }
+        'insights': learnings
     }
 
     url = 'https://txsuawougiptdlmmiasy.supabase.co/rest/v1/learnings'
@@ -139,9 +121,9 @@ try:
         'Prefer': 'resolution=merge-duplicates'
     }
     r = requests.post(url, headers=headers, json=payload)
-    print('✅ Learning Synced')
+    print('✅ Learnings synced with meaningful insights')
 except Exception as e:
-    print(f'❌ Error: {e}')
+    print(f'❌ Error syncing learnings: {e}')
 "
 
 # 3. WINNER DETECTION & TWITTER POST
