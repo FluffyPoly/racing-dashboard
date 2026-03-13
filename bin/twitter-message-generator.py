@@ -37,48 +37,56 @@ def generate_twitter_message(race_id, race_dir, winner):
             # Generate varied messages based on prediction accuracy
             messages = []
 
+            # Dashboard URL for engagement
+            dashboard_url = "racing-dashboard-murex.vercel.app"
+            hashtags = " #HorseRacing #RacingPredictions #AI"
+
             if winner.lower().strip() == top_pick.lower().strip():
                 # Perfect prediction
                 confidence = int(top_prob * 100)
                 messages = [
-                    f"🎯 Nailed it! {winner} wins at {track}. Model confidence: {confidence}%",
-                    f"✅ Perfect call! {winner} at {track} - model spot-on! 🏇",
-                    f"🔥 Called it! {winner} delivers at {track}",
-                    f"💯 Direct hit! {winner} wins at {track}",
+                    f"🎯 Nailed it! {winner} wins at {track}. Model confidence: {confidence}% 🏇 {dashboard_url}{hashtags}",
+                    f"✅ Perfect call! {winner} at {track} - model spot-on! Verified: {dashboard_url}{hashtags}",
+                    f"🔥 {winner} delivers at {track}. Prediction was 🎯 See more: {dashboard_url}{hashtags}",
                 ]
             elif winner_rank and winner_rank == 2:
                 # Close prediction (2nd choice)
                 messages = [
-                    f"📈 Close! {winner} 🏆 at {track} (predicted 2nd)",
-                    f"👌 Sharp! {winner} wins at {track}. Predicted 2nd - excellent model",
-                    f"🎪 Plot twist! {winner} wins at {track}. 2nd pick came through",
+                    f"📈 {winner} 🏆 at {track} - predicted 2nd! Nearly perfect. {dashboard_url}{hashtags}",
+                    f"👌 Sharp analysis! {winner} wins. Predicted 2nd. Strong model. {dashboard_url}{hashtags}",
+                    f"🎪 {winner} wins at {track}! Our 2nd pick came through. {dashboard_url}{hashtags}",
                 ]
             elif winner_rank and winner_rank <= 5:
                 # Top 5 prediction
                 messages = [
-                    f"⭐ {winner} wins at {track}! Predicted top-5",
-                    f"🔍 Value! {winner} 🏆 at {track}. Model had this ranked!",
-                    f"💎 {winner} delivers at {track}. Top-5 prediction 📊",
+                    f"⭐ {winner} wins at {track}! Predicted top-5 📊 {dashboard_url}{hashtags}",
+                    f"🔍 Value! {winner} 🏆 at {track}. Model ranked this horse! {dashboard_url}{hashtags}",
+                    f"💎 {winner} delivers at {track}. Smart pick ranked by AI {dashboard_url}{hashtags}",
                 ]
             elif winner_rank and winner_rank <= 10:
                 # Lower ranked but still predicted
                 messages = [
-                    f"🚀 Upset! {winner} wins at {track}. Model spotted the opportunity",
-                    f"🎲 Long-shot! {winner} at {track}. Racing intelligence 🔮",
+                    f"🚀 {winner} wins at {track}! Model spotted this 🐎 {dashboard_url}{hashtags}",
+                    f"🎲 {winner} at {track}. Racing intelligence in action {dashboard_url}{hashtags}",
                 ]
             else:
                 # Not predicted
                 messages = [
-                    f"🐎 {winner} wins at {track}! Racing surprises never stop",
-                    f"🏇 {winner} takes it at {track}",
+                    f"🐎 {winner} wins at {track}! Racing insights: {dashboard_url}{hashtags}",
+                    f"🏇 {winner} takes it at {track}. Predictions: {dashboard_url}{hashtags}",
                 ]
 
-            # Select and trim to 280 chars
-            tweet = messages[hash(winner) % len(messages)]  # Consistent selection per horse
+            # Select message (consistent per horse)
+            tweet = messages[hash(winner) % len(messages)]
 
-            # Ensure it's under 280 characters
+            # Trim to 280 chars if needed
             if len(tweet) > 280:
-                tweet = tweet[:277] + "..."
+                # Remove hashtags if over limit
+                tweet_base = tweet.replace(hashtags, "").strip()
+                tweet_short = tweet_base + f" {dashboard_url}"
+                if len(tweet_short) > 280:
+                    tweet_short = tweet_base[:260] + f"... {dashboard_url}"
+                tweet = tweet_short
 
             return tweet
 
