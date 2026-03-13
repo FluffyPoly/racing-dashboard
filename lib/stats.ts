@@ -95,7 +95,7 @@ export async function getPerformanceStats() {
 
   const recentWinners = processedStats
     .filter(s => s.win)
-    .slice(0, 10)
+    .slice(0, 20)
     .map(s => ({
       track: s.track,
       time: s.time,

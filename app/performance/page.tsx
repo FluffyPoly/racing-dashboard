@@ -15,7 +15,7 @@ export default async function PerformancePage() {
         <Link href="/" className="text-racing-green font-black italic uppercase tracking-tighter text-xl flex items-center gap-2">
           <Trophy className="text-gold" size={24} /> Horse Racing Intelligence
         </Link>
-        <Link href="/" className="text-gray-400 hover:text-racing-green transition-colors flex items-center gap-2 text-xs font-black uppercase tracking-widest">
+        <Link href="/dashboard" className="text-gray-400 hover:text-racing-green transition-colors flex items-center gap-2 text-xs font-black uppercase tracking-widest">
           <ArrowLeft size={14} /> Back to Home
         </Link>
       </nav>

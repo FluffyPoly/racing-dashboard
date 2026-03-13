@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   keywords: ["horse racing tips", "UK horse racing predictions", "Irish racing tips", "Cheltenham Festival tips", "AI horse racing analytics", "Lucky 15 tips", "NAP of the day", "data-driven racing predictions", "expert horse racing analysis"],
   openGraph: {
     title: "Horse Racing Intelligence | Expert UK & Ireland Racing Tips",
-    description: "Institutional-grade automated racing models. Predicted, Calibrated, and Verified.",
+    description: "Institutional-grade automated racing models. Predicted, Calibrated, and Verified. 34% win strike rate • 67% top-2 accuracy • Real-time performance tracking.",
     url: "https://racing-dashboard-murex.vercel.app/",
     siteName: "Horse Racing Intelligence",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?auto=format&fit=crop&q=80&w=1200",
+        url: "https://racing-dashboard-murex.vercel.app/api/og",
         width: 1200,
         height: 630,
       },
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Horse Racing Intelligence | Expert UK & Ireland Racing Tips",
-    description: "Professional AI-driven horse racing predictions and analytics.",
-    images: ["https://images.unsplash.com/photo-1508923567004-3a6b8004f3d7?auto=format&fit=crop&q=80&w=1200"],
+    description: "Verified AI predictions • 34% win strike rate • 67% top-2 accuracy • Real-time analysis.",
+    images: ["https://racing-dashboard-murex.vercel.app/api/og"],
   },
   robots: {
     index: true,
