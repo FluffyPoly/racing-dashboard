@@ -1,12 +1,23 @@
 #!/usr/bin/env python3
 import json
 import os
-import os
 import subprocess
 from datetime import datetime, timedelta
 import time
 import sys
 import requests
+from pathlib import Path
+
+# Load environment variables from .env file
+env_file = Path.home() / ".env"
+if env_file.exists():
+    with open(env_file) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                key, value = line.split("=", 1)
+                value = value.strip('"').strip("'")
+                os.environ[key] = value
 
 WS = "/home/ruby"
 STATE_FILE = f"{WS}/races/state/completed.log"
@@ -117,7 +128,7 @@ def main():
                         try:
                             # Fetch results (using gemini-results.sh - results fetching only, not prediction)
                             res_json_str = subprocess.check_output(
-                                f"bash {WS}/bin/gemini-results.sh '{race_topic}'",
+                                f"bash {WS}/bin/gemini-results.sh '{race_id}'",
                                 shell=True,
                                 timeout=30
                             ).decode().strip()
@@ -130,8 +141,7 @@ def main():
                                 payload = {
                                     "race_id": race_id,
                                     "winner": res_data.get('winner'),
-                                    "full_order": res_data.get('order'),
-                                    "result_timestamp": datetime.now().isoformat()
+                                    "full_order": res_data.get('order')
                                 }
                                 headers = {
                                     "apikey": S_KEY,

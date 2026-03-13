@@ -19,11 +19,12 @@
   },
   "agents": {
     "defaults": {
-      "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+      "model": "openrouter/anthropic/claude-3.5-haiku",
       "models": {
         "openrouter/auto": {
           "alias": "OpenRouter"
         },
+        "openrouter/anthropic/claude-3.5-haiku": {},
         "openrouter/google/gemini-2.0-flash-001": {},
         "openrouter/google/gemini-flash-1-5": {},
         "openrouter/meta-llama/llama-3.3-70b-instruct:free": {},
@@ -51,7 +52,7 @@
       {
         "id": "main",
         "name": "AP McCoy",
-        "model": "openrouter/deepseek/deepseek-chat-v3-0324",
+        "model": "openrouter/anthropic/claude-3.5-haiku",
         "tools": {
           "profile": "full",
           "fs": {
@@ -64,7 +65,7 @@
         "name": "mordin",
         "workspace": "/home/ruby/agents/mordin",
         "agentDir": "/home/ruby/.openclaw/agents/mordin/agent",
-        "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+        "model": "openrouter/anthropic/claude-3.5-haiku",
         "tools": {
           "profile": "full"
         }
@@ -74,7 +75,7 @@
         "name": "ruby",
         "workspace": "/home/ruby/agents/ruby",
         "agentDir": "/home/ruby/.openclaw/agents/ruby/agent",
-        "model": "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+        "model": "openrouter/anthropic/claude-3.5-haiku",
         "tools": {
           "profile": "full",
           "fs": {
@@ -87,7 +88,7 @@
         "name": "persad",
         "workspace": "/home/ruby/agents/persad",
         "agentDir": "/home/ruby/.openclaw/agents/persad/agent",
-        "model": "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+        "model": "openrouter/anthropic/claude-3.5-haiku",
         "tools": {
           "profile": "full",
           "fs": {
@@ -100,7 +101,7 @@
         "name": "cecil",
         "workspace": "/home/ruby/agents/cecil",
         "agentDir": "/home/ruby/.openclaw/agents/cecil/agent",
-        "model": "openrouter/meta-llama/llama-3.3-70b-instruct:free",
+        "model": "openrouter/anthropic/claude-3.5-haiku",
         "tools": {
           "profile": "full",
           "fs": {
@@ -113,7 +114,7 @@
         "name": "keenan",
         "workspace": "/home/ruby/agents/keenan",
         "agentDir": "/home/ruby/.openclaw/agents/keenan/agent",
-        "model": "openrouter/deepseek/deepseek-chat-v3-0324",
+        "model": "openrouter/anthropic/claude-3.5-haiku",
         "tools": {
           "profile": "full"
         }

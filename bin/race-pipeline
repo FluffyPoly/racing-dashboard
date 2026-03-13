@@ -1,4 +1,9 @@
 #!/bin/bash
+# Load environment variables from .env file
+if [ -f ~/.env ]; then
+    export $(grep -v '^#' ~/.env | xargs)
+fi
+
 race_id="$1"
 local_file="$2"
 
@@ -317,5 +322,10 @@ python3 /home/ruby/bin/supabase-races-uploader.py "$S_RACE_ID" "$RACE_DIR"
 # GIT BACKUP
 echo "$dashboard_json" > "$WS/racing-dashboard/data/predictions/${race_id}.json"
 bash "$WS/bin/sync-dashboard.sh" "$race_id" "prediction"
+
+# 7. SKIP PER-RACE PERFORMANCE UPDATES (cost optimization)
+# Performance metrics now updated once daily instead of per-race
+# This saves ~$1 per race in API queries
+echo "⏭️  Per-race metrics update skipped (cost optimization - daily only)"
 
 echo "✅ Pipeline Complete."
