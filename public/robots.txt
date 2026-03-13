@@ -1,9 +1,13 @@
 User-agent: *
 Allow: /
 Allow: /legal
+Allow: /api/og
 Disallow: /dashboard
 Disallow: /learnings
 Disallow: /onboarding
 Disallow: /api/
+Disallow: /api/checkout
+Disallow: /api/logout
+Disallow: /api/verify-session
 
 Sitemap: https://racing-dashboard-murex.vercel.app/sitemap.xml
