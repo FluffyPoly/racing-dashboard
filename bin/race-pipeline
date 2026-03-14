@@ -240,132 +240,39 @@ ruby_raw=$(run_llm "$ruby_prompt" "ruby" "ruby")
 ruby_json=$(clean_json_output "$ruby_raw")
 echo "$ruby_json" > "$RACE_DIR/ruby.json"
 
-# 3. KEENAN (DISTRIBUTIONS)
-echo "2. Keenan Analysis..."
-keenan_prompt="Act as Architect Keenan. Analyze race structure from Ruby's probabilities: $ruby_json and race details: $cecil_json.
-Model the DYNAMIC RACE SHAPE and calculate betting combinations.
+# 3. KEENAN (PACE ANALYSIS) - SYSTEMATIC
+echo "2. Keenan Pace Analysis..."
+# Use systematic pace analyzer instead of just agent prompt
+keenan_json=$(python3 $WS/bin/keenan-pace-analyzer.py "$RACE_DIR/ruby.json" "$RACE_DIR/cecil.json" 2>/dev/null)
 
-CRITICAL ANALYSIS:
-
-1. PACE STRUCTURE MODELING
-   - Identify: Who are early pace-makers (will fight for lead)?
-   - Who are middle-movers (challenge 3f-5f)?
-   - Who are closers (finish strong final 2f)?
-   - Calculate: If 2+ pace-makers: they'll fight it out → closer advantages
-   - Calculate: If lone pace-maker → they often get caught
-   - Calculate: If no pace-maker → early leader wins 30-40% of time
-
-2. PACE TYPE PREDICTION
-   - Will race be: FAST (quick early), MODERATE (even pace), SLOW (crawling)?
-   - Based on: Number of pace-makers, distance, track conditions
-   - Determine: Favors front-runners (fast) or closers (slow)?
-   - Impact: Adjust winning probabilities based on pace suitability
-
-3. FORECAST & TRICAST COMBINATIONS
-   - Forecast (1-2): Top probability + strong second choice (consider pace dynamics)
-   - Forecast second: Not always #2 choice - consider pace battle outcomes
-   - Tricast: Frame bets (runners 2-3-4) often more likely than random 1-2-3
-   - Multiple scenarios: Give top 3 combinations with probabilities
-
-4. SECTION-BY-SECTION PERFORMANCE
-   - Predict if race favors: early (1st 2f), middle (3f-5f), or late (final 2f)
-   - Match horse sectional strengths to predicted race shape
-   - Example: Fast early pace → early-pace horses fade → closers win
-
-5. BETTING ANGLE STRUCTURES
-   - Front-runner dominates? → Back runner-up and third in Forecast
-   - Pace chaos (multiple leaders)? → Back closer + best closer-up runner
-   - Even pace expected? → Back form horse + improving form
-
-Output ONLY raw JSON matching this structure:
-{
-  \"most_probable_winner\": { \"horse\": \"Name\", \"probability\": 0.45, \"reasoning\": \"Pace favors closers, this horse is strongest closer\" },
-  \"pace_analysis\": { \"type\": \"FAST\", \"leader\": \"Horse Name\", \"second_placement\": \"Horse A\", \"closer_advantage\": true, \"insight\": \"Multiple pace-makers will fight early, favoring strong finishers\" },
-  \"race_shape\": { \"early\": \"Competitive\", \"middle\": \"Settling\", \"finish\": \"Closer-friendly\" },
-  \"forecast_top_3\": [ { \"combination\": \"A > B\", \"probability\": 0.15, \"reasoning\": \"A wins from pace, B second best closer\" } ],
-  \"tricast_top_3\": [ { \"combination\": \"A > B > C\", \"probability\": 0.08, \"reasoning\": \"Pace battle plays out this way\" } ]
-}"
-keenan_raw=$(run_llm "$keenan_prompt" "keenan" "keenan")
-keenan_json=$(clean_json_output "$keenan_raw")
-echo "$keenan_json" > "$RACE_DIR/keenan.json"
-
-# 3b. LATE INTELLIGENCE (X/TWITTER)
-echo "🔍 Checking X for late intelligence..."
-top_horses=$(echo "$ruby_json" | jq -r '.rankings | sort_by(.win_probability) | reverse | .[0:3] | .[].name')
-twitter_intel=""
-if [ -f "$WS/.twitter_cookies" ]; then
-    while read -r horse; do
-        if [ -z "$horse" ]; then continue; fi
-        echo "   - Searching for $horse..."
-        # Add 30s timeout to prevent hanging the pipeline
-        sentiment=$(timeout 30s python3 /home/ruby/bin/twitter-sentiment.py "$horse" 2>/dev/null)
-        if [[ -n "$sentiment" ]] && [[ ! "$sentiment" == *"No significant paddock buzz"* ]] && [[ ! "$sentiment" == *"No recent buzz detected"* ]]; then
-            twitter_intel="${twitter_intel}\n- **$horse**: $sentiment"
-        fi
-    done <<< "$top_horses"
-else
-    echo "⚠️ Skipping X intelligence (no cookies provided in .twitter_cookies)"
+if [ -z "$keenan_json" ] || [ "$keenan_json" == "{}" ]; then
+    # Fallback to agent if analyzer fails
+    keenan_prompt="Act as Architect Keenan. Analyze race structure from Ruby's probabilities: $ruby_json and race details: $cecil_json.
+Model the DYNAMIC RACE SHAPE and calculate betting combinations. Output ONLY raw JSON with: most_probable_winner, pace_analysis, race_shape, forecast_top_3, tricast_top_3"
+    keenan_raw=$(run_llm "$keenan_prompt" "keenan" "keenan")
+    keenan_json=$(clean_json_output "$keenan_raw")
 fi
 
-# 4. MORDIN (MARKET CALIBRATION)
-echo "3. Mordin Analysis..."
-mordin_prompt="Act as Market Analyst Mordin. Analyze market vs model and identify EXPLOITABLE EDGES.
+echo "$keenan_json" > "$RACE_DIR/keenan.json"
+
+# 4. MORDIN (MARKET CALIBRATION + TWITTER INTELLIGENCE) - REAL-TIME
+echo "3. Mordin Market Analysis..."
+# Extract early odds for market tracker
+early_odds=$(echo "$cecil_json" | jq -c '.horses | map({name, odds: .factors.early_odds})')
+
+# Use market tracker with Twitter intelligence
+mordin_json=$(python3 $WS/bin/mordin-market-tracker.py "$RACE_DIR/ruby.json" "$RACE_DIR/cecil.json" "$early_odds" 2>/dev/null)
+
+if [ -z "$mordin_json" ] || [ "$mordin_json" == "{}" ]; then
+    # Fallback to agent if market tracker fails
+    mordin_prompt="Act as Market Analyst Mordin. Analyze market vs model and identify EXPLOITABLE EDGES.
 Model: $ruby_json
-Market Odds: $(echo "$cecil_json" | jq -c '.horses | map({name, odds: .factors.early_odds})')
-Late Intelligence: $twitter_intel
+Market Odds: $early_odds
+Output ONLY raw JSON with: confidence_level, market_comparison (horse, model_probability, market_implied_probability, divergence, calibrated_probability)"
+    mordin_raw=$(run_llm "$mordin_prompt" "mordin" "mordin")
+    mordin_json=$(clean_json_output "$mordin_raw")
+fi
 
-CRITICAL DIVERGENCE ANALYSIS:
-
-1. CALCULATE TRUE DIVERGENCE
-   - Convert market odds to implied probability (correct for overround)
-   - Calculate: Model Prob - Market Implied Prob
-   - Only ACT on divergences 10%+ (smaller gaps = market is right)
-   - Rule: Model 35%, Market 20% = STRONG BUY (investigate why market wrong)
-   - Rule: Model 20%, Market 35% = AVOID (market knows something we don't)
-
-2. MARKET CONFIDENCE ASSESSMENT
-   - Are odds STABLE despite action? (Smart money balanced, no edge)
-   - Are odds MOVING FAST? (Informed money/insiders acting)
-   - Is horse DRIFTING? (Bad sign - smart money against)
-   - Is horse SHORTENING? (Good sign - smart money for)
-   - Which direction is movement fastest? (That's the real signal)
-
-3. CONSENSUS CHECK
-   - Does RUBY agree with market? If market opposes Ruby's top pick = CAUTION
-   - Does KEENAN's pace analysis support market favorite? (Alignment = confidence)
-   - Disagreement between agents = investigate deeper
-
-4. LATE MONEY INTELLIGENCE (X/TWITTER)
-   - Physical issues (sweat, agitation, lameness): DOWNGRADE 15-20%
-   - 'Massive support' or 'stable whispers': UPGRADE 10-15%
-   - No intelligence: Stick to model-market comparison
-   - VOLUME matters: Sudden money > single report
-
-5. FINAL CALIBRATED PROBABILITIES
-   - Start with Ruby's model
-   - Adjust for market confidence (if market has strong signal)
-   - Apply late intelligence adjustments
-   - Output: Adjusted probability with REASONING
-
-Output ONLY raw JSON matching this structure:
-{
-  \"confidence_level\": \"HIGH/MEDIUM/LOW\",
-  \"market_comparison\": [
-    {
-      \"horse\": \"Name\",
-      \"model_probability\": 0.45,
-      \"market_implied_probability\": 0.40,
-      \"divergence\": 0.05,
-      \"divergence_type\": \"MODEL_FAVORS\",
-      \"market_signal\": \"STABLE_ODDS / SHORTENING / DRIFTING\",
-      \"calibrated_probability\": 0.42,
-      \"reasoning\": \"Model favors this horse but market stable - slight edge but not strong conviction\"
-    }
-  ],
-  \"system_consensus\": { \"ruby_agrees\": true, \"keenan_agrees\": true, \"confidence_boost\": true, \"note\": \"All three agents align on top pick\" }
-}"
-mordin_raw=$(run_llm "$mordin_prompt" "mordin" "mordin")
-mordin_json=$(clean_json_output "$mordin_raw")
 echo "$mordin_json" > "$RACE_DIR/mordin.json"
 
 # 5. PERSAD (SUBSCRIBER REPORT) - BACK TO AGENT FOR NARRATIVE
