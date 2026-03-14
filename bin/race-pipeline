@@ -186,20 +186,54 @@ send_discord "$CH_CECIL" "$cecil_md"
 
 # 2. RUBY (PROBABILITIES) - USING STABLE HEADLESS GEMINI
 echo "1. Ruby Analysis..."
-ruby_prompt="Act as Analyst Ruby. Review this high-fidelity UK horse racing card: $cecil_json. 
-Assign win probabilities (0.0 to 1.0) to every horse.
+ruby_prompt="Act as Analyst Ruby. Review this high-fidelity UK horse racing card: $cecil_json.
+Assign win probabilities (0.0 to 1.0) to every horse using ADVANCED FORM ANALYSIS.
 
-CRITICAL:
-1. Use the 'spotlight' and 'comment' fields for tactical context.
-2. Use the 'performance_history' field (last 5 runs) to verify form. Pay attention to RPR (Racing Post Rating) and TS (Top Speed) trends. If a horse's RPR is improving race-on-race, they are a primary contender.
-3. If a horse has no history in our database, rely on the spotlight.
-4. Do not just mirror the market order. Evaluate suitability independently.
+CRITICAL EVALUATION FRAMEWORK:
 
-Output ONLY raw JSON matching this structure: 
+1. RECENCY WEIGHTING (Most Important)
+   - Last 3 runs: 60% weight in your analysis
+   - Runs 4-5: 30% weight
+   - Older runs: 10% weight only
+   - Flag: Is form improving or declining? Trending up = advantage
+
+2. DISTANCE SUITABILITY
+   - Does horse have good form AT THIS DISTANCE?
+   - Check: Does RPR improve/drop at this distance?
+   - Flag: Major distance changes (e.g., 1m→2m switch) - adjust 20-30%
+   - Action: Horses moving to preferred distance are stronger
+
+3. CLASS MOVEMENT (Critical Signal)
+   - Did horse move DOWN in class? (Massive advantage - could add +0.15 to probability)
+   - Did horse move UP in class? (Reduce confidence by 20-25%)
+   - Same class with better form? (Primary contender)
+
+4. TRAINER/JOCKEY FORM
+   - Is this trainer/jockey combo recent winners?
+   - Check if trainer wins frequently at THIS racecourse
+   - Seasonal patterns: Some trainers peak spring/autumn
+
+5. FIELD STRENGTH CONTEXT
+   - What's the average Official Rating (OR) of the field?
+   - Weak field: Top-rated horse stronger (confidence +10%)
+   - Strong field: Underrated value picks matter more
+   - Missing strong runners: Creates opportunities
+
+6. RPR & TOP SPEED TRENDS
+   - Improving RPR race-on-race: Primary contender
+   - Declining RPR: Risk, unless other factors compensate
+   - Consistent TS (Top Speed): Reliable performer
+   - TS improving: Form upswing
+
+7. SPOTLIGHT & COMMENT CONTEXT
+   - Use for tactical nuances and recent updates
+   - 'Eye-catching' comments on recent runs matter more (recency weight)
+
+Output ONLY raw JSON matching this structure:
 {
   \"race_id\": \"$race_id\",
   \"rankings\": [
-    { \"name\": \"Horse Name\", \"win_probability\": 0.45, \"place_probability\": 0.70, \"fair_odds\": 2.2, \"key_positive_factors\": [], \"key_risks\": [] }
+    { \"name\": \"Horse Name\", \"win_probability\": 0.45, \"place_probability\": 0.70, \"fair_odds\": 2.2, \"key_positive_factors\": [\"Recency: 2 wins in last 3 runs\", \"Class down from 1m2f\"], \"key_risks\": [\"New jockey pairing\", \"First time at distance\"] }
   ]
 }"
 ruby_raw=$(run_llm "$ruby_prompt" "ruby" "ruby")
@@ -208,17 +242,48 @@ echo "$ruby_json" > "$RACE_DIR/ruby.json"
 
 # 3. KEENAN (DISTRIBUTIONS)
 echo "2. Keenan Analysis..."
-keenan_prompt="Act as Architect Keenan. Review Ruby's probabilities: $ruby_json. 
-1. Calculate the most probable Forecast (1-2) and Tricast (1-2-3) combinations.
-2. Provide a 'pace_analysis' based on the horse profiles and spotlights in: $cecil_json. 
-   - Identify if the pace is likely to be: FAST, MODERATE, or SLOW.
-   - Mention which horse is likely to lead.
+keenan_prompt="Act as Architect Keenan. Analyze race structure from Ruby's probabilities: $ruby_json and race details: $cecil_json.
+Model the DYNAMIC RACE SHAPE and calculate betting combinations.
+
+CRITICAL ANALYSIS:
+
+1. PACE STRUCTURE MODELING
+   - Identify: Who are early pace-makers (will fight for lead)?
+   - Who are middle-movers (challenge 3f-5f)?
+   - Who are closers (finish strong final 2f)?
+   - Calculate: If 2+ pace-makers: they'll fight it out → closer advantages
+   - Calculate: If lone pace-maker → they often get caught
+   - Calculate: If no pace-maker → early leader wins 30-40% of time
+
+2. PACE TYPE PREDICTION
+   - Will race be: FAST (quick early), MODERATE (even pace), SLOW (crawling)?
+   - Based on: Number of pace-makers, distance, track conditions
+   - Determine: Favors front-runners (fast) or closers (slow)?
+   - Impact: Adjust winning probabilities based on pace suitability
+
+3. FORECAST & TRICAST COMBINATIONS
+   - Forecast (1-2): Top probability + strong second choice (consider pace dynamics)
+   - Forecast second: Not always #2 choice - consider pace battle outcomes
+   - Tricast: Frame bets (runners 2-3-4) often more likely than random 1-2-3
+   - Multiple scenarios: Give top 3 combinations with probabilities
+
+4. SECTION-BY-SECTION PERFORMANCE
+   - Predict if race favors: early (1st 2f), middle (3f-5f), or late (final 2f)
+   - Match horse sectional strengths to predicted race shape
+   - Example: Fast early pace → early-pace horses fade → closers win
+
+5. BETTING ANGLE STRUCTURES
+   - Front-runner dominates? → Back runner-up and third in Forecast
+   - Pace chaos (multiple leaders)? → Back closer + best closer-up runner
+   - Even pace expected? → Back form horse + improving form
+
 Output ONLY raw JSON matching this structure:
 {
-  \"most_probable_winner\": { \"horse\": \"Name\", \"probability\": 0.45 },
-  \"forecast_top_3\": [ { \"combination\": \"A > B\", \"probability\": 0.15 } ],
-  \"tricast_top_3\": [ { \"combination\": \"A > B > C\", \"probability\": 0.05 } ],
-  \"pace_analysis\": { \"type\": \"FAST\", \"leader\": \"Horse Name\", \"insight\": \"One sentence on who this favors\" }
+  \"most_probable_winner\": { \"horse\": \"Name\", \"probability\": 0.45, \"reasoning\": \"Pace favors closers, this horse is strongest closer\" },
+  \"pace_analysis\": { \"type\": \"FAST\", \"leader\": \"Horse Name\", \"second_placement\": \"Horse A\", \"closer_advantage\": true, \"insight\": \"Multiple pace-makers will fight early, favoring strong finishers\" },
+  \"race_shape\": { \"early\": \"Competitive\", \"middle\": \"Settling\", \"finish\": \"Closer-friendly\" },
+  \"forecast_top_3\": [ { \"combination\": \"A > B\", \"probability\": 0.15, \"reasoning\": \"A wins from pace, B second best closer\" } ],
+  \"tricast_top_3\": [ { \"combination\": \"A > B > C\", \"probability\": 0.08, \"reasoning\": \"Pace battle plays out this way\" } ]
 }"
 keenan_raw=$(run_llm "$keenan_prompt" "keenan" "keenan")
 keenan_json=$(clean_json_output "$keenan_raw")
@@ -244,22 +309,60 @@ fi
 
 # 4. MORDIN (MARKET CALIBRATION)
 echo "3. Mordin Analysis..."
-mordin_prompt="Act as Market Analyst Mordin. 
-Compare Ruby's Model: $ruby_json 
-against the actual Market: $(echo "$cecil_json" | jq -c '.horses | map({name, odds: .factors.early_odds})').
-Identify 'Divergence' (Model Prob - Market Implied Prob).
+mordin_prompt="Act as Market Analyst Mordin. Analyze market vs model and identify EXPLOITABLE EDGES.
+Model: $ruby_json
+Market Odds: $(echo "$cecil_json" | jq -c '.horses | map({name, odds: .factors.early_odds})')
+Late Intelligence: $twitter_intel
 
-CRITICAL LATE INTELLIGENCE FROM X (TWITTER):
-$twitter_intel
+CRITICAL DIVERGENCE ANALYSIS:
 
-TASK:
-1. If the late intelligence reports physical issues (sweat, agitation, lameness), DOWNGRADE the horse's win probability in your final calibration.
-2. If it reports 'massive support' or 'stable whispers', UPGRADE it.
-3. If no intelligence is provided, stick to the ratings.
+1. CALCULATE TRUE DIVERGENCE
+   - Convert market odds to implied probability (correct for overround)
+   - Calculate: Model Prob - Market Implied Prob
+   - Only ACT on divergences 10%+ (smaller gaps = market is right)
+   - Rule: Model 35%, Market 20% = STRONG BUY (investigate why market wrong)
+   - Rule: Model 20%, Market 35% = AVOID (market knows something we don't)
+
+2. MARKET CONFIDENCE ASSESSMENT
+   - Are odds STABLE despite action? (Smart money balanced, no edge)
+   - Are odds MOVING FAST? (Informed money/insiders acting)
+   - Is horse DRIFTING? (Bad sign - smart money against)
+   - Is horse SHORTENING? (Good sign - smart money for)
+   - Which direction is movement fastest? (That's the real signal)
+
+3. CONSENSUS CHECK
+   - Does RUBY agree with market? If market opposes Ruby's top pick = CAUTION
+   - Does KEENAN's pace analysis support market favorite? (Alignment = confidence)
+   - Disagreement between agents = investigate deeper
+
+4. LATE MONEY INTELLIGENCE (X/TWITTER)
+   - Physical issues (sweat, agitation, lameness): DOWNGRADE 15-20%
+   - 'Massive support' or 'stable whispers': UPGRADE 10-15%
+   - No intelligence: Stick to model-market comparison
+   - VOLUME matters: Sudden money > single report
+
+5. FINAL CALIBRATED PROBABILITIES
+   - Start with Ruby's model
+   - Adjust for market confidence (if market has strong signal)
+   - Apply late intelligence adjustments
+   - Output: Adjusted probability with REASONING
 
 Output ONLY raw JSON matching this structure:
 {
-  \"market_comparison\": [ { \"horse\": \"Name\", \"model_probability\": 0.45, \"market_implied_probability\": 0.40, \"divergence\": 0.05, \"adjustment_reason\": \"...\" } ]
+  \"confidence_level\": \"HIGH/MEDIUM/LOW\",
+  \"market_comparison\": [
+    {
+      \"horse\": \"Name\",
+      \"model_probability\": 0.45,
+      \"market_implied_probability\": 0.40,
+      \"divergence\": 0.05,
+      \"divergence_type\": \"MODEL_FAVORS\",
+      \"market_signal\": \"STABLE_ODDS / SHORTENING / DRIFTING\",
+      \"calibrated_probability\": 0.42,
+      \"reasoning\": \"Model favors this horse but market stable - slight edge but not strong conviction\"
+    }
+  ],
+  \"system_consensus\": { \"ruby_agrees\": true, \"keenan_agrees\": true, \"confidence_boost\": true, \"note\": \"All three agents align on top pick\" }
 }"
 mordin_raw=$(run_llm "$mordin_prompt" "mordin" "mordin")
 mordin_json=$(clean_json_output "$mordin_raw")
