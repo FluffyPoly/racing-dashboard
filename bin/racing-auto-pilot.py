@@ -23,6 +23,7 @@ WS = "/home/ruby"
 STATE_FILE = f"{WS}/races/state/completed.log"
 LOG_FILE = f"{WS}/races/state/autopilot.log"
 SCHEDULE_FILE = f"{WS}/races/today_schedule.json"
+RETRY_FILE = f"{WS}/races/state/result_retries.json"  # Track result fetch retries
 
 S_URL = "https://txsuawougiptdlmmiasy.supabase.co/rest/v1"
 S_KEY = os.getenv("SUPABASE_KEY", "")
@@ -57,6 +58,28 @@ def get_completed_races():
 def mark_completed(race_id, action):
     os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
     with open(STATE_FILE, 'a') as f: f.write(f"{race_id}_{action}\n")
+
+def get_result_retries():
+    """Track when we last tried to fetch results for each race"""
+    if not os.path.exists(RETRY_FILE): return {}
+    try:
+        with open(RETRY_FILE) as f: return json.load(f)
+    except: return {}
+
+def update_result_retry(race_id, timestamp=None):
+    """Record that we tried to fetch results for this race"""
+    os.makedirs(os.path.dirname(RETRY_FILE), exist_ok=True)
+    retries = get_result_retries()
+    retries[race_id] = timestamp or datetime.now().isoformat()
+    with open(RETRY_FILE, 'w') as f: json.dump(retries, f)
+
+def should_retry_results(race_id, minutes_since_last_try=5):
+    """Check if 5+ minutes have passed since last result fetch attempt"""
+    retries = get_result_retries()
+    if race_id not in retries: return True
+
+    last_try = datetime.fromisoformat(retries[race_id])
+    return (datetime.now() - last_try).total_seconds() >= (minutes_since_last_try * 60)
 
 def check_shutdown_request():
     """Check if graceful shutdown has been requested"""
@@ -120,50 +143,56 @@ def main():
                             log(f"⚠️ Failed to gather data for {race_topic}")
 
                 # 2. RESULTS & LEARNING: T+20 minutes
-                # Fetch race results and trigger learning/feedback loop
+                # Fetch REAL race results from rpscrape ONLY - retry every 5 minutes if unavailable
                 if now >= (rt + timedelta(minutes=20)) and now < (rt + timedelta(minutes=300)):
                     if f"{race_id}_predicted" in completed and f"{race_id}_learned" not in completed:
-                        log(f"🧠 TRIGGER: Learning & Winner Detection for {race_topic}")
+                        # Check if we should try fetching results (retry every 5 minutes)
+                        if should_retry_results(race_id):
+                            log(f"🧠 Attempting to fetch results for {race_topic}")
 
-                        try:
-                            # Fetch results (using gemini-results.sh - results fetching only, not prediction)
-                            res_json_str = subprocess.check_output(
-                                f"bash {WS}/bin/gemini-results.sh '{race_id}'",
-                                shell=True,
-                                timeout=30
-                            ).decode().strip()
+                            try:
+                                # Fetch REAL results from rpscrape ONLY
+                                res_json_str = subprocess.check_output(
+                                    f"bash {WS}/bin/gemini-results.sh '{race_id}'",
+                                    shell=True,
+                                    timeout=30
+                                ).decode().strip()
 
-                            if res_json_str and len(res_json_str) > 10:
-                                res_data = json.loads(res_json_str)
-                                log(f"✅ Race results fetched: Winner = {res_data.get('winner', 'Unknown')}")
+                                if res_json_str and len(res_json_str) > 10:
+                                    res_data = json.loads(res_json_str)
+                                    log(f"✅ REAL results fetched: Winner = {res_data.get('winner', 'Unknown')}")
 
-                                # Store results in Supabase
-                                payload = {
-                                    "race_id": race_id,
-                                    "winner": res_data.get('winner'),
-                                    "full_order": res_data.get('order')
-                                }
-                                headers = {
-                                    "apikey": S_KEY,
-                                    "Authorization": f"Bearer {S_KEY}",
-                                    "Content-Type": "application/json",
-                                    "Prefer": "resolution=merge-duplicates"
-                                }
-                                requests.post(f"{S_URL}/results", headers=headers, json=payload, timeout=10)
-                                log(f"📊 Results stored to Supabase")
+                                    # Store results in Supabase
+                                    payload = {
+                                        "race_id": race_id,
+                                        "winner": res_data.get('winner'),
+                                        "full_order": res_data.get('order')
+                                    }
+                                    headers = {
+                                        "apikey": S_KEY,
+                                        "Authorization": f"Bearer {S_KEY}",
+                                        "Content-Type": "application/json",
+                                        "Prefer": "resolution=merge-duplicates"
+                                    }
+                                    requests.post(f"{S_URL}/results", headers=headers, json=payload, timeout=10)
+                                    log(f"📊 Real results stored to Supabase")
 
-                                # Trigger race-feedback (learning loop + Persad winner detection)
-                                if run_command(f"bash {WS}/bin/race-feedback '{race_id}'"):
-                                    log(f"🏇 Learning complete. Persad will post winner if prediction matched.")
-                                    mark_completed(race_id, "learned")
+                                    # Trigger race-feedback (learning loop + Persad winner detection)
+                                    if run_command(f"bash {WS}/bin/race-feedback '{race_id}'"):
+                                        log(f"🏇 Learning complete. Based on REAL race data.")
+                                        mark_completed(race_id, "learned")
+                                    else:
+                                        log(f"⚠️  race-feedback failed for {race_id}")
                                 else:
-                                    log(f"⚠️  race-feedback failed for {race_id}")
-                            else:
-                                log(f"⚠️  No results found yet for {race_topic}")
-                        except subprocess.TimeoutExpired:
-                            log(f"⚠️  Results fetch timeout for {race_topic}")
-                        except Exception as e:
-                            log(f"⚠️  Results fetch error for {race_topic}: {e}")
+                                    # Results not available yet - will retry in 5 minutes
+                                    update_result_retry(race_id)
+                                    log(f"⏳ Results not available yet for {race_topic}. Will retry in 5 minutes.")
+                            except subprocess.TimeoutExpired:
+                                update_result_retry(race_id)
+                                log(f"⏳ Results fetch timeout for {race_topic}. Will retry in 5 minutes.")
+                            except Exception as e:
+                                update_result_retry(race_id)
+                                log(f"⏳ Results fetch error for {race_topic}: {e}. Will retry in 5 minutes.")
 
         except Exception as e:
             log(f"CRITICAL LOOP ERROR: {e}")
