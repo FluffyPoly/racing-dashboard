@@ -23,43 +23,19 @@ today_date=$(date +"%d %B %Y")
 prompt="Find the OFFICIAL RESULT for '$race_topic' horse race TODAY ($today_date) in UK/IRE.
 Output ONLY this JSON (no markdown): {\"winner\": \"Horse Name\", \"order\": [\"1st\", \"2nd\", \"3rd\"]}"
 
-# SKIP OpenRouter API calls (cost optimization)
-# Use mock results generator as primary method to preserve API credits
-raw_output=""
+# REAL RESULTS: Fetch actual race results from rpscrape
+# Extract track and time from race_input for rpscrape lookup
+track=$(echo "$race_input" | sed 's/_[0-9]\{8\}$//' | sed 's/_/ /g')
+time=$(echo "$race_input" | grep -oE '[0-9]{4}$' | sed 's/^//' | awk '{print substr($0,1,2) ":" substr($0,3)}')
 
-# Try to extract JSON from output
-python3 -c "
-import json, sys, re
-text = sys.stdin.read()
-match = re.search(r'\{.*\}', text, re.DOTALL)
-if match:
-    try:
-        data = json.loads(match.group(0))
-        print(json.dumps(data))
-        exit(0)
-    except:
-        pass
-exit(1)
-" <<< "$raw_output"
+# Try rpscrape first for REAL results
+python3 /home/ruby/bin/rpscrape-results.py "$track" "$time" "$(date +%Y-%m-%d)" 2>/dev/null
 
-# If no real results found, generate mock results using local predictions
-if [ $? -ne 0 ]; then
-    race_dir="$HOME/races/$race_id"
-
-    if [ -d "$race_dir" ]; then
-        predicted_json=$(python3 -c "
-import json
-try:
-    with open('$race_dir/ruby.json') as f:
-        data = json.load(f)
-        top_3 = [h['name'] for h in data.get('rankings', [])[:3]]
-        print(json.dumps(top_3))
-except:
-    print('[]')
-" 2>/dev/null)
-
-        if [ -n "$predicted_json" ] && [ "$predicted_json" != "[]" ]; then
-            python3 /home/ruby/bin/mock-results-generator.py "$race_id" "$predicted_json"
-        fi
-    fi
+# Check if rpscrape returned valid results
+if [ $? -eq 0 ]; then
+    exit 0
 fi
+
+# If rpscrape fails (no results available yet - race not finished), return empty
+# Do NOT fall back to mock data - wait for real results
+exit 1
