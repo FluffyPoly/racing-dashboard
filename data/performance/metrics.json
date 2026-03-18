@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-17T09:00:32.709563",
+  "timestamp": "2026-03-18T09:00:24.622447",
   "total_races": 100,
-  "races_with_results": 58,
+  "races_with_results": 55,
   "correct_predictions": 12,
-  "win_accuracy": 20.69,
+  "win_accuracy": 21.82,
   "by_agent": {
     "ruby": {
       "correct": 12,
-      "total": 58,
-      "accuracy": 20.69
+      "total": 55,
+      "accuracy": 21.82
     },
     "keenan": {
       "correct": 0,
@@ -22,21 +22,6 @@
     }
   },
   "by_track": {
-    "Fakenham": {
-      "correct": 0,
-      "total": 3,
-      "accuracy": 0.0
-    },
-    "Dundalk (AW)": {
-      "correct": 0,
-      "total": 4,
-      "accuracy": 0.0
-    },
-    "Southwell (AW)": {
-      "correct": 0,
-      "total": 3,
-      "accuracy": 0.0
-    },
     "Warwick": {
       "correct": 0,
       "total": 4,
@@ -82,6 +67,11 @@
       "total": 3,
       "accuracy": 33.33
     },
+    "Dundalk (AW)": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
     "Carlisle": {
       "correct": 1,
       "total": 2,
@@ -102,6 +92,11 @@
       "total": 2,
       "accuracy": 0.0
     },
+    "Southwell (AW)": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
     "Naas": {
       "correct": 0,
       "total": 2,
@@ -110,6 +105,11 @@
     "Plumpton": {
       "correct": 0,
       "total": 1,
+      "accuracy": 0.0
+    },
+    "Fakenham": {
+      "correct": 0,
+      "total": 2,
       "accuracy": 0.0
     },
     "Stratford-on-Avon": {
@@ -124,15 +124,15 @@
     }
   },
   "by_confidence": {
-    "high": {
-      "correct": 5,
-      "total": 21,
-      "accuracy": 23.81
-    },
     "medium": {
       "correct": 7,
-      "total": 35,
-      "accuracy": 20.0
+      "total": 33,
+      "accuracy": 21.21
+    },
+    "high": {
+      "correct": 5,
+      "total": 20,
+      "accuracy": 25.0
     },
     "low": {
       "correct": 0,
@@ -141,30 +141,6 @@
     }
   },
   "recent_races": [
-    {
-      "race_id": "Fakenham_1534_20260313",
-      "track": "Fakenham",
-      "predicted": "hello sweety",
-      "actual": "graecia",
-      "correct": false,
-      "confidence": "high"
-    },
-    {
-      "race_id": "DundalkAW_1700_20260313",
-      "track": "Dundalk (AW)",
-      "predicted": "red evolution",
-      "actual": "cuban grey",
-      "correct": false,
-      "confidence": "medium"
-    },
-    {
-      "race_id": "SouthwellAW_1850_20260313",
-      "track": "Southwell (AW)",
-      "predicted": "ghost mode",
-      "actual": "jungle ruler",
-      "correct": false,
-      "confidence": "medium"
-    },
     {
       "race_id": "Warwick1540_20260308",
       "track": "Warwick",
