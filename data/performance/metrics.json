@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-18T09:00:24.622447",
+  "timestamp": "2026-03-19T09:00:16.356967",
   "total_races": 100,
-  "races_with_results": 55,
-  "correct_predictions": 12,
-  "win_accuracy": 21.82,
+  "races_with_results": 49,
+  "correct_predictions": 10,
+  "win_accuracy": 20.41,
   "by_agent": {
     "ruby": {
-      "correct": 12,
-      "total": 55,
-      "accuracy": 21.82
+      "correct": 10,
+      "total": 49,
+      "accuracy": 20.41
     },
     "keenan": {
       "correct": 0,
@@ -22,36 +22,6 @@
     }
   },
   "by_track": {
-    "Warwick": {
-      "correct": 0,
-      "total": 4,
-      "accuracy": 0.0
-    },
-    "Taunton": {
-      "correct": 1,
-      "total": 2,
-      "accuracy": 50.0
-    },
-    "Wolverhampton (AW)": {
-      "correct": 2,
-      "total": 5,
-      "accuracy": 40.0
-    },
-    "Cheltenham": {
-      "correct": 3,
-      "total": 12,
-      "accuracy": 25.0
-    },
-    "Sedgefield": {
-      "correct": 1,
-      "total": 4,
-      "accuracy": 25.0
-    },
-    "Southwell": {
-      "correct": 0,
-      "total": 2,
-      "accuracy": 0.0
-    },
     "Limerick": {
       "correct": 2,
       "total": 2,
@@ -82,6 +52,16 @@
       "total": 1,
       "accuracy": 0.0
     },
+    "Cheltenham": {
+      "correct": 2,
+      "total": 11,
+      "accuracy": 18.18
+    },
+    "Sedgefield": {
+      "correct": 1,
+      "total": 3,
+      "accuracy": 33.33
+    },
     "Wolverhampton": {
       "correct": 0,
       "total": 2,
@@ -97,6 +77,11 @@
       "total": 2,
       "accuracy": 0.0
     },
+    "Wolverhampton (AW)": {
+      "correct": 2,
+      "total": 4,
+      "accuracy": 50.0
+    },
     "Naas": {
       "correct": 0,
       "total": 2,
@@ -107,9 +92,24 @@
       "total": 1,
       "accuracy": 0.0
     },
+    "Southwell": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
     "Fakenham": {
       "correct": 0,
       "total": 2,
+      "accuracy": 0.0
+    },
+    "Warwick": {
+      "correct": 0,
+      "total": 3,
+      "accuracy": 0.0
+    },
+    "Taunton": {
+      "correct": 0,
+      "total": 1,
       "accuracy": 0.0
     },
     "Stratford-on-Avon": {
@@ -124,15 +124,15 @@
     }
   },
   "by_confidence": {
-    "medium": {
-      "correct": 7,
-      "total": 33,
-      "accuracy": 21.21
-    },
     "high": {
       "correct": 5,
-      "total": 20,
-      "accuracy": 25.0
+      "total": 18,
+      "accuracy": 27.78
+    },
+    "medium": {
+      "correct": 5,
+      "total": 29,
+      "accuracy": 17.24
     },
     "low": {
       "correct": 0,
@@ -141,54 +141,6 @@
     }
   },
   "recent_races": [
-    {
-      "race_id": "Warwick1540_20260308",
-      "track": "Warwick",
-      "predicted": "she is for me boys",
-      "actual": "irish chorus",
-      "correct": false,
-      "confidence": "medium"
-    },
-    {
-      "race_id": "Taunton_1540_20260309",
-      "track": "Taunton",
-      "predicted": "kap vert",
-      "actual": "kap vert",
-      "correct": true,
-      "confidence": "medium"
-    },
-    {
-      "race_id": "WolverhamptonAW_1705_20260313",
-      "track": "Wolverhampton (AW)",
-      "predicted": "beauzon",
-      "actual": "insuspense",
-      "correct": false,
-      "confidence": "high"
-    },
-    {
-      "race_id": "Cheltenham_1320_20260310",
-      "track": "Cheltenham",
-      "predicted": "old park star",
-      "actual": "old park star",
-      "correct": true,
-      "confidence": "medium"
-    },
-    {
-      "race_id": "Sedgefield_1418_20260310",
-      "track": "Sedgefield",
-      "predicted": "wind your neck in",
-      "actual": "wind your neck in (ire)",
-      "correct": false,
-      "confidence": "medium"
-    },
-    {
-      "race_id": "Southwell_1915_20260310",
-      "track": "Southwell",
-      "predicted": "caliban",
-      "actual": "caliban (ire)",
-      "correct": false,
-      "confidence": "high"
-    },
     {
       "race_id": "Limerick_1454_20260312",
       "track": "Limerick",
