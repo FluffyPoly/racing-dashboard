@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-03-19T09:00:16.356967",
+  "timestamp": "2026-03-20T09:00:20.954262",
   "total_races": 100,
-  "races_with_results": 49,
-  "correct_predictions": 10,
-  "win_accuracy": 20.41,
+  "races_with_results": 45,
+  "correct_predictions": 9,
+  "win_accuracy": 20.0,
   "by_agent": {
     "ruby": {
-      "correct": 10,
-      "total": 49,
-      "accuracy": 20.41
+      "correct": 9,
+      "total": 45,
+      "accuracy": 20.0
     },
     "keenan": {
       "correct": 0,
@@ -22,26 +22,6 @@
     }
   },
   "by_track": {
-    "Limerick": {
-      "correct": 2,
-      "total": 2,
-      "accuracy": 100.0
-    },
-    "Newcastle (AW)": {
-      "correct": 1,
-      "total": 2,
-      "accuracy": 50.0
-    },
-    "Doncaster": {
-      "correct": 1,
-      "total": 3,
-      "accuracy": 33.33
-    },
-    "Dundalk (AW)": {
-      "correct": 0,
-      "total": 3,
-      "accuracy": 0.0
-    },
     "Carlisle": {
       "correct": 1,
       "total": 2,
@@ -72,6 +52,11 @@
       "total": 2,
       "accuracy": 0.0
     },
+    "Doncaster": {
+      "correct": 1,
+      "total": 2,
+      "accuracy": 50.0
+    },
     "Southwell (AW)": {
       "correct": 0,
       "total": 2,
@@ -97,6 +82,11 @@
       "total": 1,
       "accuracy": 0.0
     },
+    "Limerick": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 100.0
+    },
     "Fakenham": {
       "correct": 0,
       "total": 2,
@@ -112,6 +102,16 @@
       "total": 1,
       "accuracy": 0.0
     },
+    "Newcastle (AW)": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 100.0
+    },
+    "Dundalk (AW)": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
     "Stratford-on-Avon": {
       "correct": 0,
       "total": 1,
@@ -125,14 +125,14 @@
   },
   "by_confidence": {
     "high": {
-      "correct": 5,
-      "total": 18,
-      "accuracy": 27.78
+      "correct": 4,
+      "total": 16,
+      "accuracy": 25.0
     },
     "medium": {
       "correct": 5,
-      "total": 29,
-      "accuracy": 17.24
+      "total": 27,
+      "accuracy": 18.52
     },
     "low": {
       "correct": 0,
@@ -141,38 +141,6 @@
     }
   },
   "recent_races": [
-    {
-      "race_id": "Limerick_1454_20260312",
-      "track": "Limerick",
-      "predicted": "river vale",
-      "actual": "river vale",
-      "correct": true,
-      "confidence": "high"
-    },
-    {
-      "race_id": "NewcastleAW_1745_20260312",
-      "track": "Newcastle (AW)",
-      "predicted": "portman blue",
-      "actual": "supreme lillia",
-      "correct": false,
-      "confidence": "medium"
-    },
-    {
-      "race_id": "Doncaster_1302_20260313",
-      "track": "Doncaster",
-      "predicted": "annie hathaway",
-      "actual": "i c u in my dreams",
-      "correct": false,
-      "confidence": "high"
-    },
-    {
-      "race_id": "DundalkAW_1900_20260313",
-      "track": "Dundalk (AW)",
-      "predicted": "darkdeserthighway",
-      "actual": "unexpected winner",
-      "correct": false,
-      "confidence": "medium"
-    },
     {
       "race_id": "Carlisle1550_20260308",
       "track": "Carlisle",
